@@ -63,13 +63,13 @@ $base_url = base_url();
                     </div>
                   </div>
                   <div class="form-group mb-0">
-                    <div class="checkbox p-0 hidden">
-                      <input id="checkbox1" type="checkbox">
-                      <label class="text-muted" for="checkbox1">Remember password</label>
+                    <div class=" p-0">
+                      <!--input id="checkbox1" type="checkbox"-->
+                      <a href="#" onclick="$('#modal_reset').modal('show');" data-toggle="modal" data-target="#modal_reset" class="ms-2"><label class="text-muted" for="checkbox1">Forgot password</label></a>
                     </div>
                     <button class="btn btn-primary btn-block w-100" type="submit">Sign in</button>
                   </div>
-                  <p class="mt-4 mb-0 text-center">Don't have account?<a class="ms-2" href="#" onclick="" data-toggle="modal" data-target="#modal_register">Create Account</a></p>
+                  <p class="mt-4 mb-0 text-center">Don't have account?<a class="ms-2" href="#" onclick="$('#modal_register').modal('show');" data-toggle="modal" data-target="#modal_register">Create Account</a></p>
                 </form>
 				<form id="login"></form>
               </div>
@@ -83,7 +83,7 @@ $base_url = base_url();
           <div class="modal-content">
             <div class="modal-header">
               <h4 class="modal-title">Register</h4>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="$('#modal_register').modal('hide');">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
@@ -121,7 +121,7 @@ $base_url = base_url();
 					</div>
 
 				  </div>
-				  <input type="hidden" name="<?= md5('rahasia').@base64_encode($rahasia);?>" value="<?= @base64_encode($rahasia);?>">
+				  <input type="hidden" name="zz" value="">
 				  
 				</form>
             </div>
@@ -140,7 +140,7 @@ $base_url = base_url();
           <div class="modal-content">
             <div class="modal-header">
               <h4 class="modal-title">Reset Password</h4>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="$('#modal_reset').modal('hide');">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
