@@ -255,7 +255,7 @@ function thispage_ready(){
 }
 function senddatacallback(f){
 <?php if(isset($incomplete_profile)){?>
-	if(f=='#myf')document.location.href=base_url+'laporan';
+	if(f=='#myf')document.location.href=base_url+'home';
 <?php }?>
 
 	if(f=='#myfxx'){

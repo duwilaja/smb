@@ -46,7 +46,7 @@ $base_url = base_url();
         <div class="col-xl-5 p-0">
           <div class="login-card">
             <div>
-              <div><a class="logo text-start" href="index.html">SMART MANAGEMENT</a></div>
+              <div><a class="logo text-start" href="#">SMART MANAGEMENT</a></div>
               <div class="login-main"> 
                 <form class="theme-form" method="post" action="<?php echo $base_url;?>login">
                   <h4>Sign in to account</h4>

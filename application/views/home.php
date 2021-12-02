@@ -80,6 +80,7 @@ $tname="v_pservice";
 ?>
 <script>
 var  mytbl;
+var mytimer=null;
 function load_table(){
 	mytbl = $("#mytbl").DataTable({
 		serverSide: true,
@@ -117,12 +118,12 @@ function load_table(){
 
 function thispage_ready(){
 	load_table();
-	setTimeout(auto_reload,15*1000);
+	mytimer = setTimeout(auto_reload,15*1000);
 }
 
 function auto_reload(){
 	reload_table();
-	setTimeout(auto_reload,15*1000);
+	mytimer = setTimeout(auto_reload,15*1000);
 }
 
 function reload_table(){

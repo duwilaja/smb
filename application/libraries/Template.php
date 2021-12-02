@@ -9,7 +9,7 @@ class Template {
 		$this->template_data[$name] = $value;
 	}
 
-	function load($view = '' , $view_data = array(), $template = 'aronox', $return = FALSE)
+	function load($view = '' , $view_data = array(), $template = 'cuba', $return = FALSE)
 	{               
 		$this->CI =& get_instance();
 		$this->set('contents', $this->CI->load->view($view, $view_data, TRUE));			

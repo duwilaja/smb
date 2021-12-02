@@ -44,7 +44,7 @@ class Login extends CI_Controller {
 				if($retval[0]['unit']==''){
 					redirect(base_url().'profile');
 				}else{
-					redirect(base_url().'laporan');
+					redirect(base_url().'home');
 				}
 			}
 			$retval=array("404","Failed","Person not found","error");

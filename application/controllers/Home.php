@@ -14,6 +14,9 @@ class Home extends CI_Controller {
 		$user=$this->session->userdata('user_data');
 		if(isset($user)){
 			$data['session'] = $user;
+			$data['formulir'] = $this->db->select('view_laporan as v,nama_laporan as t')->like('tipe','F')->where(array("unit"=>$user['unit'],"isactive"=>"Y"))->order_by("nama_laporan")->get('formulir')->result_array();
+			$data['rekap'] = $this->db->select('view_laporan as v,nama_laporan as t')->like('tipe','R')->where(array("unit"=>$user['unit'],"isactive"=>"Y"))->order_by("nama_laporan")->get('formulir')->result_array();
+			
 			$this->template->load("home",$data);
 		}else{
 			$retval=array("403","Failed","Please login","error");
