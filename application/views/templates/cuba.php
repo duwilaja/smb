@@ -162,7 +162,7 @@ if(count($farr)>0&&$session['nrp']!=''){
         <!-- Page Body Start-->
         <div class="page-body-wrapper">
             <!-- Page Sidebar Start-->
-            <div class="sidebar-wrapper">
+            <div class="sidebar-wrapper close_icon">
                 <div>
                     <div class="logo-wrapper"><a href="<?php echo $base_url;?>home"><img class="img-fluid for-light"
                                 src="<?php echo $base_url;?>cuba/assets/images/logo.png" alt="" width="150px">
@@ -246,35 +246,12 @@ if(count($farr)>0&&$session['nrp']!=''){
                 <!-- Container-fluid starts-->
                 <div class="container-fluid">
                     <div class="row justify-content-center">
-                        <div class="col-sm-12 col-xl-8">
+                        <div class="col-sm-12 col-xl-12">
                             <div class="row">
-							<?php
-							if(isset($formulir)&&isset($rekap)){
-							?>
-								<div class="col-sm-12">
-								<form name="myf" id="myf">
-<!--hidden-->
-<input type="hidden" name="rowid" id="rowid" value="0" />
-<input type="hidden" name="nrp" value="<?php echo $session['nrp']?>">
-<input type="hidden" name="polda" value="<?php echo $session['polda']?>">
-<input type="hidden" name="polres" value="<?php echo $session['polres']?>">
-<input type="hidden" name="dinas" value="<?php echo $session['dinas']?>">
-<input type="hidden" name="subdinas" value="<?php echo $session['subdinas']?>">
-<input type="hidden" name="unit" value="<?php echo $session['unit']?>">
-<input type="hidden" name="tgl" value="<?php echo date('Y-m-d')?>">
-
-				<div id="isilaporan">
-													<?php echo $contents;?>
-				</div>
-				
-								</form>
+								<div class="col-sm-12" id="kerangka">
+									<?php echo $contents?>
 								</div>
-							<?php }else{?>
-								<div class="col-sm-12">
-								<?php echo $contents;?>
-								</div>
-							<?php }?>
-                            </div>
+							</div>
                         </div>
                     </div>
                 </div>
@@ -391,10 +368,30 @@ function ambil_isi(v,p,t){
 	}
 	$("."+v).attr("disabled",true);
 	//$("#formulir").val(v);
+	kerangkalah(p);
 	$(".titel").text(t);
 	get_content(p+'/get_content',{id:v},'.ldr','#isilaporan');
 }
-
+function kerangkalah(k){
+	if(k=='laporan'){
+		var isiz='<form name="myf" id="myf">'+
+'<input type="hidden" name="rowid" id="rowid" value="0" />'+
+'<input type="hidden" name="nrp" value="<?php echo $session["nrp"]?>">'+
+'<input type="hidden" name="polda" value="<?php echo $session["polda"]?>">'+
+'<input type="hidden" name="polres" value="<?php echo $session["polres"]?>">'+
+'<input type="hidden" name="dinas" value="<?php echo $session["dinas"]?>">'+
+'<input type="hidden" name="subdinas" value="<?php echo $session["subdinas"]?>">'+
+'<input type="hidden" name="unit" value="<?php echo $session["unit"]?>">'+
+'<input type="hidden" name="tgl" value="<?php echo date("Y-m-d")?>">'+
+				'<div class="card"><div class="card-body" id="isilaporan"></div>'+
+				'<div class="card-footer text-right">'+
+				'<button type="button" id="btn_save" class="btn btn-primary hidden" onclick="simpanlah();">Simpan Laporan</button></div></div>'+
+				'</form>';
+		$("#kerangka").html(isiz);
+	}else{
+		$("#kerangka").html('<div id="isilaporan"></div>');
+	}
+}
 </script>
 
 	
