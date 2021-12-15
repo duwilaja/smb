@@ -72,6 +72,12 @@ if(count($farr)>0&&$session['nrp']!=''){
 		.hidden{
 			display: none;
 		}
+        .dataTables_wrapper .dataTables_length {
+            margin-bottom: 0 !important;
+        }
+        .dt-buttons.btn-group.flex-wrap{
+            float: right;
+        }
 	</style>
 </head>
 
@@ -89,7 +95,7 @@ if(count($farr)>0&&$session['nrp']!=''){
                         <div class="Typeahead Typeahead--twitterUsers">
                             <div class="u-posRelative">
                                 <input class="demo-input Typeahead-input form-control-plaintext w-100" type="text"
-                                    placeholder="Search Cuba .." name="q" title="" autofocus>
+                                    placeholder="Cari .." name="q" title="" autofocus>
                                 <div class="spinner-border Typeahead-spinner" role="status"><span
                                         class="sr-only">Loading...</span></div><i class="close-search"
                                     data-feather="x"></i>
@@ -162,7 +168,7 @@ if(count($farr)>0&&$session['nrp']!=''){
         <!-- Page Body Start-->
         <div class="page-body-wrapper">
             <!-- Page Sidebar Start-->
-            <div class="sidebar-wrapper close_icon">
+            <div class="sidebar-wrapper">
                 <div>
                     <div class="logo-wrapper"><a href="<?php echo $base_url;?>home"><img class="img-fluid for-light"
                                 src="<?php echo $base_url;?>cuba/assets/images/logo.png" alt="" width="150px">
@@ -190,12 +196,12 @@ if(count($farr)>0&&$session['nrp']!=''){
                                 </li>
 								<?php
 								if(isset($formulir)){
-									for($i=0;$i<count($formulir);$i++){
+                                    $no = 1;
+                                    foreach ($formulir as $v) {
 								?>
 								<li class="sidebar-list">
-                                    <a class="sidebar-link sidebar-title link-nav" href="#" onclick="ambil_isi('<?php echo $formulir[$i]['v']?>','laporan','<?php echo $formulir[$i]['t']?>');">
-                                        <i data-feather="file-text"></i>
-                                        <span><?php echo $formulir[$i]['t']?></span>
+                                    <a class="sidebar-link sidebar-title link-nav" style="font-size: 12px;" href="#" onclick="ambil_isi('<?php echo $v['v']?>','laporan','<?php echo $v['t']?>');">
+                                        <span><?php echo $no++.'. '.$v['t']?></span>
                                     </a>
                                 </li>
 								<?php 
@@ -210,12 +216,12 @@ if(count($farr)>0&&$session['nrp']!=''){
                                 </li>
 								<?php
 								if(isset($rekap)){
-									for($i=0;$i<count($rekap);$i++){
+                                    $no_ = 1;
+                                    foreach ($rekap as $v) {
 								?>
 								<li class="sidebar-list">
-                                    <a class="sidebar-link sidebar-title link-nav" href="#" onclick="ambil_isi('<?php echo $rekap[$i]['v']?>','rekap','<?php echo $rekap[$i]['t']?>');">
-                                        <i data-feather="file-text"></i>
-                                        <span><?php echo $rekap[$i]['t']?></span>
+                                    <a class="sidebar-link sidebar-title link-nav"  style="font-size: 12px;" href="#" onclick="ambil_isi('<?php echo $v['v']?>','rekap','<?php echo $v['t']?>');">
+                                        <span><?php echo $no_++.'. '.$v['t']?></span>
                                     </a>
                                 </li>
 								<?php 
@@ -232,7 +238,7 @@ if(count($farr)>0&&$session['nrp']!=''){
                 <div class="container-fluid">
                     <div class="page-title">
                         <div class="row">
-                            <div class="col-6"><h3 class="titel"></h3>
+                            <div class="col-6">
                             </div>
                             <div class="col-6 hidden">
                                 <ol class="breadcrumb">
@@ -246,7 +252,7 @@ if(count($farr)>0&&$session['nrp']!=''){
                 <!-- Container-fluid starts-->
                 <div class="container-fluid">
                     <div class="row justify-content-center">
-                        <div class="col-sm-12 col-xl-12">
+                        <div class="col-sm-12 col-xl-10">
                             <div class="row">
 								<div class="col-sm-12" id="kerangka">
 									<?php echo $contents?>
@@ -358,6 +364,15 @@ function simpanlah(){
 	}
 }
 function ambil_isi(v,p,t){
+    if (p == 'rekap') {
+        setTimeout(() => {
+            $('#laporan_rekap').val(v+';'+t);
+        }, 300);
+    }else{
+        setTimeout(() => {
+            $('#laporan').val(v+';'+t);
+        }, 300);
+    }
 	safeform=null;
 	if(typeof(mytimer)=='number') clearTimeout(mytimer)
 	//$(".btn-pill").attr("disabled",false);
@@ -370,6 +385,9 @@ function ambil_isi(v,p,t){
 	//$("#formulir").val(v);
 	kerangkalah(p);
 	$(".titel").text(t);
+    setTimeout(() => {
+        $(".titel_rekap").text(t);
+    }, 400);
 	get_content(p+'/get_content',{id:v},'.ldr','#isilaporan');
 }
 function kerangkalah(k){
@@ -383,13 +401,58 @@ function kerangkalah(k){
 '<input type="hidden" name="subdinas" value="<?php echo $session["subdinas"]?>">'+
 '<input type="hidden" name="unit" value="<?php echo $session["unit"]?>">'+
 '<input type="hidden" name="tgl" value="<?php echo date("Y-m-d")?>">'+
-				'<div class="card"><div class="card-body" id="isilaporan"></div>'+
-				'<div class="card-footer text-right">'+
+				'<div class="card">';
+               
+                isiz += `<div class="card-header">
+                                            <div class="row">
+                                                <div class="col-md-8">
+                                                    <h5 class="titel"></h5>
+                                                    <span>Pilih Jenis Laporan, dan isi semua yang dibutuhkan!
+                                                    </span>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <label class="col-form-label pt-0">Jenis Laporan</label>
+                                                    <select class="form-select" id="laporan" onchange="ambil_isi(this.value.split(';')[0],'laporan',this.value.split(';')[1])">
+                                                        <!-- <option value="0">Pilih</option> -->
+                                                        <option value="0" disabled="">Pilih Formulir</option>
+                                                        <?php
+                                                        if(isset($formulir)){
+                                                            for($i=0;$i<count($formulir);$i++){
+                                                        ?>
+                                                        <option value="<?php echo $formulir[$i]['v']?>;<?php echo $formulir[$i]['t']?>"><?php echo $formulir[$i]['t']?></option>
+                                                        <?php 
+                                                            }
+                                                        }?>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>`;
+
+                isiz += '<div class="card-body" id="isilaporan"></div>'+
+				'<div class="card-footer text-right" style="padding:20px;">'+
 				'<button type="button" id="btn_save" class="btn btn-primary hidden" onclick="simpanlah();">Simpan Laporan</button></div></div>'+
 				'</form>';
 		$("#kerangka").html(isiz);
 	}else{
 		$("#kerangka").html('<div id="isilaporan"></div>');
+
+        setTimeout(() => {
+            $('#pilih_rekap').html('');
+        $('#pilih_rekap').html(` <label class="col-form-label pt-0">Pilih Rekap</label>
+	            <select class="form-select" id="laporan_rekap" onchange="ambil_isi(this.value.split(';')[0],'rekap',this.value.split(';')[1])">
+	                <!-- <option value="0">Pilih</option> -->
+	                <option value="0" disabled="">Pilih Rekap</option>
+	                <?php
+	                if(isset($rekap)){
+	                    foreach ($rekap as $v) {
+	                ?>
+	                <option value="<?php echo $v['v']?>;<?php echo $v['t']?>"><?php echo $v['t']?></option>
+	                <?php 
+	                    }
+	                }?></select>`);
+        }, 200);
+        
+
 	}
 }
 </script>

@@ -11,43 +11,8 @@ $dispatched="'1019' as kategori_peng_id,tgl as ctddate,jam as ctdtime,lat,lng,pe
 telp,masyarakat_id as input_peng,concat(petugas,' petugas') as keterangan,'kemacetan' as judul,'0' as status,rowid as mobile_uniqueid";
 ?>
 
-<div class="card">
-	<div class="card-header">
-		<div class="card-title judul">Laporan Kemacetan
-			<div class="row">
-				<div class="col">
-					<div class="input-group">
-						<div class="input-group-prepend">
-							<div class="input-group-text">
-								<i class="fa fa-calendar"></i>
-							</div>
-						</div>
-						<input type="text" class="form-control datepicker" id="tgl">
-					</div>
-				</div>
-				<!--div>-</div>
-				<div class="col">
-					<div class="input-group">
-						<div class="input-group-prepend">
-							<div class="input-group-text">
-								<i class="fa fa-calendar"></i>
-							</div>
-						</div>
-						<input type="text" class="form-control datepicker" id="tgl">
-					</div>
-				</div-->
-			</div>
-		</div>
-		<div class="card-options ">
-			<!--a href="#" title="Batch" class=""><i class="fe fe-upload"></i></a>
-			<a href="#" onclick="openForm(0);" data-toggle="modal" data-target="#myModal" title="Add" class=""><i class="fe fe-plus"></i></a-->
-			<a href="#" title="Refresh" onclick="reload_table();"><i class="fe fe-refresh-cw"></i></a>
-			<a href="#" title="Expand/Collapse" class="card-options-collapse" data-toggle="card-collapse"><i class="fe fe-chevron-up"></i></a>
-			<!--a href="#" class="card-options-remove" data-toggle="card-remove"><i class="fe fe-x"></i></a-->
-		</div>
-	</div>
-	<div class="card-body">
-		<div class="table-responsive">
+<?php $this->load->view('rekap/incl/head_rekap');?>
+		<div class="table-responsive mt-4">
 			<table id="mytbl" class="table table-striped table-bordered w-100">
 				<thead>
 					<tr>

@@ -66,7 +66,7 @@ $cols.="instansi,deskripsi,darilat,darilng,kelat,kelng,via,tanggal,mulai,sampai,
 	<div class="col-sm-6 col-md-1">
 		<div class="form-group">
 			<label class="form-label">&nbsp;</label>
-			<button type="button" class="btn btn-icon btn-facebook" onclick="mappicker('darilat','darilng');"><i class="fa fa-map-marker"></i></button>
+			<button type="button" class="btn btn-danger" onclick="mappicker('darilat','darilng');"><i class="fa fa-map-marker"></i></button>
 		</div>
 	</div>
 	<div class="col-sm-6 col-md-2">
@@ -84,7 +84,7 @@ $cols.="instansi,deskripsi,darilat,darilng,kelat,kelng,via,tanggal,mulai,sampai,
 	<div class="col-sm-6 col-md-1">
 		<div class="form-group">
 			<label class="form-label">&nbsp;</label>
-			<button type="button" class="btn btn-icon btn-facebook" onclick="mappicker('kelat','kelng');"><i class="fa fa-map-marker"></i></button>
+			<button type="button" class="btn btn-danger" onclick="mappicker('kelat','kelng');"><i class="fa fa-map-marker"></i></button>
 		</div>
 	</div>
 	<div class="col-sm-6 col-md-5">

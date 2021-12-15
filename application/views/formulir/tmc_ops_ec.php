@@ -46,7 +46,7 @@ $cols.="kejadian,lokasi,lat,lng,jam,dampak,radius,kebutuhan,ket,md,lb,pengungsi"
 	<div class="col-sm-6 col-md-1">
 		<div class="form-group">
 			<label class="form-label">&nbsp;</label>
-			<button type="button" class="btn btn-icon btn-facebook" onclick="mappicker('lat','lng');"><i class="fa fa-map-marker"></i></button>
+			<button type="button" class="btn btn-danger" onclick="mappicker('lat','lng');"><i class="fa fa-map-marker"></i></button>
 		</div>
 	</div>
 </div>
@@ -151,7 +151,7 @@ $cols.="kejadian,lokasi,lat,lng,jam,dampak,radius,kebutuhan,ket,md,lb,pengungsi"
 						<td><input type="text" name="cc[]" class="form-control" placeholder="" ></td>
 						<td><input type="text" name="latx[]" id="lat_0" class="form-control lat" placeholder="" >
 						<input type="text" name="lngx[]" id="lng_0" class="form-control lng" placeholder="" >
-			<button type="button" class="btn btn-icon btn-facebook btn-map" onclick="mappicker('lat_0','lng_0');"><i class="fa fa-map-marker"></i></button>
+			<button type="button" class="btn btn-danger btn-map" onclick="mappicker('lat_0','lng_0');"><i class="fa fa-map-marker"></i></button>
 						</td>
 					</tr>
 				</tbody>

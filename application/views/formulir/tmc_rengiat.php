@@ -98,7 +98,7 @@ $cols.="jenis,tgldari,tglsampai,jamdari,jamsampai,lokasi,sasaran,rincian,kuatper
 	<div class="col-sm-6 col-md-1">
 		<div class="form-group">
 			<label class="form-label">&nbsp;</label>
-			<button type="button" class="btn btn-icon btn-facebook" onclick="mappicker('#lat','#lng');"><i class="fa fa-map-marker"></i></button>
+			<button type="button" class="btn btn-danger" onclick="mappicker('#lat','#lng');"><i class="fa fa-map-marker"></i></button>
 		</div>
 	</div>
 </div>

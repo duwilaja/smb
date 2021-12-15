@@ -161,7 +161,7 @@ echo form_hidden('gangguan[]','');
 						<td><input type="text" name="transit[]" class="form-control" placeholder="" ></td>
 						<td><input type="text" name="lat[]" id="lat_0" class="form-control lat" placeholder="" >
 						<input type="text" name="lng[]" id="lng_0" class="form-control lng" placeholder="" >
-			<button type="button" class="btn btn-icon btn-facebook btn-map" onclick="mappicker('lat_0','lng_0');"><i class="fa fa-map-marker"></i></button>
+			<button type="button" class="btn btn-danger btn-map" onclick="mappicker('lat_0','lng_0');"><i class="fa fa-map-marker"></i></button>
 						</td>
 					</tr>
 				</tbody>

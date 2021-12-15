@@ -5,29 +5,8 @@ $cols="nrp,tgl,namajalan,lat,lng,jammulai,jamsampai,penyebab,penyebabd,lainnya,s
 $tname="tmc_ops_macet";
 ?>
 
-<div class="card">
-	<div class="card-header">
-		<div class="card-title judul">Laporan Situasi Kemacetan
-		
-											<div class="input-group">
-												<div class="input-group-prepend">
-													<div class="input-group-text">
-														<i class="fa fa-calendar"></i>
-													</div>
-												</div>
-												<input type="text" class="form-control datepicker" id="tgl">
-											</div>
-										
-		</div>
-		<div class="card-options ">
-			<!--a href="#" title="Batch" class=""><i class="fe fe-upload"></i></a>
-			<a href="#" onclick="openForm(0);" data-toggle="modal" data-target="#myModal" title="Add" class=""><i class="fe fe-plus"></i></a-->
-			<a href="#" title="Refresh" onclick="reload_table();"><i class="fe fe-refresh-cw"></i></a>
-			<a href="#" title="Expand/Collapse" class="card-options-collapse" data-toggle="card-collapse"><i class="fe fe-chevron-up"></i></a>
-			<!--a href="#" class="card-options-remove" data-toggle="card-remove"><i class="fe fe-x"></i></a-->
-		</div>
-	</div>
-	<div class="card-body">
+<?php $this->load->view('rekap/incl/head_rekap');?>
+		<div class="table-responsive mt-4">
 		<div class="table-responsive">
 			<table id="mytbl" class="table table-striped table-bordered w-100">
 				<thead>

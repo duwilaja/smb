@@ -30,7 +30,7 @@ $cols.="instansi1,petugas1,instansi2,petugas2,instansi3,petugas3,instansi4,petug
 	<div class="col-sm-6 col-md-1">
 		<div class="form-group">
 			<label class="form-label">&nbsp;</label>
-			<button type="button" class="btn btn-icon btn-facebook" onclick="mappicker('#lat','#lng');"><i class="fa fa-map-marker"></i></button>
+			<button type="button" class="btn btn-danger" onclick="mappicker('#lat','#lng');"><i class="fa fa-map-marker"></i></button>
 		</div>
 	</div>
 	<div class="col-sm-6 col-md-2">
