@@ -396,9 +396,9 @@ function faskes_html(id=''){
 				$('#rs').append('<option value="'+e.id+'" >'+e.nama_lokasi+'</option>');	
 			}		
 		});
-		// $("#rs").select2({
-		// 	tags : true
-		// });
+		$("#rs").select2({
+			tags : false
+		});
 	});
 }
 
