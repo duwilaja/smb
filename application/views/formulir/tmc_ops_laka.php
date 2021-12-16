@@ -230,8 +230,10 @@ function get_data() {
 		},
 		dataType: "json",
 		success: function (r) {
-			faskes_html(r.rs);	
-			add_nopol(r.nopol);
+			faskes_html(r.rs);
+			if (r.nopol) {
+				add_nopol(r.nopol);
+			}	
 			if (r.instansi) {
 				add_instansi(r.instansi,r.petugas);
 			}
