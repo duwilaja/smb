@@ -258,7 +258,7 @@ if(count($farr)>0&&$session['nrp']!=''){
                         <div class="col-sm-12 col-xl-10">
                             <div class="row">
 								<div class="col-sm-12" id="kerangka">
-									<?php echo $contents?>
+									
 								</div>
 							</div>
                         </div>
@@ -356,25 +356,9 @@ $(document).ready(function(){
 		thispage_ready();
 	}
 
-    var url = new URL(window.location.href);
-    let v = url.searchParams.get("v");
-    let p = url.searchParams.get("p");
-    let t = url.searchParams.get("t");
-    let text = url.searchParams.get("text");
-    let tbl = url.searchParams.get("tbl");
-    let rowid = url.searchParams.get("rowid");
-
 	<?php if ($this->uri->segment(2) == 'view_upd') { ?>
-		ambil_isi(tbl,'laporan','Edit '+text+'#'+rowid,'update');
-	<?php }else{ ?>
-
-
-    if (v != '' && p != '' && t !='') {
-        if (p == 'rekap' || p == "laporan") {
-            ambil_isi(v,p,t);
-        }
-    }
-    <?php } ?>
+		ambil_isi('tmc_ops_laka','update','Lapsit Gangguan Nyata Laka');
+	<?php } ?>
 
 });
 
@@ -387,24 +371,7 @@ function simpanlah(){
 		sendData('#myf','laporan/save');
 	}
 }
-function ambil_isi(v,p,t,cek){
-
-    if (cek != 'update') {
-        window.location.pathname.split('/').filter(function(x) {
-            if(x == 'view_upd'){
-
-                var url = new URL(window.location.href);
-                let v = url.searchParams.get("v");
-                let p = url.searchParams.get("p");
-                let t = url.searchParams.get("t");
-
-                window.history.pushState({},"", '../home?v='+v+'&p='+p+'&t='+t);
-            }else{
-                window.history.pushState({},"", '?v='+v+'&p='+p+'&t='+t);
-            }
-        });
-    }
-
+function ambil_isi(v,p,t){
     if (p == 'rekap') {
         setTimeout(() => {
             $('#laporan_rekap').val(v+';'+t);
@@ -424,18 +391,14 @@ function ambil_isi(v,p,t,cek){
 	}
 	$("."+v).attr("disabled",true);
 	//$("#formulir").val(v);
-	kerangkalah(p,cek);
+	kerangkalah(p);
 	$(".titel").text(t);
     setTimeout(() => {
         $(".titel_rekap").text(t);
     }, 400);
-    <?php if ($this->uri->segment(2) == 'view_upd') { ?>
-	get_content(p+'/get_content?col=<?=$this->input->get('col');?>&t=<?=$this->input->get('t');?>&rowid=<?=$this->input->get('rowid');?>',{id:v},'.ldr','#isilaporan');
-    <?php }else{ ?>
 	get_content(p+'/get_content',{id:v},'.ldr','#isilaporan');
-    <?php } ?>
 }
-function kerangkalah(k,cek=''){
+function kerangkalah(k){
 	if(k=='laporan'){
 		var isiz='<form name="myf" id="myf">'+
 '<input type="hidden" name="rowid" id="rowid" value="0" />'+
@@ -452,11 +415,10 @@ function kerangkalah(k,cek=''){
                                             <div class="row">
                                                 <div class="col-md-8">
                                                     <h5 class="titel"></h5>
-                                                        <span>${cek == '' ?'Pilih Jenis Laporan, dan isi semua yang dibutuhkan!' : 'Anda dapat mengedit data di halaman ini!'}</span>
+                                                    <span>Pilih Jenis Laporan, dan isi semua yang dibutuhkan!
+                                                    </span>
                                                 </div>
-
-                                                <?php if($this->uri->segment(2) != "view_upd"){?>
-                                               <div class="col-md-4">
+                                                <div class="col-md-4">
                                                     <label class="col-form-label pt-0">Jenis Laporan</label>
                                                     <select class="form-select" id="laporan" onchange="ambil_isi(this.value.split(';')[0],'laporan',this.value.split(';')[1])">
                                                         <!-- <option value="0">Pilih</option> -->
@@ -471,7 +433,6 @@ function kerangkalah(k,cek=''){
                                                         }?>
                                                     </select>
                                                 </div>
-                                                <?php } ?>
                                             </div>
                                         </div>`;
 

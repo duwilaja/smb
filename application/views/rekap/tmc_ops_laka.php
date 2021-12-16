@@ -1,8 +1,8 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed'); 
 
 $cols="nrp,unit,polda,polres,dinas,subdinas,tgl,dasar,nomor,";
-$cols="nrp,tgl,jam,namajalan,penggal,lat,lng,kategori,keterlibatan,nopol1,nopol2,md,lb,lr,rs,rsalm,rslat,rslng,rscc,tindakan,penindakan,ket,";
-$cols.="instansi1,petugas1,instansi2,petugas2,instansi3,petugas3,instansi4,petugas4";
+$cols="rowid,tgl,jam,namajalan,penggal,lat,lng,kategori,keterlibatan,nopol,md,lb,lr,rs,rsalm,rslat,rslng,rscc,tindakan,penindakan,ket,";
+$cols.="instansi,petugas";
 
 $tname="tmc_ops_laka";
 ?>
@@ -21,8 +21,7 @@ $tname="tmc_ops_laka";
 						<th>Longitude</th>
 						<th>Kategori Laka</th>
 						<th>Kendaraan Terlibat</th>
-						<th>Nopol 1</th>
-						<th>Nopol 2</th>
+						<th>Nopol</th>
 						<th>MD</th>
 						<th>Luka Berat</th>
 						<th>Luka Ringan</th>
@@ -34,14 +33,7 @@ $tname="tmc_ops_laka";
 						<th>Cara Bertindak</th>
 						<th>Kategori Penindakan</th>
 						<th>Keterangan CB</th>
-						<th>Instansi 1</th>
-						<th>Petugas 1</th>
-						<th>Instansi 2</th>
-						<th>Petugas 2</th>
-						<th>Instansi 3</th>
-						<th>Petugas 3</th>
-						<th>Instansi 4</th>
-						<th>Petugas 4</th>
+						<th>Petugas Instansi</th>
 					</tr>
 				</thead>
 				<tbody>

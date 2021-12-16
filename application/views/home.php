@@ -1,4 +1,4 @@
-<?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
+<?php defined('BASEPATH') OR exit('No direct script access allowed');?>
 <div class="row">
 	<div class="col-lg-12">
 		<div class="alert alert-info" role="alert"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
@@ -6,18 +6,7 @@
 	</div>
 </div>
 
-<!--div class="row">
-	<div class="col-md-4">
-		<img src="<?php echo base_url()?>my/images/infos/rst.jpg" />
-	</div>
-	<div class="col-md-4">
-		<img src="<?php echo base_url()?>my/images/infos/rain.jpg" />
-	</div>
-	<div class="col-md-4">
-		<img src="<?php echo base_url()?>my/images/infos/tip.jpg" />
-	</div>
-</div-->
-
+<?php if($this->uri->segment(2) != 'view_upd') { ?>
 <div class="card">
 	<div class="card-header">
 		<div class="card-title judul">
@@ -74,6 +63,7 @@
 		</div>
 	</div>
 </div>
+<?php } ?>
 <?php
 $cols = "tgl,jam,j,jalan,pelapor,sumber,saluran,stts";
 $tname="v_pservice";
