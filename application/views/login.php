@@ -49,14 +49,14 @@ $base_url = base_url();
               <div><a class="logo text-start" href="#">SMART MANAGEMENT</a></div>
               <div class="login-main"> 
                 <form class="theme-form" method="post" action="<?php echo $base_url;?>login">
-                  <h4>Sign in to account</h4>
-                  <p>Enter your ID & password to login</p>
+                  <h4>Login ke Akun</h4>
+                  <p>Masukan UserID/NRP dan Kata Sandi dibawah ini</p>
                   <div class="form-group">
                     <label class="col-form-label">UserID/NRP</label>
                     <input class="form-control" type="text" name="user" required="" placeholder="">
                   </div>
                   <div class="form-group">
-                    <label class="col-form-label">Password</label>
+                    <label class="col-form-label">Kata Sandi</label>
                     <div class="form-input position-relative">
                       <input class="form-control" type="password" name="passwd" required="" placeholder="">
                       <div class="show-hide"><span class="show">                         </span></div>
@@ -65,11 +65,11 @@ $base_url = base_url();
                   <div class="form-group mb-0">
                     <div class=" p-0">
                       <!--input id="checkbox1" type="checkbox"-->
-                      <a href="#" onclick="$('#modal_reset').modal('show');" data-toggle="modal" data-target="#modal_reset" class="ms-2"><label class="text-muted" for="checkbox1">Forgot password</label></a>
+                      <a href="#" onclick="$('#modal_reset').modal('show');" data-toggle="modal" data-target="#modal_reset" class="ms-2"><label class="text-muted" for="checkbox1">Lupa Kata Sandi</label></a>
                     </div>
-                    <button class="btn btn-primary btn-block w-100" type="submit">Sign in</button>
+                    <button class="btn btn-primary btn-block w-100" type="submit">Masuk</button>
                   </div>
-                  <p class="mt-4 mb-0 text-center">Don't have account?<a class="ms-2" href="#" onclick="$('#modal_register').modal('show');" data-toggle="modal" data-target="#modal_register">Create Account</a></p>
+                  <p class="mt-4 mb-0 text-center">Belum punya akun ?<a class="ms-2" href="#" onclick="$('#modal_register').modal('show');" data-toggle="modal" data-target="#modal_register">Buat Akun</a></p>
                 </form>
 				<form id="login"></form>
               </div>

@@ -193,43 +193,43 @@ if(count($farr)>0&&$session['nrp']!=''){
                                 </li>
                                 <li class="sidebar-main-title">
                                     <div>
-                                        <h6>Formulir</h6>
+                                        <h6>Formulir & Rekap</h6>
                                         <p><?php echo isset($session)?$session['unit']:""?></p>
                                     </div>
                                 </li>
-								<?php
-								if(isset($formulir)){
-                                    $no = 1;
-                                    foreach ($formulir as $v) {
-								?>
-								<li class="sidebar-list">
-                                    <a class="sidebar-link sidebar-title link-nav" style="font-size: 12px;" href="#" onclick="ambil_isi('<?php echo $v['v']?>','laporan','<?php echo $v['t']?>');">
-                                        <span><?php echo $no++.'. '.$v['t']?></span>
-                                    </a>
+                                <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="#"><i data-feather="file-text"></i><span>Formulir</span><div class="according-menu"><i class="fa fa-angle-right"></i></div></a>
+                                    <ul class="sidebar-submenu" style="display: none;">
+                                        <?php
+                                            if(isset($formulir)){
+                                                foreach ($formulir as $v) {
+                                            ?>
+                                            <li>
+                                                <a class="sidebar-link sidebar-title link-nav" style="font-size: 12px;" href="#" onclick="ambil_isi('<?php echo $v['v']?>','laporan','<?php echo $v['t']?>');">
+                                                    <span><?php echo $v['t'];?></span>
+                                                </a>
+                                            </li>
+                                            <?php 
+                                                }
+                                            }?>
+                                    </ul>
                                 </li>
-								<?php 
-									}
-								}?>
+                                <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="#"><i data-feather="server"></i><span>Rekap</span><div class="according-menu"><i class="fa fa-angle-right"></i></div></a>
+                                    <ul class="sidebar-submenu" style="display: none;">
+                                    <?php
+                                        if(isset($rekap)){
+                                            foreach ($rekap as $v) {
+                                        ?>
+                                        <li>
+                                            <a class="sidebar-link sidebar-title link-nav"  style="font-size: 12px;" href="#" onclick="ambil_isi('<?php echo $v['v']?>','rekap','<?php echo $v['t']?>');">
+                                                <span><?php echo $v['t']?></span>
+                                            </a>
+                                        </li>
+                                        <?php 
+                                            }
+                                        }?>
+                                    </ul>
+                                </li>
 								
-                                <li class="sidebar-main-title">
-                                    <div>
-                                        <h6>Rekap</h6>
-                                        <p><?php echo isset($session)?$session['unit']:""?></p>
-                                    </div>
-                                </li>
-								<?php
-								if(isset($rekap)){
-                                    $no_ = 1;
-                                    foreach ($rekap as $v) {
-								?>
-								<li class="sidebar-list">
-                                    <a class="sidebar-link sidebar-title link-nav"  style="font-size: 12px;" href="#" onclick="ambil_isi('<?php echo $v['v']?>','rekap','<?php echo $v['t']?>');">
-                                        <span><?php echo $no_++.'. '.$v['t']?></span>
-                                    </a>
-                                </li>
-								<?php 
-									}
-								}?>
                             </ul>
                         </div>
                         <div class="right-arrow" id="right-arrow"><i data-feather="arrow-right"></i></div>
