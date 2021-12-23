@@ -185,6 +185,12 @@ class Laporan extends CI_Controller {
 	
 	public function save()
 	{
+		$data = [
+			'petugas' => '',
+			'instansi' => '',
+			'nopol' => ''
+		];
+
 		$user=$this->session->userdata('user_data');
 		if(isset($user)){
 			$msgs="No data has been saved";
@@ -194,15 +200,16 @@ class Laporan extends CI_Controller {
 			$data=$this->input->post(explode(",",$fname));
 
 			
-			if ($data['petugas']) {
+			if (!empty($data['petugas'])) {
 				$data['petugas'] = implode(';',$data['petugas']);
 			}
 
-			if ($data['instansi']) {
+
+			if (!empty($data['instansi'])) {
 				$data['instansi'] = implode(';',$data['instansi']);
 			}
 
-			if ($data['nopol']) {
+			if (!empty($data['nopol'])) {
 				$data['nopol'] = implode(';',$data['nopol']);
 			}
 
