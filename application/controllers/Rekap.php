@@ -118,6 +118,7 @@ class Rekap extends CI_Controller {
             }
 			$data_assoc=$this->db->get()->result_array();
 
+			$i = 0;
 			foreach ($data_assoc as $k => $v) {
 				$lnk='';
 				if($ismap){
