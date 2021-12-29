@@ -229,7 +229,11 @@ if(count($farr)>0&&$session['nrp']!=''){
                                         }?>
                                     </ul>
                                 </li>
-								
+								<li class="sidebar-list">
+                                    <a class="sidebar-link" href="<?=base_url('History')?>">
+                                        <i data-feather="server"></i><span>History</span>
+                                    </a>
+                                </li>
                             </ul>
                         </div>
                         <div class="right-arrow" id="right-arrow"><i data-feather="arrow-right"></i></div>
