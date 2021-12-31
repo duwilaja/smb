@@ -13,15 +13,19 @@ function GetURLParameter(sParam) {
 }
 let tbl = GetURLParameter("tbl");
 let tbln = GetURLParameter("tbln");
+let s = GetURLParameter("s");
+let e = GetURLParameter("e");
 var urlParameter = {
 	table: tbl,
 	tablen: tbln,
+    start: s,
+    end : e
 };
 
 $(document).ready(function(){
     $('#htitle').text(urlParameter['tablen'].replace(/%20/g, " "))
-    $('#start_tgl').val(date)
-    $('#end_tgl').val(date)
+    $('#start_tgl').val(urlParameter['start'])
+    $('#end_tgl').val(urlParameter['end'])
     dt(urlParameter['table'])
 })
 
