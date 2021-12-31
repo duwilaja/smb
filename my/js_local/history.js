@@ -1,60 +1,50 @@
-var nrp = $('#nrp').val();
+var today = new Date();
+var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
 $(document).ready(function(){
-    get_jumlah($('#opt_history').val(), nrp)
+    $('#start_tgl').val(date)
+    $('#end_tgl').val(date)
+    dt()
 })
 
-$(document).on("change", "#opt_history", function () {
-    let x = $(this).val();
-    dt(x)
+$('#form-filter').submit(function (e) { 
+    dt();
 });
 
-function get_jumlah(tbl,nrp) {
-    let start_tgl = $('#start_tgl').val();
-    let end_tgl = $('#end_tgl').val();
-    $("#jumlah_input").html('');
-    $.ajax({
-        type: "POST",
-        url: "History/get_jumlah_input",
-        data: {tbl:tbl,nrp:nrp,s_date:start_tgl,e_date:end_tgl},
-        dataType: 'json',
-        success: function (r) {
-          $("#jumlah_input").append(r.count);
+$(document).on("change", "#end_tgl", function () {
+    let x = $(this).val();
+    if (x <= $('#start_tgl').val()) {
+        alert('End Date tidak boleh kurang dari Start Date')
+        $(this).val('mm/dd/yyyy')
+    }
+});
+
+function dt() {
+    $('#tbl_history').DataTable({
+        // Processing indicator
+        "bAutoWidth": false,
+        "destroy": true,
+        "searching": true,
+        "processing": true,
+        // DataTables server-side processing mode
+        "serverSide": true,
+        "scrollX": true,
+        // Initial no order.
+        "order": [],
+        // Load data from an Ajax source
+        "ajax": {
+            "url": 'History/dt_history',
+            "type": "POST",
+            "data" : {
+                'nrp' : $('#nrp').val(),
+                'unit' : $('#unit').val(),
+                's_date' : $('#start_tgl').val(),
+                'e_date' : $('#end_tgl').val(),
+            }
         },
-      });
-  }
-
-  function dt(tbl) {
-
-    let start_tgl = $('#start_tgl').val();
-    let end_tgl = $('#end_tgl').val();
-    $.ajax({
-        type: "POST",
-        url: "History/get_table",
-        data: {tbl:tbl,nrp:nrp,s_date:start_tgl,e_date:end_tgl},
-        dataType: 'json',
-        success: function (r) {
-            let html = '';
-            html += '<thead><tr>';
-                r.key.forEach(e => {
-                    html += "<th>"+e+"</th>";
-                });
-            html += '</tr></thead>';
-                html += '<tbody>';
-                r.data.forEach((e,i) => {
-                    html += "<tr>";
-                        r.key.forEach((field,no) => {
-                            html += '<td>'+e[field]+'</td>';
-                        });
-                    html += "</tr>";
-                });
-                html += '<tbody>';
-            html += '</tbody>';
-            $('#jumlah_input').text(r.count);
-            $('#tbl_history').html(html);
-        },
-      });
-
-      setTimeout(() => {
-          $('#tbl_history').DataTable()
-      }, 5000);
+        //Set column definition initialisation properties
+        "columnDefs": [{
+            "targets": [0,1,3,4],
+            "orderable": false
+        }]
+    });
   }
