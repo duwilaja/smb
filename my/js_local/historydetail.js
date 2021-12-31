@@ -80,7 +80,7 @@ function get_jumlah(tbl,nrp) {
         },
       });
 
-      setTimeout(() => {
-          $('#tbl_history').DataTable()
-      }, 1000);
+    //   setTimeout(() => {
+    //       $('#tbl_history').DataTable()
+    //   }, 1000);
   }
