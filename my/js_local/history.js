@@ -1,5 +1,9 @@
 var today = new Date();
-var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+var dd = String(today.getDate()).padStart(2, '0');
+var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+var yyyy = today.getFullYear();
+
+var date = yyyy + '-' + mm + '-' + dd;
 $(document).ready(function(){
     $('#start_tgl').val(date)
     $('#end_tgl').val(date)
