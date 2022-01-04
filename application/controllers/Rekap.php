@@ -247,7 +247,7 @@ class Rekap extends CI_Controller {
 					if ($data_assoc[$i]['instansi'] != '') {
 						$data_assoc[$i]['instansi'] = '';
 						foreach ($petugas as $k => $v) {
-							$ins = $sme->get_where('instansi',['id' => $instansi[$k]])->row()->nama_instansi;
+							$ins = @$sme->get_where('instansi',['id' => $instansi[$k]])->row()->nama_instansi;
 							$data_assoc[$i]['instansi'] .= '<label class="label label-primary px-1 py-1 mb-1">'.$petugas[$k].' - '.$ins.'</label>';
 						}
 					}
