@@ -144,7 +144,7 @@ if(count($farr)>0&&$session['nrp']!=''){
                 <div class="nav-right col-8 pull-right right-header p-0">
                     <ul class="nav-menus">
 
-                        <li> <span class="header-search"><i data-feather="search"></i></span></li>
+                        <!-- <li> <span class="header-search"><i data-feather="search"></i></span></li> -->
                         <li>
                             <div class="mode"><i class="fa fa-moon-o"></i></div>
                         </li>
