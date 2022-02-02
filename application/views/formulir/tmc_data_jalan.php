@@ -54,7 +54,7 @@ $cols.="panjang,jenis";
   <div role="document" class="modal-dialog">
 	<div class="modal-content">
 	  <div class="modal-header"><strong id="exampleModalLabel" class="modal-title">Panjang Jalan</strong>
-		<button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">x</span></button>
+		<button type="button" data-bs-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">x</span></button>
 	  </div>
 	  <div class="modal-body">
 		<!--p>Lorem ipsum dolor sit amet consectetur.</p-->
@@ -86,7 +86,7 @@ $cols.="panjang,jenis";
 	  <div class="modal-footer">
 	    <button type="button" class="btn btn-danger" id="bdel"  onclick="sendData('#myf','laporan/dele');">Delete</button>
 		<button type="button" class="btn btn-success" id="btnsv" onclick="simpanlah();">Save</button>
-		<button type="button" data-dismiss="modal" class="btn btn-default">Close</button>
+		<button type="button" data-bs-dismiss="modal" class="btn btn-default">Close</button>
 		
 	  </div>
 	</div>
