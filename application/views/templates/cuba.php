@@ -72,6 +72,15 @@ if(count($farr)>0&&$session['nrp']!=''){
 		.hidden{
 			display: none;
 		}
+        .form-group{
+		margin-top: 8px;
+	}
+        .dataTables_wrapper .dataTables_length {
+            margin-bottom: 0 !important;
+        }
+        .dt-buttons.btn-group.flex-wrap{
+            float: right;
+        }
 	</style>
 </head>
 
@@ -89,7 +98,7 @@ if(count($farr)>0&&$session['nrp']!=''){
                         <div class="Typeahead Typeahead--twitterUsers">
                             <div class="u-posRelative">
                                 <input class="demo-input Typeahead-input form-control-plaintext w-100" type="text"
-                                    placeholder="Search Cuba .." name="q" title="" autofocus>
+                                    placeholder="Cari .." name="q" title="" autofocus>
                                 <div class="spinner-border Typeahead-spinner" role="status"><span
                                         class="sr-only">Loading...</span></div><i class="close-search"
                                     data-feather="x"></i>
@@ -135,7 +144,7 @@ if(count($farr)>0&&$session['nrp']!=''){
                 <div class="nav-right col-8 pull-right right-header p-0">
                     <ul class="nav-menus">
 
-                        <li> <span class="header-search"><i data-feather="search"></i></span></li>
+                        <!-- <li> <span class="header-search"><i data-feather="search"></i></span></li> -->
                         <li>
                             <div class="mode"><i class="fa fa-moon-o"></i></div>
                         </li>
@@ -162,7 +171,7 @@ if(count($farr)>0&&$session['nrp']!=''){
         <!-- Page Body Start-->
         <div class="page-body-wrapper">
             <!-- Page Sidebar Start-->
-            <div class="sidebar-wrapper close_icon">
+            <div class="sidebar-wrapper">
                 <div>
                     <div class="logo-wrapper"><a href="<?php echo $base_url;?>home"><img class="img-fluid for-light"
                                 src="<?php echo $base_url;?>cuba/assets/images/logo.png" alt="" width="150px">
@@ -184,43 +193,47 @@ if(count($farr)>0&&$session['nrp']!=''){
                                 </li>
                                 <li class="sidebar-main-title">
                                     <div>
-                                        <h6>Formulir</h6>
+                                        <h6>Formulir & Rekap</h6>
                                         <p><?php echo isset($session)?$session['unit']:""?></p>
                                     </div>
                                 </li>
-								<?php
-								if(isset($formulir)){
-									for($i=0;$i<count($formulir);$i++){
-								?>
+                                <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="#"><i data-feather="file-text"></i><span>Formulir</span><div class="according-menu"><i class="fa fa-angle-right"></i></div></a>
+                                    <ul class="sidebar-submenu" style="display: none;">
+                                        <?php
+                                            if(isset($formulir)){
+                                                foreach ($formulir as $v) {
+                                            ?>
+                                            <li>
+                                                <a class="sidebar-link sidebar-title link-nav" style="font-size: 12px;" href="#" onclick="ambil_isi('<?php echo $v['v']?>','laporan','<?php echo $v['t']?>');">
+                                                    <span><?php echo $v['t'];?></span>
+                                                </a>
+                                            </li>
+                                            <?php 
+                                                }
+                                            }?>
+                                    </ul>
+                                </li>
+                                <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="#"><i data-feather="server"></i><span>Rekap</span><div class="according-menu"><i class="fa fa-angle-right"></i></div></a>
+                                    <ul class="sidebar-submenu" style="display: none;">
+                                    <?php
+                                        if(isset($rekap)){
+                                            foreach ($rekap as $v) {
+                                        ?>
+                                        <li>
+                                            <a class="sidebar-link sidebar-title link-nav"  style="font-size: 12px;" href="#" onclick="ambil_isi('<?php echo $v['v']?>','rekap','<?php echo $v['t']?>');">
+                                                <span><?php echo $v['t']?></span>
+                                            </a>
+                                        </li>
+                                        <?php 
+                                            }
+                                        }?>
+                                    </ul>
+                                </li>
 								<li class="sidebar-list">
-                                    <a class="sidebar-link sidebar-title link-nav" href="#" onclick="ambil_isi('<?php echo $formulir[$i]['v']?>','laporan','<?php echo $formulir[$i]['t']?>');">
-                                        <i data-feather="file-text"></i>
-                                        <span><?php echo $formulir[$i]['t']?></span>
+                                    <a class="sidebar-link" href="<?=base_url('History')?>">
+                                        <i data-feather="server"></i><span>History</span>
                                     </a>
                                 </li>
-								<?php 
-									}
-								}?>
-								
-                                <li class="sidebar-main-title">
-                                    <div>
-                                        <h6>Rekap</h6>
-                                        <p><?php echo isset($session)?$session['unit']:""?></p>
-                                    </div>
-                                </li>
-								<?php
-								if(isset($rekap)){
-									for($i=0;$i<count($rekap);$i++){
-								?>
-								<li class="sidebar-list">
-                                    <a class="sidebar-link sidebar-title link-nav" href="#" onclick="ambil_isi('<?php echo $rekap[$i]['v']?>','rekap','<?php echo $rekap[$i]['t']?>');">
-                                        <i data-feather="file-text"></i>
-                                        <span><?php echo $rekap[$i]['t']?></span>
-                                    </a>
-                                </li>
-								<?php 
-									}
-								}?>
                             </ul>
                         </div>
                         <div class="right-arrow" id="right-arrow"><i data-feather="arrow-right"></i></div>
@@ -232,7 +245,7 @@ if(count($farr)>0&&$session['nrp']!=''){
                 <div class="container-fluid">
                     <div class="page-title">
                         <div class="row">
-                            <div class="col-6"><h3 class="titel"></h3>
+                            <div class="col-6">
                             </div>
                             <div class="col-6 hidden">
                                 <ol class="breadcrumb">
@@ -246,7 +259,7 @@ if(count($farr)>0&&$session['nrp']!=''){
                 <!-- Container-fluid starts-->
                 <div class="container-fluid">
                     <div class="row justify-content-center">
-                        <div class="col-sm-12 col-xl-12">
+                        <div class="col-sm-12 col-xl-10">
                             <div class="row">
 								<div class="col-sm-12" id="kerangka">
 									<?php echo $contents?>
@@ -346,6 +359,27 @@ $(document).ready(function(){
 	if(typeof(thispage_ready)=='function'){
 		thispage_ready();
 	}
+
+    var url = new URL(window.location.href);
+    let v = url.searchParams.get("v");
+    let p = url.searchParams.get("p");
+    let t = url.searchParams.get("t");
+    let text = url.searchParams.get("text");
+    let tbl = url.searchParams.get("tbl");
+    let rowid = url.searchParams.get("rowid");
+
+	<?php if ($this->uri->segment(2) == 'view_upd') { ?>
+		ambil_isi(tbl,'laporan','Edit '+text+'#'+rowid,'update');
+	<?php }else{ ?>
+
+
+    if (v != '' && p != '' && t !='') {
+        if (p == 'rekap' || p == "laporan") {
+            ambil_isi(v,p,t);
+        }
+    }
+    <?php } ?>
+
 });
 
 var jvalidate=null;
@@ -357,7 +391,33 @@ function simpanlah(){
 		sendData('#myf','laporan/save');
 	}
 }
-function ambil_isi(v,p,t){
+function ambil_isi(v,p,t,cek){
+
+    if (cek != 'update') {
+        window.location.pathname.split('/').filter(function(x) {
+            if(x == 'view_upd'){
+
+                var url = new URL(window.location.href);
+                let v = url.searchParams.get("v");
+                let p = url.searchParams.get("p");
+                let t = url.searchParams.get("t");
+
+                window.history.pushState({},"", '../home?v='+v+'&p='+p+'&t='+t);
+            }else{
+                window.history.pushState({},"", '?v='+v+'&p='+p+'&t='+t);
+            }
+        });
+    }
+
+    if (p == 'rekap') {
+        setTimeout(() => {
+            $('#laporan_rekap').val(v+';'+t);
+        }, 300);
+    }else{
+        setTimeout(() => {
+            $('#laporan').val(v+';'+t);
+        }, 300);
+    }
 	safeform=null;
 	if(typeof(mytimer)=='number') clearTimeout(mytimer)
 	//$(".btn-pill").attr("disabled",false);
@@ -368,11 +428,18 @@ function ambil_isi(v,p,t){
 	}
 	$("."+v).attr("disabled",true);
 	//$("#formulir").val(v);
-	kerangkalah(p);
+	kerangkalah(p,cek);
 	$(".titel").text(t);
+    setTimeout(() => {
+        $(".titel_rekap").text(t);
+    }, 400);
+    <?php if ($this->uri->segment(2) == 'view_upd') { ?>
+	get_content(p+'/get_content?col=<?=$this->input->get('col');?>&t=<?=$this->input->get('t');?>&rowid=<?=$this->input->get('rowid');?>',{id:v},'.ldr','#isilaporan');
+    <?php }else{ ?>
 	get_content(p+'/get_content',{id:v},'.ldr','#isilaporan');
+    <?php } ?>
 }
-function kerangkalah(k){
+function kerangkalah(k,cek=''){
 	if(k=='laporan'){
 		var isiz='<form name="myf" id="myf">'+
 '<input type="hidden" name="rowid" id="rowid" value="0" />'+
@@ -383,13 +450,60 @@ function kerangkalah(k){
 '<input type="hidden" name="subdinas" value="<?php echo $session["subdinas"]?>">'+
 '<input type="hidden" name="unit" value="<?php echo $session["unit"]?>">'+
 '<input type="hidden" name="tgl" value="<?php echo date("Y-m-d")?>">'+
-				'<div class="card"><div class="card-body" id="isilaporan"></div>'+
-				'<div class="card-footer text-right">'+
+				'<div class="card">';
+               
+                isiz += `<div class="card-header">
+                                            <div class="row">
+                                                <div class="col-md-8">
+                                                    <h5 class="titel"></h5>
+                                                        <span>${cek == '' ?'Pilih Jenis Laporan, dan isi semua yang dibutuhkan!' : 'Anda dapat mengedit data di halaman ini!'}</span>
+                                                </div>
+
+                                                <?php if($this->uri->segment(2) != "view_upd"){?>
+                                               <div class="col-md-4">
+                                                    <label class="col-form-label pt-0">Jenis Laporan</label>
+                                                    <select class="form-select" id="laporan" onchange="ambil_isi(this.value.split(';')[0],'laporan',this.value.split(';')[1])">
+                                                        <!-- <option value="0">Pilih</option> -->
+                                                        <option value="0" disabled="">Pilih Formulir</option>
+                                                        <?php
+                                                        if(isset($formulir)){
+                                                            for($i=0;$i<count($formulir);$i++){
+                                                        ?>
+                                                        <option value="<?php echo $formulir[$i]['v']?>;<?php echo $formulir[$i]['t']?>"><?php echo $formulir[$i]['t']?></option>
+                                                        <?php 
+                                                            }
+                                                        }?>
+                                                    </select>
+                                                </div>
+                                                <?php } ?>
+                                            </div>
+                                        </div>`;
+
+                isiz += '<div class="card-body" id="isilaporan"></div>'+
+				'<div class="card-footer text-right" style="padding:20px;">'+
 				'<button type="button" id="btn_save" class="btn btn-primary hidden" onclick="simpanlah();">Simpan Laporan</button></div></div>'+
 				'</form>';
 		$("#kerangka").html(isiz);
 	}else{
 		$("#kerangka").html('<div id="isilaporan"></div>');
+
+        setTimeout(() => {
+            $('#pilih_rekap').html('');
+        $('#pilih_rekap').html(` <label class="col-form-label pt-0">Pilih Rekap</label>
+	            <select class="form-select" id="laporan_rekap" onchange="ambil_isi(this.value.split(';')[0],'rekap',this.value.split(';')[1])">
+	                <!-- <option value="0">Pilih</option> -->
+	                <option value="0" disabled="">Pilih Rekap</option>
+	                <?php
+	                if(isset($rekap)){
+	                    foreach ($rekap as $v) {
+	                ?>
+	                <option value="<?php echo $v['v']?>;<?php echo $v['t']?>"><?php echo $v['t']?></option>
+	                <?php 
+	                    }
+	                }?></select>`);
+        }, 200);
+        
+
 	}
 }
 </script>

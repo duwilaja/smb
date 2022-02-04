@@ -6,9 +6,10 @@ class Profile extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
+		$this->lang->load('message', 'indo');
 		// Your own constructor code
 	}
-	function switchLang($language = "") {
+	function switchLang($language = "indo") {
        
         // $language = ($language != "") ? $language : "indo";
         // $this->session->set_userdata('site_lang', $language);
@@ -26,8 +27,10 @@ class Profile extends CI_Controller {
        
     }
 	
+	
 	public function index()
 	{
+
 		$user=$this->session->userdata('user_data');
 		if(isset($user)){
 			$data['session'] = $user;
@@ -37,6 +40,8 @@ class Profile extends CI_Controller {
 			$data['dinas'] = comboopts($this->db->select('din_id as v,din_nam as t')->get('dinas')->result());
 			//$data['bagian'] = comboopts($this->db->select('bag_id as v,bag_nam as t')->get('bagian')->result());
 			$data['specs'] = comboopts($this->db->select('spec_id as v,spec_nam as t')->get('spesialisasi')->result());
+			$data['formulir'] = $this->db->select('view_laporan as v,nama_laporan as t')->like('tipe','F')->where(array("unit"=>$user['unit'],"isactive"=>"Y"))->order_by("nama_laporan")->get('formulir')->result_array();
+		$data['rekap'] = $this->db->select('view_laporan as v,nama_laporan as t')->like('tipe','R')->where(array("unit"=>$user['unit'],"isactive"=>"Y"))->order_by("nama_laporan")->get('formulir')->result_array();
 			
 			if($user['unit']==''){
 				$data['incomplete_profile']=true;

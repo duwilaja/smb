@@ -1,9 +1,14 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed'); 
 
 $cols="nrp,unit,polda,polres,dinas,subdinas,tgl,dasar,nomor,";
-$cols.="namajalan,lat,lng,kategori,keterlibatan,penindakan,ket,tindakan,md,lb,lr,nopol1,nopol2,rs,rsalm,rslat,rslng,rscc,jam,penggal,";
-$cols.="instansi1,petugas1,instansi2,petugas2,instansi3,petugas3,instansi4,petugas4";
+$cols.="namajalan,lat,lng,kategori,keterlibatan,penindakan,ket,tindakan,md,lb,lr,nopol,instansi,petugas,rs,rsalm,rslat,rslng,rscc,jam,penggal";
 ?>
+
+<style>
+	#isilaporan{
+		padding-bottom: 0px;
+	}
+</style>
 
 <input type="hidden" name="tablename" value="tmc_ops_laka">
 <input type="hidden" name="fieldnames" value="<?php echo $cols?>">
@@ -19,9 +24,9 @@ $cols.="instansi1,petugas1,instansi2,petugas2,instansi3,petugas3,instansi4,petug
 		<div class="form-group">
 			<label class="form-label">Status Penggal</label>
 			<select name="penggal" class="form-control" placeholder="">
-<?php for($i=0;$i<count($penggal);$i++){?>
-<option value="<?php echo $penggal[$i]['val']?>"><?php echo $penggal[$i]['txt']?></option>
-<?php }?>
+	<?php for($i=0;$i<count($penggal);$i++){?>
+	<option value="<?php echo $penggal[$i]['val']?>"><?php echo $penggal[$i]['txt']?></option>
+	<?php }?>
 			</select>
 		</div> 
 	</div>
@@ -40,7 +45,7 @@ $cols.="instansi1,petugas1,instansi2,petugas2,instansi3,petugas3,instansi4,petug
 	<div class="col-sm-6 col-md-1">
 		<div class="form-group">
 			<label class="form-label">&nbsp;</label>
-			<button type="button" class="btn btn-icon btn-facebook" onclick="mappicker('lat','lng');"><i class="fa fa-map-marker"></i></button>
+			<button type="button" class="btn btn-danger" onclick="mappicker('lat','lng');"><i class="fa fa-map-marker"></i></button>
 		</div>
 	</div>
 	<div class="col-sm-6 col-md-2">
@@ -75,50 +80,6 @@ $cols.="instansi1,petugas1,instansi2,petugas2,instansi3,petugas3,instansi4,petug
 				<option value="R2 Menabrak Pejalan Kaki">R2 Menabrak Pejalan Kaki</option>
 				<option value="R4 Menabrak Pejalan Kaki">R4 Menabrak Pejalan Kaki</option>
 			</select>
-		</div>
-	</div>
-	<div class="col-sm-6 col-md-2">
-		<div class="form-group">
-			<label class="form-label">Nopol 1</label>
-			<input type="text" name="nopol1" class="form-control" placeholder="" >
-		</div>
-	</div>
-	<div class="col-sm-6 col-md-2">
-		<div class="form-group">
-			<label class="form-label">Nopol 2</label>
-			<input type="text" name="nopol2" class="form-control" placeholder="" >
-		</div>
-	</div>
-</div>
-<div class="row">
-	<div class="col-sm-6 col-md-3">
-		<div class="form-group">
-			<label class="form-label">Faskes Rujukan</label>
-			<input type="text" name="rs" class="form-control" placeholder="" >
-		</div>
-	</div>
-	<div class="col-sm-6 col-md-4">
-		<div class="form-group">
-			<label class="form-label">Alamat</label>
-			<input type="text" name="rsalm" class="form-control" placeholder="" >
-		</div>
-	</div>
-	<div class="col-sm-6 col-md-2">
-		<div class="form-group">
-			<label class="form-label">Latitude</label>
-			<input type="text" id="rslat" name="rslat" class="form-control" placeholder="" >
-		</div>
-	</div>
-	<div class="col-sm-6 col-md-2">
-		<div class="form-group">
-			<label class="form-label">Longitude</label>
-			<input type="text" id="rslng" name="rslng" class="form-control" placeholder="" >
-		</div>
-	</div>
-	<div class="col-sm-6 col-md-1">
-		<div class="form-group">
-			<label class="form-label">&nbsp;</label>
-			<button type="button" class="btn btn-icon btn-facebook" onclick="mappicker('rslat','rslng');"><i class="fa fa-map-marker"></i></button>
 		</div>
 	</div>
 </div>
@@ -183,94 +144,299 @@ $cols.="instansi1,petugas1,instansi2,petugas2,instansi3,petugas3,instansi4,petug
 		</div>
 	</div>
 </div>
-<div class="row">
+
+<div class="row mb-4 mt-4">
 	<div class="col-sm-6 col-md-3">
 		<div class="form-group">
-			<label class="form-label">Instansi 1</label>
-			<select name="instansi1" class="form-control" placeholder="">
+			<label class="form-label">Faskes Rujukan</label>
+			<!-- <input type="text" name="rs" class="form-control" placeholder="" > -->
+			<select name="rs" id="rs" class="form-control" onchange="show_faskes(this.value)"  placeholder="">
 				<option value=""></option>
-				<option value="Lantas">Lantas</option>
-				<option value="PSC">PSC</option>
-				<option value="Dishub">Dishub</option>
-				<option value="PU">PU</option>
-				<option value="BPJT">BPJT</option>
-				<option value="SatpolPP">SatpolPP</option>
-				<option value="TNI">TNI</option>
 			</select>
 		</div>
 	</div>
-	<div class="col-sm-6 col-md-3">
+	<div class="col-sm-6 col-md-4">
 		<div class="form-group">
-			<label class="form-label">Nama/CallSign 1</label>
-			<input type="text" name="petugas1" class="form-control" placeholder="" >
+			<label class="form-label">Alamat</label>
+			<input type="text" name="rsalm" class="form-control" placeholder="" >
 		</div>
 	</div>
-	<div class="col-sm-6 col-md-3">
+	<div class="col-sm-6 col-md-2">
 		<div class="form-group">
-			<label class="form-label">Instansi 2</label>
-			<select name="instansi2" class="form-control" placeholder="">
-				<option value=""></option>
-				<option value="Lantas">Lantas</option>
-				<option value="PSC">PSC</option>
-				<option value="Dishub">Dishub</option>
-				<option value="PU">PU</option>
-				<option value="BPJT">BPJT</option>
-				<option value="SatpolPP">SatpolPP</option>
-				<option value="TNI">TNI</option>
-			</select>
+			<label class="form-label">Latitude</label>
+			<input type="text" id="rslat" name="rslat" class="form-control" placeholder="" >
 		</div>
 	</div>
-	<div class="col-sm-6 col-md-3">
+	<div class="col-sm-6 col-md-2">
 		<div class="form-group">
-			<label class="form-label">Nama/CallSign 2</label>
-			<input type="text" name="petugas2" class="form-control" placeholder="" >
+			<label class="form-label">Longitude</label>
+			<input type="text" id="rslng" name="rslng" class="form-control" placeholder="" >
 		</div>
 	</div>
-	<div class="col-sm-6 col-md-3">
+	<div class="col-sm-6 col-md-1">
 		<div class="form-group">
-			<label class="form-label">Instansi 3</label>
-			<select name="instansi3" class="form-control" placeholder="">
-				<option value=""></option>
-				<option value="Lantas">Lantas</option>
-				<option value="PSC">PSC</option>
-				<option value="Dishub">Dishub</option>
-				<option value="PU">PU</option>
-				<option value="BPJT">BPJT</option>
-				<option value="SatpolPP">SatpolPP</option>
-				<option value="TNI">TNI</option>
-			</select>
-		</div>
-	</div>
-	<div class="col-sm-6 col-md-3">
-		<div class="form-group">
-			<label class="form-label">Nama/CallSign 3</label>
-			<input type="text" name="petugas3" class="form-control" placeholder="" >
-		</div>
-	</div>
-	<div class="col-sm-6 col-md-3">
-		<div class="form-group">
-			<label class="form-label">Instansi 4</label>
-			<select name="instansi4" class="form-control" placeholder="">
-				<option value=""></option>
-				<option value="Lantas">Lantas</option>
-				<option value="PSC">PSC</option>
-				<option value="Dishub">Dishub</option>
-				<option value="PU">PU</option>
-				<option value="BPJT">BPJT</option>
-				<option value="SatpolPP">SatpolPP</option>
-				<option value="TNI">TNI</option>
-			</select>
-		</div>
-	</div>
-	<div class="col-sm-6 col-md-3">
-		<div class="form-group">
-			<label class="form-label">Nama/CallSign 4</label>
-			<input type="text" name="petugas4" class="form-control" placeholder="" >
+			<label class="form-label">&nbsp;</label>
+			<button type="button" class="btn btn-danger" onclick="mappicker('rslat','rslng');"><i class="fa fa-map-marker"></i></button>
 		</div>
 	</div>
 </div>
-
+<div class="row">
+	<div class="col-md-12" id="show_faskes">
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-6">
+		<div class="card">
+			<div class="card-header" style="padding:20px;">
+				<div class="btn btn-primary btn-sm" onclick="add_nopol()"><i class="fa fa-plus"></i> Nopol</div>
+				<div class="btn btn-danger btn-sm ml-2" onclick="clear_html('#view_nopol','nopol')"><i class="fa fa-trash"></i> Nopol</div>
+			</div>
+			<div class="card-body">
+				<div class="row" id="view_nopol">
+					Tidak ada data nopol
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-6">
+		<div class="card">
+			<div class="card-header" style="padding:20px;">
+				<div class="btn btn-primary btn-sm" onclick="add_instansi()"><i class="fa fa-plus"></i> Instansi</div>
+				<div class="btn btn-danger btn-sm ml-2" onclick="clear_html('#view_instansi','instansi')"><i class="fa fa-trash"></i> Instansi</div>
+			</div>
+			<div class="card-body">
+				<div class="row" id="view_instansi">
+					Tidak ada data instansi
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 <script>
+var no_nopol = 0;
+var no_instansi = 0;
+var faskes_arr = [];
+
+
+function get_data() { 
+
+	$.ajax({
+		type: "POST",
+		url: "../Api/get_data",
+		data: {
+			't' : '<?=$this->input->get('t');?>',
+			'rowid' : '<?=$this->input->get('rowid');?>',
+			'col' : '<?=$this->input->get('col');?>'
+		},
+		dataType: "json",
+		success: function (r) {
+			faskes_html(r.rs);
+			if (r.nopol) {
+				add_nopol(r.nopol);
+			}	
+			if (r.instansi) {
+				add_instansi(r.instansi,r.petugas);
+			}
+
+			for (const k in r) {
+				if (Object.hasOwnProperty.call(r, k)) {
+					const element = r[k];
+					document.getElementsByTagName("select").forEach(element => {
+						if (element.name == k) {
+							$('select[name='+k+']').val(r[k]);
+						}
+					});
+
+					document.getElementsByTagName("input").forEach(element => {
+						if (element.name == k) {
+							$('input[name='+k+']').val(r[k]);
+						}
+					});
+
+					document.getElementsByTagName("textarea").forEach(element => {
+						if (element.name == k) {
+							$('textarea[name='+k+']').val(r[k]);
+						}
+					});
+
+				}
+			}
+		}
+	});	
+	
+}
+
+function add_nopol(data='') {
+	no_nopol++;
+	if (no_nopol == 1) {
+		$('#view_nopol').html('');	
+	}
+	if (data != '') {
+		data.forEach((e,i) => {
+			no_nopol += i;
+			$('#view_nopol').append(`
+			<div class="col-sm-6 col-md-6">
+				<div class="form-group">
+					<label class="form-label">Nopol ${no_nopol}</label>
+					<input type="text" name="nopol[]" class="form-control" placeholder="Nopol ${no_nopol}" value="${e}">
+				</div>
+			</div>`);
+		});
+	}else{
+		$('#view_nopol').append(`
+			<div class="col-sm-6 col-md-6">
+				<div class="form-group">
+					<label class="form-label">Nopol ${no_nopol}</label>
+					<input type="text" name="nopol[]" class="form-control" placeholder="Nopol ${no_nopol}" >
+				</div>
+			</div>`);
+	}
+}
+
+function add_instansi(data='',petugas='') {
+	no_instansi++;
+	if (data != '') {
+		$('#view_instansi').html('');	
+		data.forEach((v,i) => {
+			get_instansi().then(r => {
+				no_instansi += i;
+
+				$('#view_instansi').append(`<div class="col-sm-6 col-md-6">
+				<div class="form-group">
+					<label class="form-label">Instansi ${no_instansi}</label>
+					<select name="instansi[]" id="instansi${no_instansi}" class="form-control" placeholder="">
+						<option value=""></option>
+					</select>
+				</div>
+			</div>
+			<div class="col-sm-6 col-md-6">
+				<div class="form-group">
+					<label class="form-label">Nama/CallSign ${no_instansi}</label>
+					<input type="text" name="petugas[]" class="form-control" placeholder="" value="${petugas[i]}">
+				</div>
+			</div>`);
+
+				var option_instansi = '<option value=""></option>';
+				r.forEach(e => {
+					if (v.id == e.id) {
+						option_instansi += '<option value="'+e.id+'" selected>'+e.nama_instansi+'</option>';
+					}else{
+						option_instansi += '<option value="'+e.id+'">'+e.nama_instansi+'</option>';
+					}
+				});
+				$('#instansi'+no_instansi).select2();
+				$('#instansi'+no_instansi).html(option_instansi);
+			})
+		});
+	}else{
+		if (no_instansi == 1) {
+			$('#view_instansi').html('');	
+		}
+		$('#view_instansi').append(`<div class="col-sm-6 col-md-6">
+				<div class="form-group">
+					<label class="form-label">Instansi ${no_instansi}</label>
+					<select name="instansi[]" id="instansi${no_instansi}" class="form-control" placeholder="">
+						<option value=""></option>
+					</select>
+				</div>
+			</div>
+			<div class="col-sm-6 col-md-6">
+				<div class="form-group">
+					<label class="form-label">Nama/CallSign ${no_instansi}</label>
+					<input type="text" name="petugas[]" class="form-control" placeholder="" >
+				</div>
+			</div>`);
+		
+			get_instansi().then(r => {
+				var option_instansi = '<option value=""></option>';
+				r.forEach(e => {
+					option_instansi += '<option value="'+e.id+'">'+e.nama_instansi+'</option>';
+				});
+				$('#instansi'+no_instansi).select2();
+				$('#instansi'+no_instansi).html(option_instansi);
+			})
+	}
+}
+
+function clear_html(dom='',tanda='') {
+	$(dom).html('');
+	if (tanda == 'nopol') {
+		no_nopol = 0;
+		$(dom).html('Tidak ada nopol');
+	}
+
+	if (tanda == 'instansi') {
+		no_instansi = 0;
+		$(dom).html('Tidak ada instansi');
+	}
+}
+
+function get_instansi() {
+ return new Promise(resolve => {
+	$.ajax({
+		type: "POST",
+		url: "<?=site_url('Api/instansi')?>",
+		dataType: "json",
+		success: function (r) {
+			resolve(r);
+		}
+	});
+  })
+}
+
+function faskes_html(id=''){
+	var selected = '';
+	get_faskes().then(r => {
+		$('#rs').html('<option value=""></option>');
+		r.forEach(e => {
+			if (id == e.id) {
+				$('#rs').append('<option value="'+e.id+'" selected >'+e.nama_lokasi+'</option>');	
+				show_faskes(e.id);
+			}else{
+				$('#rs').append('<option value="'+e.id+'" >'+e.nama_lokasi+'</option>');	
+			}		
+		});
+		$("#rs").select2({
+			tags : false
+		});
+	});
+}
+
+function show_faskes(id) {
+	var faskes =  faskes_arr.filter(function(a) {
+		return a.id == id;
+	});
+
+	$('#show_faskes').html('');
+	$('input[name="rslat"]').val('');
+	$('input[name="rslng"]').val('');
+
+	$('input[name="rslat"]').val(faskes[0].lat);
+	$('input[name="rslng"]').val(faskes[0].lng);
+	$('#show_faskes').html(`<div class="card">
+			<div class="card-header">
+			${faskes[0].nama_lokasi}
+			</div>
+			<div class="card-body">
+			<div>${faskes[0].deskripsi}</div>
+			</div>
+		</div>`);
+}
+
+function get_faskes() {
+ return new Promise(resolve => {
+	$.ajax({
+		type: "POST",
+		url: "<?=site_url('/Api/faskes')?>",
+		dataType: "json",
+		success: function (r) {
+			faskes_arr = r;
+			resolve(r);
+		}
+	});
+  })
+}
+
 function mappicker(lat,lng){
 	var latv=$('#'+lat).val();
 	var lngv=$('#'+lng).val();
@@ -318,6 +484,10 @@ $(".nomor").show();
 datepicker(true);
 timepicker();
 macetgak('');
+faskes_html();
+setTimeout(() => {
+	get_data();
+}, 300);
 
 	$(".is-invalid").removeClass("is-invalid");
 	$(".is-valid").removeClass("is-valid");

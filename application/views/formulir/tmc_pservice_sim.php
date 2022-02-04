@@ -9,7 +9,7 @@ $cols.="saluran,sumber,nama,telp,email,jenis,status";
 <input type="hidden" name="filenames" value="ktp,sim,sertifikat,kesehatan,lunas">
 <input type="hidden" name="kategori" value="sim">
 
-<div class="row">
+<div class="row mb-2">
 	<div class="col-sm-6 col-md-3">
 		<div class="form-group">
 			<label class="form-label">Saluran Informasi</label>
@@ -34,7 +34,7 @@ $cols.="saluran,sumber,nama,telp,email,jenis,status";
 		</div>
 	</div>
 </div>
-<div class="row">
+<div class="row mb-2">
 	<div class="col-sm-6 col-md-4">
 		<div class="form-group">
 			<label class="form-label">Nama</label>
@@ -54,7 +54,7 @@ $cols.="saluran,sumber,nama,telp,email,jenis,status";
 		</div>
 	</div>
 </div>
-<div class="row">
+<div class="row mb-2">
 	<div class="col-sm-6 col-md-4">
 		<div class="form-group">
 			<label class="form-label">Kategori Permohonan</label>
@@ -75,7 +75,7 @@ $cols.="saluran,sumber,nama,telp,email,jenis,status";
 		</div>
 	</div>
 </div>
-<div class="row">
+<div class="row mb-2">
 	<div class="col-sm-6 col-md-4">
 		<div class="form-group files">
 			<label class="form-label">Copy KTP</label>
@@ -94,6 +94,8 @@ $cols.="saluran,sumber,nama,telp,email,jenis,status";
 			<input type="file" name="sertifikat" class="form-control" placeholder="" >
 		</div>
 	</div>
+</div>
+<div class="row mb-2">
 	<div class="col-sm-6 col-md-4">
 		<div class="form-group files">
 			<label class="form-label">Copy Cek Kesehatan</label>

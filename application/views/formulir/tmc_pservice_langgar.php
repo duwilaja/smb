@@ -8,7 +8,7 @@ $cols.="saluran,sumber,jam,jalan,lat,lng,jenis,uploadedfile,pelapor,telp,langgar
 <input type="hidden" name="fieldnames" value="<?php echo $cols?>">
 <input type="hidden" name="kategori" value="langgar">
 
-<div class="row">
+<div class="row mb-2">
 	<div class="col-sm-6 col-md-3">
 		<div class="form-group">
 			<label class="form-label">Saluran Informasi</label>
@@ -46,7 +46,7 @@ $cols.="saluran,sumber,jam,jalan,lat,lng,jenis,uploadedfile,pelapor,telp,langgar
 	</div>
 	
 </div>
-<div class="row">
+<div class="row mb-2">
 	<div class="col-sm-6 col-md-2">
 		<div class="form-group">
 			<label class="form-label">Jam</label>
@@ -74,9 +74,11 @@ $cols.="saluran,sumber,jam,jalan,lat,lng,jenis,uploadedfile,pelapor,telp,langgar
 	<div class="col-sm-6 col-md-1">
 		<div class="form-group">
 			<label class="form-label">&nbsp;</label>
-			<button type="button" class="btn btn-icon btn-facebook" onclick="mappicker('#lat','#lng');"><i class="fa fa-map-marker"></i></button>
+			<button type="button" class="btn btn-danger" onclick="mappicker('#lat','#lng');"><i class="fa fa-map-marker"></i></button>
 		</div>
 	</div>
+</div>
+<div class="row mb-2">
 	<div class="col-sm-6 col-md-3">
 		<div class="form-group">
 			<label class="form-label">Melanggar</label>
@@ -96,12 +98,12 @@ $cols.="saluran,sumber,jam,jalan,lat,lng,jenis,uploadedfile,pelapor,telp,langgar
 	<div class="col-sm-6 col-md-5">
 		<div class="form-group files">
 			<label class="form-label">Foto/Video</label>
-			<input type="file" name="uploadedfile[]" class="form-control file" placeholder="" >
+			<input type="file" name="uploadedfile[]" class="form-control file mb-1" placeholder="" >
 		</div>
 	</div>
 	<div class="col-sm-6 col-md-1">
 		<label class="form-label">&nbsp;</label>
-		<button type="button" class="btn btn-icon btn-facebook" onclick="$('.files').append($('.file').clone().removeClass('file'));"><i class="fa fa-copy"></i></button>
+		<button type="button" class="btn  btn-danger" onclick="$('.files').append($('.file').clone().removeClass('file'));"><i class="fa fa-copy"></i></button>
 	</div>
 </div>
 

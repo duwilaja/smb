@@ -40,6 +40,32 @@ class Laporan extends CI_Controller {
 		}
     }
 
+	public function view_upd()
+	{
+	
+		$user=$this->session->userdata('user_data');
+		if(isset($user)){
+			$data['session'] = $user;
+			$data['formulir'] = $this->db->select('view_laporan as v,nama_laporan as t')->like('tipe','F')->where(array("unit"=>$user['unit'],"isactive"=>"Y"))->order_by("nama_laporan")->get('formulir')->result_array();
+			$data['rekap'] = $this->db->select('view_laporan as v,nama_laporan as t')->like('tipe','R')->where(array("unit"=>$user['unit'],"isactive"=>"Y"))->order_by("nama_laporan")->get('formulir')->result_array();
+			
+			$this->template->load("home",$data);
+		}else{
+			$retval=array("403","Failed","Please login","error");
+			$data['retval']=$retval;
+			$data['rahasia'] = mt_rand(100000,999999);
+			$arr = [
+			'name'   => 'rahasia',
+			'value'  => $data['rahasia'],                            
+			'expire' => '3000',                                                                                   
+			'secure' => TRUE
+			];
+
+			set_cookie($arr);
+			$this->load->view('login',$data);
+		}
+    }
+
     //Éntry Laporan Gatur Lalin
     public function dt_lap_gat_lin()
     {
@@ -196,6 +222,12 @@ class Laporan extends CI_Controller {
 	
 	public function save()
 	{
+		$data = [
+			'petugas' => '',
+			'instansi' => '',
+			'nopol' => ''
+		];
+
 		$user=$this->session->userdata('user_data');
 		if(isset($user)){
 			$msgs="No data has been saved";
@@ -216,6 +248,20 @@ class Laporan extends CI_Controller {
 				
 				$data['uploadedfile'] =  $this->uplots('uploadedfile',$path);
 			}
+			
+			if (!empty($data['petugas'])) {
+				$data['petugas'] = implode(';',$data['petugas']);
+			}
+
+
+			if (!empty($data['instansi'])) {
+				$data['instansi'] = implode(';',$data['instansi']);
+			}
+
+			if (!empty($data['nopol'])) {
+				$data['nopol'] = implode(';',$data['nopol']);
+			}
+
 			if($rowid==""||$rowid=="0"){
 				$this->db->insert($tname,$data);
 			}else{

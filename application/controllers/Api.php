@@ -270,5 +270,60 @@ class Api extends CI_Controller {
 
         echo json_encode($rsp);
     }
-    // end get input type select di form laporan gatur 
+    
+    // SME
+    public function instansi()
+    {
+        $sme = $this->load->database('db_intan', TRUE);
+        $instansi = $sme->get('instansi');
+        echo json_encode($instansi->result());
+    }
+
+    // Faskes
+    public function faskes()
+    {
+        $this->db->where_in('kategori_static', ['Rumah Sakit','Puskesmas']);
+        $q = $this->db->get('lokasi');
+        echo json_encode($q->result());
+    }
+
+    public function get_data()
+    {
+        $col = base64_decode($this->input->post('col'));
+        $t = base64_decode($this->input->post('t'));
+        $rowid = $this->input->post('rowid');
+
+        $this->db->select($col);
+        $xx = $this->db->get_where($t,['rowid' => $rowid]);
+        $data = $this->custom_data($t,$xx->row());
+        echo json_encode($data);
+    }
+
+    private function custom_data($t='',$data=NULL)
+    {
+        if ($t != '') {
+            if ($t == 'tmc_ops_laka') {
+                $sme = $this->load->database('db_intan', TRUE);
+				if ($data->instansi) {
+					$data->instansi = explode(';',$data->instansi);
+				}
+
+                if ($data->instansi != '') {
+                    foreach ($data->instansi as $k => $v) {
+                        $data->instansi[$k] = ['id' => $v, 'nama' => $sme->get_where('instansi',['id' => $v])->row()->nama_instansi];
+                    }
+                }
+
+				if ($data->petugas) {
+					$data->petugas = explode(';',$data->petugas);
+				}
+
+				if ($data->nopol) {
+					$data->nopol = explode(';',$data->nopol);
+				}
+            }
+        }
+
+        return $data;
+    }
 }

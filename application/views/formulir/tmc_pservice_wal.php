@@ -9,7 +9,7 @@ $cols.="saluran,sumber,nama,telp,email,jenis,kegiatan";
 <input type="hidden" name="filenames" value="ktp">
 <input type="hidden" name="kategori" value="wal">
 
-<div class="row">
+<div class="row mb-2">
 	<div class="col-sm-6 col-md-3">
 		<div class="form-group">
 			<label class="form-label">Saluran Informasi</label>
@@ -34,7 +34,7 @@ $cols.="saluran,sumber,nama,telp,email,jenis,kegiatan";
 		</div>
 	</div>
 </div>
-<div class="row">
+<div class="row mb-2">
 	<div class="col-sm-6 col-md-4">
 		<div class="form-group">
 			<label class="form-label">Nama</label>
@@ -54,7 +54,7 @@ $cols.="saluran,sumber,nama,telp,email,jenis,kegiatan";
 		</div>
 	</div>
 </div>
-<div class="row">
+<div class="row mb-2">
 	<div class="col-sm-6 col-md-4">
 		<div class="form-group">
 			<label class="form-label">Jenis</label>
@@ -79,7 +79,7 @@ $cols.="saluran,sumber,nama,telp,email,jenis,kegiatan";
 		</div>
 	</div>
 </div>
-<div class="row hidden">
+<div class="row mb-2 hidden">
 	<div class="col-sm-6 col-md-4">
 		<div class="form-group files">
 			<label class="form-label">Copy SIM Lama</label>

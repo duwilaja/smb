@@ -8,8 +8,8 @@ $cols.="saluran,sumber,jam,jalan,lat,lng,jenis,jmlkorban,korbanmd,kebutuhan,uplo
 <input type="hidden" name="fieldnames" value="<?php echo $cols?>">
 <input type="hidden" name="kategori" value="laka">
 
-<div class="row">
-	<div class="col-sm-6 col-md-3">
+<div class="row mb-2">
+	<div class="col-sm-6 col-md-6">
 		<div class="form-group">
 			<label class="form-label">Saluran Informasi</label>
 			<select name="saluran" class="form-control" placeholder="">
@@ -20,7 +20,7 @@ $cols.="saluran,sumber,jam,jalan,lat,lng,jenis,jmlkorban,korbanmd,kebutuhan,uplo
 			</select>
 		</div>
 	</div>
-	<div class="col-sm-6 col-md-3">
+	<div class="col-sm-6 col-md-6">
 		<div class="form-group">
 			<label class="form-label">Sumber Informasi</label>
 			<select name="sumber" class="form-control" placeholder="">
@@ -32,21 +32,28 @@ $cols.="saluran,sumber,jam,jalan,lat,lng,jenis,jmlkorban,korbanmd,kebutuhan,uplo
 			</select>
 		</div>
 	</div>
-	<div class="col-sm-6 col-md-3">
+</div>
+<div class="row mb-2">
+	<div class="col-sm-6 col-md-5">
 		<div class="form-group">
 			<label class="form-label">Nama</label>
 			<input type="text" name="pelapor" class="form-control" placeholder="" >
 		</div>
 	</div>
-	<div class="col-sm-6 col-md-3">
+	<div class="col-sm-6 col-md-4">
 		<div class="form-group">
 			<label class="form-label">Telp./CP</label>
 			<input type="text" name="telp" class="form-control" placeholder="" >
 		</div>
 	</div>
-	
 </div>
-<div class="row">
+<div class="row mb-2">
+	<div class="col-sm-6 col-md-12 mb-2">
+		<div class="form-group">
+			<label class="form-label">Lokasi/Jalan</label>
+			<textarea  name="jalan" class="form-control" placeholder="" ></textarea>
+		</div>
+	</div>
 	<div class="col-sm-6 col-md-2">
 		<div class="form-group">
 			<label class="form-label">Jam</label>
@@ -55,29 +62,26 @@ $cols.="saluran,sumber,jam,jalan,lat,lng,jenis,jmlkorban,korbanmd,kebutuhan,uplo
 	</div>
 	<div class="col-sm-6 col-md-4">
 		<div class="form-group">
-			<label class="form-label">Lokasi/Jalan</label>
-			<input type="text" name="jalan" class="form-control" placeholder="" >
-		</div>
-	</div>
-	<div class="col-sm-6 col-md-2">
-		<div class="form-group">
 			<label class="form-label">Latitude</label>
 			<input type="text" id="lat" name="lat" class="form-control" placeholder="" >
 		</div>
 	</div>
-	<div class="col-sm-6 col-md-2">
+	<div class="col-sm-6 col-md-4">
 		<div class="form-group">
 			<label class="form-label">Longitude</label>
 			<input type="text" id="lng" name="lng" class="form-control" placeholder="" >
 		</div>
 	</div>
-	<div class="col-sm-6 col-md-1">
-		<div class="form-group">
+	<div class="col-sm-6 col-md-2">
+		<div class="form-group" style="position: absolute;top: 26px;">
 			<label class="form-label">&nbsp;</label>
-			<button type="button" class="btn btn-icon btn-facebook" onclick="mappicker('#lat','#lng');"><i class="fa fa-map-marker"></i></button>
+			<a href="#" onclick="mappicker('#lat','#lng');" class="btn btn-danger align-self-end"  data-bs-original-title="" title=""><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-map-pin"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg></a>
+			<!-- <button type="button" class="btn btn-danger" onclick="mappicker('#lat','#lng');"><i class="fa fa-map-marker"></i></button> -->
 		</div>
 	</div>
-	<div class="col-sm-6 col-md-4">
+</div>
+<div class="row mb-2">
+	<div class="col-sm-6 col-md-6">
 		<div class="form-group">
 			<label class="form-label">Jenis Laka</label>
 			<select name="jenis" class="form-control" placeholder="">
@@ -109,6 +113,8 @@ $cols.="saluran,sumber,jam,jalan,lat,lng,jenis,jmlkorban,korbanmd,kebutuhan,uplo
 			</select>
 		</div>
 	</div>
+</div>
+<div class="row">
 	<div class="col-sm-6 col-md-4">
 		<div class="form-group">
 			<label class="form-label">Kebutuhan</label>
@@ -122,12 +128,12 @@ $cols.="saluran,sumber,jam,jalan,lat,lng,jenis,jmlkorban,korbanmd,kebutuhan,uplo
 	<div class="col-sm-6 col-md-6">
 		<div class="form-group files">
 			<label class="form-label">Foto/Video</label>
-			<input type="file" name="uploadedfile[]" class="form-control file" placeholder="" >
+			<input type="file" name="uploadedfile[]" class="form-control form-control-md file mb-1" placeholder="" >
 		</div>
 	</div>
 	<div class="col-sm-6 col-md-1">
 		<label class="form-label">&nbsp;</label>
-		<button type="button" class="btn btn-icon btn-facebook" onclick="$('.files').append($('.file').clone().removeClass('file'));"><i class="fa fa-copy"></i></button>
+		<button type="button" class="btn btn-danger" onclick="$('.files').append($('.file').clone().removeClass('file'));"><i class="fa fa-copy"></i></button>
 	</div>
 </div>
 

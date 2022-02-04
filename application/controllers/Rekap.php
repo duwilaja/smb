@@ -8,6 +8,16 @@ class Rekap extends CI_Controller {
 		parent::__construct();
 		// Your own constructor code
 	}
+
+	private function select_formulir($v='')
+	{
+		$user=$this->session->userdata('user_data');
+		if ($v != '') {
+			return $this->db->select('view_laporan as v,nama_laporan as t')->like('tipe','R')->where(array("unit"=>$user['unit'],"isactive"=>"Y",'view_laporan' => 'tmc_ops_laka'))->or_where("unit",$user["subdinas"])->order_by("nama_laporan")->get('formulir')->row();
+		}else{
+			return comboopts($this->db->select('view_laporan as v,nama_laporan as t')->like('tipe','R')->where(array("unit"=>$user['unit'],"isactive"=>"Y"))->or_where("unit",$user["subdinas"])->order_by("nama_laporan")->get('formulir')->result());
+		}
+	}
 	
 	public function index()
 	{
@@ -15,7 +25,7 @@ class Rekap extends CI_Controller {
 		if(isset($user)){
 			$data['session'] = $user;
 			$data['title'] = "Rekap";
-			$data['formulir'] = comboopts($this->db->select('view_laporan as v,nama_laporan as t')->like('tipe','R')->where(array("unit"=>$user['unit'],"isactive"=>"Y"))->or_where("unit",$user["subdinas"])->order_by("nama_laporan")->get('formulir')->result());
+			$data['formulir'] = $this->select_formulir();
 			
 			$this->template->load('rekap',$data);
 		}else{
@@ -108,6 +118,7 @@ class Rekap extends CI_Controller {
             }
 			$data_assoc=$this->db->get()->result_array();
 
+			$i = 0;
 			foreach ($data_assoc as $k => $v) {
 				$lnk='';
 				if($ismap){
@@ -203,6 +214,7 @@ class Rekap extends CI_Controller {
 				$this->db->join("polda","polda.da_id=$tname.da","left");
 				$this->db->join("polres","polres.res_id=$tname.res","left");
 			}
+
 			$order_p = $this->input->post('orders');
             $ord = "";
             if($order_p!=""){
@@ -219,7 +231,36 @@ class Rekap extends CI_Controller {
 			$this->db->limit($this->input->post('length'),$this->input->post('start'));
 			$data_assoc=$this->db->get()->result_array();
 			
+			$sme = $this->load->database('db_intan', TRUE);
+			$select =  $this->select_formulir($tname);
+
 			for($i=0;$i<count($data_assoc);$i++){
+
+				if ($tname == 'tmc_ops_laka') {
+					$data_assoc[$i]['rowid'] = "<a href='".site_url('Laporan/view_upd?col='.$this->input->post('cols').'&t='.$this->input->post('tname').'&rowid='.$data_assoc[$i]['rowid']).'&text='.$select->t.'&tbl='.$select->v."'>".$data_assoc[$i]['rowid']."</a>"; 
+
+					$instansi = explode(';',$data_assoc[$i]['instansi']);
+					$petugas = explode(';',$data_assoc[$i]['petugas']);
+					$nopol = explode(';',$data_assoc[$i]['nopol']);
+
+					
+					if ($data_assoc[$i]['instansi'] != '') {
+						$data_assoc[$i]['instansi'] = '';
+						foreach ($petugas as $k => $v) {
+							$ins = @$sme->get_where('instansi',['id' => $instansi[$k]])->row()->nama_instansi;
+							$data_assoc[$i]['instansi'] .= '<label class="label label-primary px-1 py-1 mb-1">'.$petugas[$k].' - '.$ins.'</label>';
+						}
+					}
+
+					if ($data_assoc[$i]['nopol'] != '') {
+						$data_assoc[$i]['nopol'] = '';
+						foreach ($nopol as $k => $v) {
+							$data_assoc[$i]['nopol'] .= '<label class="label label-dark px-1 py-1 mb-1">'.$v.'</label>';
+						}
+					}
+				}
+
+
 				$lnk='';
 				if($ismap){
 					$lnk.='<button type="button" class="btn btn-icon btn-info" onclick="mapview('.$data_assoc[$i]['lat'].','.$data_assoc[$i]['lng'].
