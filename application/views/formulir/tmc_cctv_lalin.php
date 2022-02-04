@@ -1,11 +1,12 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed'); 
 
 $cols="nrp,unit,polda,polres,dinas,subdinas,tgl,";
-$cols.="situasi,kejadian,jalan,status,mulai,sampai,sebab,petugas,callsign";
+$cols.="situasi,kejadian,jalan,status,mulai,sampai,sebab,petugas,callsign,lat,lng,ket,uploadedfile";
 ?>
 
 <input type="hidden" name="tablename" value="tmc_cctv_lalin">
 <input type="hidden" name="fieldnames" value="<?php echo $cols?>">
+<input type="hidden" name="path" value="cctv/lalin/">
 
 <!--div class="row">
 <div class="col-lg-12">
@@ -23,21 +24,21 @@ $cols.="situasi,kejadian,jalan,status,mulai,sampai,sebab,petugas,callsign";
 <hr /-->
 
 <div class="row">
-	<div class="col-sm-6 col-md-4">
+	<div class="col-sm-6 col-md-2">
 		<div class="form-group">
 			<label class="form-label">Situasi Lalin</label>
-			<select name="situasi" class="form-control" placeholder="" onchange="macetgak(this.value);">
+			<select name="situasi" class="form-control" placeholder="" onchange="">
 				<option value="Lancar">Lancar</option>
 				<option value="Padat">Padat</option>
 				<option value="Macet">Macet</option>
 			</select>
 		</div>
 	</div>
-	<div class="col-sm-6 col-md-4">
+	<div class="col-sm-6 col-md-2">
 		<div class="form-group">
 			<label class="form-label">Kejadian Terpantau</label>
 			<select id="kejadian" name="kejadian" class="form-control" placeholder="">
-				<option value=""></option>
+				<option value="Nihil">Nihil</option>
 				<option value="Kemacetan">Kemacetan</option>
 				<option value="Demo">Demo</option>
 				<option value="Laka">Laka</option>
@@ -46,19 +47,37 @@ $cols.="situasi,kejadian,jalan,status,mulai,sampai,sebab,petugas,callsign";
 			</select>
 		</div>
 	</div>
-	<div class="col-sm-6 col-md-4">
+	<div class="col-sm-6 col-md-3">
 		<div class="form-group">
 			<label class="form-label">Lokasi</label>
 			<input type="text" name="jalan" class="form-control" placeholder="" >
 		</div>
 	</div>
+	<div class="col-sm-6 col-md-2">
+		<div class="form-group">
+			<label class="form-label">Latitude</label>
+			<input type="text" id="lat" name="lat" class="form-control" placeholder="" >
+		</div>
+	</div>
+	<div class="col-sm-6 col-md-2">
+		<div class="form-group">
+			<label class="form-label">Longitude</label>
+			<input type="text" id="lng" name="lng" class="form-control" placeholder="" >
+		</div>
+	</div>
+	<div class="col-sm-6 col-md-1">
+		<div class="form-group">
+			<label class="form-label">&nbsp;</label>
+			<button type="button" class="btn btn-icon btn-facebook" onclick="mappicker('#lat','#lng');"><i class="fa fa-map-marker"></i></button>
+		</div>
+	</div>
 </div>
-<div class="row macet">
+<div class="row">
 	<div class="col-sm-6 col-md-4">
 		<div class="form-group">
 			<label class="form-label">Status Penggal Jalan</label>
 			<select name="status" id="penggal" class="form-control" placeholder="">
-				<option value=""></option>
+				<option value="None">None</option>
 				<option value="Rawan Bencana">Rawan Bencana</option>
 				<option value="Black Spot">Black Spot</option>
 				<option value="Trouble Spot">Trouble Spot</option>
@@ -78,7 +97,7 @@ $cols.="situasi,kejadian,jalan,status,mulai,sampai,sebab,petugas,callsign";
 		</div>
 	</div>
 </div>
-<div class="row macet">
+<div class="row">
 	<div class="col-sm-6 col-md-4">
 		<div class="form-group">
 			<label class="form-label">Penyebab</label>
@@ -89,6 +108,24 @@ echo form_dropdown('sebab', array_reverse($penyebab,true), '',$opt);
 ?>
 		</div>
 	</div>
+	<div class="col-sm-6 col-md-4">
+		<div class="form-group">
+			<label class="form-label">Keterangan</label>
+			<textarea name="ket" class="form-control" placeholder="" ></textarea>
+		</div>
+	</div>
+	<div class="col-sm-6 col-md-3">
+		<div class="form-group files">
+			<label class="form-label">Foto/Video</label>
+			<input type="file" name="uploadedfile[]" class="form-control file" placeholder="" >
+		</div>
+	</div>
+	<div class="col-sm-6 col-md-1">
+		<label class="form-label">&nbsp;</label>
+		<button type="button" class="btn btn-icon btn-facebook" onclick="$('.files').append($('.file').clone().removeClass('file'));"><i class="fa fa-copy"></i></button>
+	</div>
+</div>
+<div class="row">
 	<div class="col-sm-6 col-md-4">
 		<div class="form-group">
 			<label class="form-label">Petugas Lapangan</label>

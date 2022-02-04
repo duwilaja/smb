@@ -1,11 +1,12 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed'); 
 
 $cols="nrp,unit,polda,polres,dinas,subdinas,tgl,";
-$cols.="objek,terdeteksi,nopol,posisik,waktuk,nama,jk,posisio,waktuo";
+$cols.="objek,terdeteksi,nopol,posisik,waktuk,nama,jk,posisio,waktuo,uploadedfile";
 ?>
 
 <input type="hidden" name="tablename" value="tmc_cctv_object">
 <input type="hidden" name="fieldnames" value="<?php echo $cols?>">
+<input type="hidden" name="path" value="cctv/obj/">
 
 <!--div class="row">
 <div class="col-lg-12">
@@ -32,7 +33,7 @@ $cols.="objek,terdeteksi,nopol,posisik,waktuk,nama,jk,posisio,waktuo";
 			</select>
 		</div>
 	</div>
-	<div class="col-sm-6 col-md-4">
+	<div class="col-sm-6 col-md-3">
 		<div class="form-group">
 			<label class="form-label">Terdeteksi</label>
 			<select id="terdeteksi" name="terdeteksi" class="form-control" placeholder="" onchange="macetgak();">
@@ -40,6 +41,16 @@ $cols.="objek,terdeteksi,nopol,posisik,waktuk,nama,jk,posisio,waktuo";
 				<option value="Ada">Ada</option>
 			</select>
 		</div>
+	</div>
+	<div class="col-sm-6 col-md-4 ada">
+		<div class="form-group files">
+			<label class="form-label">Foto/Video</label>
+			<input type="file" name="uploadedfile[]" class="form-control file" placeholder="" >
+		</div>
+	</div>
+	<div class="col-sm-6 col-md-1 ada">
+		<label class="form-label">&nbsp;</label>
+		<button type="button" class="btn btn-icon btn-facebook" onclick="$('.files').append($('.file').clone().removeClass('file'));"><i class="fa fa-copy"></i></button>
 	</div>
 </div>
 <div class="row kendaraan">
@@ -121,6 +132,7 @@ function macetgak(){
 			$(".kendaraan").hide();
 			$(".orang").show();
 		}
+		$(".ada").show();
 	}else{
 		$("#nopol").val("");
 		$("#posisik").val("");
@@ -131,6 +143,7 @@ function macetgak(){
 		$("#waktuo").val("");
 		$(".kendaraan").hide();
 		$(".orang").hide();
+		$(".ada").hide();
 	}
 }
 jvalidate = $("#myf").validate({

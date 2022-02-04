@@ -40,32 +40,6 @@ class Laporan extends CI_Controller {
 		}
     }
 
-	public function view_upd()
-	{
-	
-		$user=$this->session->userdata('user_data');
-		if(isset($user)){
-			$data['session'] = $user;
-			$data['formulir'] = $this->db->select('view_laporan as v,nama_laporan as t')->like('tipe','F')->where(array("unit"=>$user['unit'],"isactive"=>"Y"))->order_by("nama_laporan")->get('formulir')->result_array();
-			$data['rekap'] = $this->db->select('view_laporan as v,nama_laporan as t')->like('tipe','R')->where(array("unit"=>$user['unit'],"isactive"=>"Y"))->order_by("nama_laporan")->get('formulir')->result_array();
-			
-			$this->template->load("home",$data);
-		}else{
-			$retval=array("403","Failed","Please login","error");
-			$data['retval']=$retval;
-			$data['rahasia'] = mt_rand(100000,999999);
-			$arr = [
-			'name'   => 'rahasia',
-			'value'  => $data['rahasia'],                            
-			'expire' => '3000',                                                                                   
-			'secure' => TRUE
-			];
-
-			set_cookie($arr);
-			$this->load->view('login',$data);
-		}
-    }
-
     //Éntry Laporan Gatur Lalin
     public function dt_lap_gat_lin()
     {
@@ -140,18 +114,8 @@ class Laporan extends CI_Controller {
 					$data['gangguan'] = comboopts($this->db->select("concat(status,'-',penyebab,'-',penyebabd) as v, concat(jalan,'-',penyebab,'-',penyebabd,'-',status) as t")->order_by('jalan','ASC')->get('tmc_data_gangguan')->result());
 				}
 			}
-			if($id=='tmc_cctv_gerbang'){  //
-				$data['gerbang'] = ($this->db->select('val,txt')->where('grp','gerbang')->get('lov')->result_array());
-				$data['kendaraan'] = ($this->db->select('val,txt')->where('grp','kendaraan')->get('lov')->result_array());
-			}
 			if($id=='tmc_data_rawan'){  //
 				$data['rawan'] = ($this->db->select('val,txt')->where('grp','rawan')->get('lov')->result_array());
-			}
-			if($id=='tmc_data_giatpublik'){  //
-				$data['giatpublik'] = ($this->db->select('val,txt')->where('grp','giatpublik')->get('lov')->result_array());
-			}
-			if($id=='tmc_rengiat'){  //
-				$data['giatpol'] = ($this->db->select('val,txt')->where('grp','giatpol')->get('lov')->result_array());
 			}
 			if($id=='tmc_ops_pidana'||$id=='tmc_pservice_pidana'){  //
 				$data['pidana'] = ($this->db->select('val,txt')->where('grp','pidana')->get('lov')->result_array());
@@ -164,10 +128,6 @@ class Laporan extends CI_Controller {
 			}
 			if($id=='eri_kendaraan'||$id=='ais_laka'){  //eri kendaraan
 				$data['polda'] = comboopts($this->db->select('da_id as v,da_nam as t')->get('polda')->result());
-			}
-			if($id=="tmc_ops_laka"||$id=="tmc_ops_langgar"||$id=="tmc_ops_pidana"||$id=="tmc_ops_pol"){
-				$otherdb = $this->load->database('db_intan', TRUE);
-				$data["instansi"]=$otherdb->select("nama_instansi as val, nama_instansi as txt")->get("instansi")->result_array();
 			}
 			if($id=='intan_analytic'){
 				if($user["polda"]!=""){ $this->db->where("polda",$user["polda"]); }
@@ -197,37 +157,8 @@ class Laporan extends CI_Controller {
 		}
 	}
 	
-	private function uplots($fld,$path){
-		$ret=array();
-		// Count total files
-        $countfiles = count($_FILES[$fld]['name']);
-		// Looping all files
-        for($i=0;$i<$countfiles;$i++){
-			if(!empty($_FILES[$fld]['name'][$i])){
-				// Define new $_FILES array - $_FILES['file']
-				  $_FILES['file']['name'] = $_FILES[$fld]['name'][$i];
-				  $_FILES['file']['type'] = $_FILES[$fld]['type'][$i];
-				  $_FILES['file']['tmp_name'] = $_FILES[$fld]['tmp_name'][$i];
-				  $_FILES['file']['error'] = $_FILES[$fld]['error'][$i];
-				  $_FILES['file']['size'] = $_FILES[$fld]['size'][$i];
-				
-				if ( $this->upload->do_upload('file')){
-						$ret[]= $path.$this->upload->data('file_name');
-					}
-			}
-		}
-		
-		return implode(";",$ret);
-	}
-	
 	public function save()
 	{
-		$data = [
-			'petugas' => '',
-			'instansi' => '',
-			'nopol' => ''
-		];
-
 		$user=$this->session->userdata('user_data');
 		if(isset($user)){
 			$msgs="No data has been saved";
@@ -235,33 +166,6 @@ class Laporan extends CI_Controller {
 			$tname=$this->input->post('tablename');
 			$fname=$this->input->post('fieldnames');
 			$data=$this->input->post(explode(",",$fname));
-			if(strpos($fname,"uploadedfile")){
-				//upload here
-				$path="./uploads/".$this->input->post("path");
-				$config['upload_path'] = $path;
-				$config['allowed_types'] = '*';//'gif|jpg|jpeg|png';//all
-				//$config['file_name'] = $user['nrp'];
-				$config['file_ext_tolower'] = true;
-				//$config['overwrite'] = false;
-				$m="";
-				$this->load->library('upload', $config);
-				
-				$data['uploadedfile'] =  $this->uplots('uploadedfile',$path);
-			}
-			
-			if (!empty($data['petugas'])) {
-				$data['petugas'] = implode(';',$data['petugas']);
-			}
-
-
-			if (!empty($data['instansi'])) {
-				$data['instansi'] = implode(';',$data['instansi']);
-			}
-
-			if (!empty($data['nopol'])) {
-				$data['nopol'] = implode(';',$data['nopol']);
-			}
-
 			if($rowid==""||$rowid=="0"){
 				$this->db->insert($tname,$data);
 			}else{
