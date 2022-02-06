@@ -222,11 +222,11 @@ class Laporan extends CI_Controller {
 	
 	public function save()
 	{
-		/*$data = [
+		$data = [
 			'petugas' => '',
 			'instansi' => '',
 			'nopol' => ''
-		]; diremark  krn bakalan ditimpa*/
+		];
 
 		$user=$this->session->userdata('user_data');
 		if(isset($user)){
