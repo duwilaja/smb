@@ -38,7 +38,7 @@ $cols.="instansi1,petugas1,instansi2,petugas2,instansi3,petugas3,instansi4,petug
 	<div class="col-sm-6 col-md-4">
 		<div class="form-group">
 			<label class="form-label">Kategori Operasi</label>
-			<select name="kategori" class="form-control" placeholder="">
+			<select name="kategori" class="form-select" placeholder="">
 				<option value="Patuh">Operasi Patuh</option>
 				<option value="Ketupat/Lilin">Operasi Ketupat/Lilin</option>
 				<option value="Simpatik">Operasi Simpatik</option>
@@ -51,7 +51,7 @@ $cols.="instansi1,petugas1,instansi2,petugas2,instansi3,petugas3,instansi4,petug
 	<div class="col-sm-6 col-md-4">
 		<div class="form-group">
 			<label class="form-label">Mendapati Kejadian/Laporan</label>
-			<select name="kejadian" class="form-control" placeholder="">
+			<select name="kejadian" class="form-select" placeholder="">
 				<option value="Kecelakaan">Kecelakaan</option>
 				<option value="Kemacetan">Kemacetan</option>
 				<option value="Pelanggaran">Pelanggaran</option>
@@ -66,7 +66,7 @@ $cols.="instansi1,petugas1,instansi2,petugas2,instansi3,petugas3,instansi4,petug
 			<label class="form-label">Penyebab</label>
 	<?php
 $penyebab['']='';
-$opt=array('class'=>'form-control','id'=>'penyebab','onchange'=>"getSubQ('laporan/get_subq',this.value,'#penyebabd','','','penyebab_macet_d','detil as v,detil as t','sebab');");
+$opt=array('class'=>'form-select','id'=>'penyebab','onchange'=>"getSubQ('laporan/get_subq',this.value,'#penyebabd','','','penyebab_macet_d','detil as v,detil as t','sebab');");
 echo form_dropdown('penyebab', array_reverse($penyebab,true), '',$opt);
 ?>
 		</div>
@@ -74,7 +74,7 @@ echo form_dropdown('penyebab', array_reverse($penyebab,true), '',$opt);
 	<div class="col-sm-6 col-md-4">
 		<div class="form-group">
 			<label class="form-label">Detil</label>
-			<select name="penyebabd" id="penyebabd" class="form-control" placeholder="" onchange="lainnyabukan(this.value);">
+			<select name="penyebabd" id="penyebabd" class="form-select" placeholder="" onchange="lainnyabukan(this.value);">
 			<option value=""></option>
 			</select>
 		</div>
@@ -89,7 +89,7 @@ echo form_dropdown('penyebab', array_reverse($penyebab,true), '',$opt);
 	<div class="col-sm-6 col-md-4">
 		<div class="form-group">
 			<label class="form-label">Cara Bertindak</label>
-			<select name="tindakan" class="form-control" placeholder="">
+			<select name="tindakan" class="form-select" placeholder="">
 				<option value="Pre Ventif">Pre Ventif</option>
 				<option value="Pre Entif">Pre Entif</option>
 				<option value="Represif">Represif</option>
@@ -101,7 +101,7 @@ echo form_dropdown('penyebab', array_reverse($penyebab,true), '',$opt);
 	<div class="col-sm-6 col-md-4">
 		<div class="form-group">
 			<label class="form-label">Kategori Penindakan</label>
-			<select name="penindakan" class="form-control" placeholder="">
+			<select name="penindakan" class="form-select" placeholder="">
 				<option value="Turjagwali">Turjagwali</option>
 				<option value="Monitoring">Monitoring</option>
 				<option value="Sosialisasi">Sosialisasi</option>
@@ -124,7 +124,7 @@ echo form_dropdown('penyebab', array_reverse($penyebab,true), '',$opt);
 	<div class="col-sm-6 col-md-3">
 		<div class="form-group">
 			<label class="form-label">Instansi 1</label>
-			<select name="instansi1" class="form-control" placeholder="">
+			<select name="instansi1" class="form-select" placeholder="">
 				<option value=""></option>
 				<option value="Lantas">Lantas</option>
 				<option value="PSC">PSC</option>
@@ -145,7 +145,7 @@ echo form_dropdown('penyebab', array_reverse($penyebab,true), '',$opt);
 	<div class="col-sm-6 col-md-3">
 		<div class="form-group">
 			<label class="form-label">Instansi 2</label>
-			<select name="instansi2" class="form-control" placeholder="">
+			<select name="instansi2" class="form-select" placeholder="">
 				<option value=""></option>
 				<option value="Lantas">Lantas</option>
 				<option value="PSC">PSC</option>
@@ -166,7 +166,7 @@ echo form_dropdown('penyebab', array_reverse($penyebab,true), '',$opt);
 	<div class="col-sm-6 col-md-3">
 		<div class="form-group">
 			<label class="form-label">Instansi 3</label>
-			<select name="instansi3" class="form-control" placeholder="">
+			<select name="instansi3" class="form-select" placeholder="">
 				<option value=""></option>
 				<option value="Lantas">Lantas</option>
 				<option value="PSC">PSC</option>
@@ -187,7 +187,7 @@ echo form_dropdown('penyebab', array_reverse($penyebab,true), '',$opt);
 	<div class="col-sm-6 col-md-3">
 		<div class="form-group">
 			<label class="form-label">Instansi 4</label>
-			<select name="instansi4" class="form-control" placeholder="">
+			<select name="instansi4" class="form-select" placeholder="">
 				<option value=""></option>
 				<option value="Lantas">Lantas</option>
 				<option value="PSC">PSC</option>

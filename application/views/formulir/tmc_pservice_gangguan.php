@@ -12,7 +12,7 @@ $cols.="saluran,sumber,jam,jalan,lat,lng,jenis,dampak,uploadedfile,pelapor,telp,
 	<div class="col-sm-6 col-md-3">
 		<div class="form-group">
 			<label class="form-label">Saluran Informasi</label>
-			<select name="saluran" class="form-control" placeholder="">
+			<select name="saluran" class="form-select" placeholder="">
 				<option value="Call Center">Call Center</option>
 				<option value="Email">Email</option>
 				<option value="Medsos">Medsos</option>
@@ -23,7 +23,7 @@ $cols.="saluran,sumber,jam,jalan,lat,lng,jenis,dampak,uploadedfile,pelapor,telp,
 	<div class="col-sm-6 col-md-3">
 		<div class="form-group">
 			<label class="form-label">Sumber Informasi</label>
-			<select name="sumber" class="form-control" placeholder="">
+			<select name="sumber" class="form-select" placeholder="">
 				<option value="Individu">Individu</option>
 				<option value="Kelompok Masyarakat">Kelompok Masyarakat</option>
 				<option value="Instansi Pemerintah">Instansi Pemerintah</option>
@@ -82,7 +82,7 @@ $cols.="saluran,sumber,jam,jalan,lat,lng,jenis,dampak,uploadedfile,pelapor,telp,
 	<div class="col-sm-6 col-md-3">
 		<div class="form-group">
 			<label class="form-label">Jenis Gangguan</label>
-			<select name="jenis" class="form-control" placeholder="" onclick="lainnyabukan(this.value);">
+			<select name="jenis" class="form-select" placeholder="" onclick="lainnyabukan(this.value);">
 				<option value="Banjir">Banjir</option>
 				<option value="Tanah Longsor">Tanah Longsor</option>
 				<option value="Pohon Tumbang">Pohon Tumbang</option>
@@ -105,7 +105,7 @@ $cols.="saluran,sumber,jam,jalan,lat,lng,jenis,dampak,uploadedfile,pelapor,telp,
 	<div class="col-sm-6 col-md-3">
 		<div class="form-group">
 			<label class="form-label">Bisa Berdampak</label>
-			<select name="dampak" class="form-control" placeholder="">
+			<select name="dampak" class="form-select" placeholder="">
 				<option value="Kemacetan">Kemacetan</option>
 				<option value="Kecelakaan">Kecelakaan</option>
 			</select>

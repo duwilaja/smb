@@ -66,7 +66,7 @@ $cols.="monitoring,m_normal,m_trouble,analytic,a_normal,a_trouble,umum,kejadian,
 	<div class="col-sm-6 col-md-4">
 		<div class="form-group">
 			<label class="form-label">Pantauan Umum</label>
-			<select name="umum" class="form-control" placeholder="" onchange="macetgak(this.value);">
+			<select name="umum" class="form-select" placeholder="" onchange="macetgak(this.value);">
 				<option value="Lancar">Lancar</option>
 				<option value="Padat">Padat</option>
 				<option value="Macet">Macet</option>
@@ -76,7 +76,7 @@ $cols.="monitoring,m_normal,m_trouble,analytic,a_normal,a_trouble,umum,kejadian,
 	<div class="col-sm-6 col-md-4">
 		<div class="form-group">
 			<label class="form-label">Kejadian Terpantau</label>
-			<select name="kejadian" class="form-control" placeholder="">
+			<select name="kejadian" class="form-select" placeholder="">
 				<option value=""></option>
 				<option value="Kemacetan">Kemacetan</option>
 				<option value="Demo">Demo</option>
@@ -111,7 +111,7 @@ $cols.="monitoring,m_normal,m_trouble,analytic,a_normal,a_trouble,umum,kejadian,
 	<div class="col-sm-6 col-md-4">
 		<div class="form-group">
 			<label class="form-label">Status Penggal Jalan</label>
-			<select name="penggal" id="penggal" class="form-control" placeholder="">
+			<select name="penggal" id="penggal" class="form-select" placeholder="">
 				<option value=""></option>
 				<option value="Rawan Bencana">Rawan Bencana</option>
 				<option value="Black Spot">Black Spot</option>
@@ -138,7 +138,7 @@ $cols.="monitoring,m_normal,m_trouble,analytic,a_normal,a_trouble,umum,kejadian,
 			<label class="form-label">Penyebab</label>
 	<?php
 $penyebab['']='';
-$opt=array('class'=>'form-control','id'=>'sebab');
+$opt=array('class'=>'form-select','id'=>'sebab');
 echo form_dropdown('sebab', array_reverse($penyebab,true), '',$opt);
 ?>
 		</div>
@@ -146,7 +146,7 @@ echo form_dropdown('sebab', array_reverse($penyebab,true), '',$opt);
 	<div class="col-sm-6 col-md-4">
 		<div class="form-group">
 			<label class="form-label">Sumber Info</label>
-			<select id="sumber" name="sumber" class="form-control" placeholder="">
+			<select id="sumber" name="sumber" class="form-select" placeholder="">
 				<option value=""></option>
 				<option value="Call Center">Lap. Masyarakat via Call Center</option>
 				<option value="Medsos">Lap. Masyarakat via Medsos</option>

@@ -26,7 +26,7 @@ $cols.="fasilitas,nama,jalan,lat,lng,kedatangan_k,keberangkatan_k,kedatangan_p,k
 	<div class="col-sm-6 col-md-2">
 		<div class="form-group">
 			<label class="form-label">Fasilitas</label>
-			<select name="fasilitas" class="form-control" placeholder="">
+			<select name="fasilitas" class="form-select" placeholder="">
 				<option value="Terminal">Terminal</option>
 				<option value="Pelabuhan">Pelabuhan</option>
 				<option value="Bandara">Bandara</option>

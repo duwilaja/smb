@@ -23,7 +23,7 @@ $cols.="namajalan,lat,lng,kategori,keterlibatan,penindakan,ket,tindakan,md,lb,lr
 	<div class="col-sm-6 col-md-2">
 		<div class="form-group">
 			<label class="form-label">Status Penggal</label>
-			<select name="penggal" class="form-control" placeholder="">
+			<select name="penggal" class="form-select" placeholder="">
 	<?php for($i=0;$i<count($penggal);$i++){?>
 	<option value="<?php echo $penggal[$i]['val']?>"><?php echo $penggal[$i]['txt']?></option>
 	<?php }?>
@@ -59,7 +59,7 @@ $cols.="namajalan,lat,lng,kategori,keterlibatan,penindakan,ket,tindakan,md,lb,lr
 	<div class="col-sm-6 col-md-4">
 		<div class="form-group">
 			<label class="form-label">Kategori Laka</label>
-			<select name="kategori" class="form-control" placeholder="">
+			<select name="kategori" class="form-select" placeholder="">
 				<option value="Laka Tunggal">Laka Tunggal</option>
 				<option value="Laka 2 Kendaraan">Laka 2 Kendaraan</option>
 				<option value="Laka Jol">Laka Jol</option>
@@ -71,7 +71,7 @@ $cols.="namajalan,lat,lng,kategori,keterlibatan,penindakan,ket,tindakan,md,lb,lr
 	<div class="col-sm-6 col-md-4">
 		<div class="form-group">
 			<label class="form-label">Kendaraan Terlibat</label>
-			<select name="keterlibatan" class="form-control" placeholder="">
+			<select name="keterlibatan" class="form-select" placeholder="">
 				<option value="R2">R2</option>
 				<option value="R4">R4</option>
 				<option value="R2 VS R2">R2 VS R2</option>
@@ -113,7 +113,7 @@ $cols.="namajalan,lat,lng,kategori,keterlibatan,penindakan,ket,tindakan,md,lb,lr
 	<div class="col-sm-6 col-md-4">
 		<div class="form-group">
 			<label class="form-label">Cara Bertindak</label>
-			<select name="tindakan" class="form-control" placeholder="">
+			<select name="tindakan" class="form-select" placeholder="">
 				<option value="Pre Ventif">Pre Ventif</option>
 				<option value="Pre Entif">Pre Entif</option>
 				<option value="Represif">Represif</option>
@@ -125,7 +125,7 @@ $cols.="namajalan,lat,lng,kategori,keterlibatan,penindakan,ket,tindakan,md,lb,lr
 	<div class="col-sm-6 col-md-4">
 		<div class="form-group">
 			<label class="form-label">Kategori Penindakan</label>
-			<select name="penindakan" class="form-control" placeholder="">
+			<select name="penindakan" class="form-select" placeholder="">
 				<option value="Turjagwali">Turjagwali</option>
 				<option value="Monitoring">Monitoring</option>
 				<option value="Sosialisasi">Sosialisasi</option>
@@ -150,7 +150,7 @@ $cols.="namajalan,lat,lng,kategori,keterlibatan,penindakan,ket,tindakan,md,lb,lr
 		<div class="form-group">
 			<label class="form-label">Faskes Rujukan</label>
 			<!-- <input type="text" name="rs" class="form-control" placeholder="" > -->
-			<select name="rs" id="rs" class="form-control" onchange="show_faskes(this.value)"  placeholder="">
+			<select name="rs" id="rs" class="form-select" onchange="show_faskes(this.value)"  placeholder="">
 				<option value=""></option>
 			</select>
 		</div>
@@ -304,7 +304,7 @@ function add_instansi(data='',petugas='') {
 				$('#view_instansi').append(`<div class="col-sm-6 col-md-6">
 				<div class="form-group">
 					<label class="form-label">Instansi ${no_instansi}</label>
-					<select name="instansi[]" id="instansi${no_instansi}" class="form-control" placeholder="">
+					<select name="instansi[]" id="instansi${no_instansi}" class="form-select" placeholder="">
 						<option value=""></option>
 					</select>
 				</div>
@@ -335,7 +335,7 @@ function add_instansi(data='',petugas='') {
 		$('#view_instansi').append(`<div class="col-sm-6 col-md-6">
 				<div class="form-group">
 					<label class="form-label">Instansi ${no_instansi}</label>
-					<select name="instansi[]" id="instansi${no_instansi}" class="form-control" placeholder="">
+					<select name="instansi[]" id="instansi${no_instansi}" class="form-select" placeholder="">
 						<option value=""></option>
 					</select>
 				</div>

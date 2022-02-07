@@ -12,7 +12,7 @@ $cols.="saluran,sumber,jam,jalan,lat,lng,jenis,jmlkorban,korbanmd,kebutuhan,uplo
 	<div class="col-sm-6 col-md-6">
 		<div class="form-group">
 			<label class="form-label">Saluran Informasi</label>
-			<select name="saluran" class="form-control" placeholder="">
+			<select name="saluran" class="form-select" placeholder="">
 				<option value="Call Center">Call Center</option>
 				<option value="Email">Email</option>
 				<option value="Medsos">Medsos</option>
@@ -23,7 +23,7 @@ $cols.="saluran,sumber,jam,jalan,lat,lng,jenis,jmlkorban,korbanmd,kebutuhan,uplo
 	<div class="col-sm-6 col-md-6">
 		<div class="form-group">
 			<label class="form-label">Sumber Informasi</label>
-			<select name="sumber" class="form-control" placeholder="">
+			<select name="sumber" class="form-select" placeholder="">
 				<option value="Individu">Individu</option>
 				<option value="Kelompok Masyarakat">Kelompok Masyarakat</option>
 				<option value="Instansi Pemerintah">Instansi Pemerintah</option>
@@ -84,7 +84,7 @@ $cols.="saluran,sumber,jam,jalan,lat,lng,jenis,jmlkorban,korbanmd,kebutuhan,uplo
 	<div class="col-sm-6 col-md-6">
 		<div class="form-group">
 			<label class="form-label">Jenis Laka</label>
-			<select name="jenis" class="form-control" placeholder="">
+			<select name="jenis" class="form-select" placeholder="">
 				<option value="Kecelakaan Tunggal">Kecelakaan Tunggal</option>
 				<option value="R2vsR2">R2vsR2</option>
 				<option value="R2vsR4">R2vsR4</option>
@@ -96,7 +96,7 @@ $cols.="saluran,sumber,jam,jalan,lat,lng,jenis,jmlkorban,korbanmd,kebutuhan,uplo
 	<div class="col-sm-6 col-md-3">
 		<div class="form-group">
 			<label class="form-label">Jml. Korban</label>
-			<select name="jmlkorban" class="form-control" placeholder="">
+			<select name="jmlkorban" class="form-select" placeholder="">
 				<option value="1-2 Orang">1-2 Orang</option>
 				<option value="3-4 Orang">3-4 Orang</option>
 				<option value=">= 5 Orang">>= 5 Orang</option>
@@ -106,7 +106,7 @@ $cols.="saluran,sumber,jam,jalan,lat,lng,jenis,jmlkorban,korbanmd,kebutuhan,uplo
 	<div class="col-sm-6 col-md-3">
 		<div class="form-group">
 			<label class="form-label">Korban MD</label>
-			<select name="korbanmd" class="form-control" placeholder="">
+			<select name="korbanmd" class="form-select" placeholder="">
 				<option value="Ada">Ada</option>
 				<option value="Tidak Ada">Tidak Ada</option>
 				<option value="Sepertinya Ada">Sepertinya Ada</option>
@@ -118,7 +118,7 @@ $cols.="saluran,sumber,jam,jalan,lat,lng,jenis,jmlkorban,korbanmd,kebutuhan,uplo
 	<div class="col-sm-6 col-md-4">
 		<div class="form-group">
 			<label class="form-label">Kebutuhan</label>
-			<select style="width:100%;" id="kebutuhanx" name="kebutuhanx" multiple class="form-control select2" placeholder="" onchange="$('#kebutuhan').val($('#kebutuhanx').val());">
+			<select style="width:100%;" id="kebutuhanx" name="kebutuhanx" multiple class="form-select select2" placeholder="" onchange="$('#kebutuhan').val($('#kebutuhanx').val());">
 				<option value="Polantas">Polantas</option>
 				<option value="Ambulan">Ambulan</option>
 			</select>

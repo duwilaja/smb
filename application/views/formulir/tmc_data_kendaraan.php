@@ -62,7 +62,7 @@ $cols.="jumlah,jenis";
 		  <div class="row">
 			<div class="form-group col-md-12">
 				<label>Jenis Kendaraan</label>
-				<select id="jenis" name="jenis" class="form-control" placeholder="">
+				<select id="jenis" name="jenis" class="form-select" placeholder="">
 					<option value="Mobil PnP">Mobil PnP</option>
 					<option value="Mobil Bus">Mobil Bus</option>
 					<option value="Mobil Barang">Mobil Barang</option>

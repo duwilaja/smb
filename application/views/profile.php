@@ -119,7 +119,7 @@ if(isset($incomplete_profile)){
 							<label class="form-label"><?php echo $this->lang->line('lang_rank'); ?></label>
 							<?php
 							$pangkat['']='';
-							$opt=array('class'=>'form-control form-control-sm','id'=>'pangkat');
+							$opt=array('class'=>'form-select form-select-sm','id'=>'pangkat');
 							echo form_dropdown('pangkat', array_reverse($pangkat,true), $session['pangkat'],$opt);
 							?>
 							
@@ -142,7 +142,7 @@ if(isset($incomplete_profile)){
 							<label class="form-label"><?php echo $this->lang->line('lang_service'); ?></label>
 							<?php
 $dinas['']='';
-$opt=array('class'=>'form-control form-control-sm','id'=>'dinas','onchange'=>"mabesbukan(this.value);getSubQ('profile/get_subdin',this.value,'#subdinas','".$session['subdinas']."');");
+$opt=array('class'=>'form-select form-select-sm','id'=>'dinas','onchange'=>"mabesbukan(this.value);getSubQ('profile/get_subdin',this.value,'#subdinas','".$session['subdinas']."');");
 echo form_dropdown('dinas', array_reverse($dinas,true), $session['dinas'],$opt);
 							?>
 						</div>
@@ -150,7 +150,7 @@ echo form_dropdown('dinas', array_reverse($dinas,true), $session['dinas'],$opt);
 					<div class="col-sm-6 col-md-4 mb-2">
 						<div class="form-group">
 							<label class="form-label"><?php echo $this->lang->line('lang_subservice'); ?></label>
-							<select name="subdinas" id="subdinas" class="form-control form-control-sm">
+							<select name="subdinas" id="subdinas" class="form-select form-select-sm">
 								<option value=""></option>
 							</select>
 						</div>
@@ -160,7 +160,7 @@ echo form_dropdown('dinas', array_reverse($dinas,true), $session['dinas'],$opt);
 							<label class="form-label"><?php echo $this->lang->line('lang_unit'); ?></label>
 							<?php
 							$unit['']='';
-							$opt=array('class'=>'form-control form-control-sm','id'=>'unit');
+							$opt=array('class'=>'form-select form-select-sm','id'=>'unit');
 							echo form_dropdown('unit', array_reverse($unit,true), $session['unit'],$opt);
 							?>
 						</div>
@@ -171,7 +171,7 @@ echo form_dropdown('dinas', array_reverse($dinas,true), $session['dinas'],$opt);
 							<?php
 $polda['']='';
 //print_r(array_reverse($polda,true));
-$opt=array('class'=>'form-control form-control-sm','id'=>'polda','onchange'=>"getSubQ('profile/get_polres',this.value,'#polres','".$session['polres']."');");
+$opt=array('class'=>'form-select form-select-sm','id'=>'polda','onchange'=>"getSubQ('profile/get_polres',this.value,'#polres','".$session['polres']."');");
 echo form_dropdown('polda', array_reverse($polda,true), $session['polda'],$opt);
 							?>
 						</div>
@@ -179,7 +179,7 @@ echo form_dropdown('polda', array_reverse($polda,true), $session['polda'],$opt);
 					<div class="col-sm-6 col-md-4 mb-2 notmabes">
 						<div class="form-group">
 							<label class="form-label">Polres</label>
-							<select name="polres" id="polres" class="form-control form-control-sm">
+							<select name="polres" id="polres" class="form-select form-select-sm">
 								<option value=""></option>
 							</select>
 						</div>
@@ -190,7 +190,7 @@ echo form_dropdown('polda', array_reverse($polda,true), $session['polda'],$opt);
 							<?php
 //print_r(array_reverse($polda,true));
 $selected_specs=explode(";",$session['specs']);
-$opt=array('class'=>'form-control form-control-sm select2','id'=>'tmp_spek','multiple'=>'multiple','onchange'=>"specs_changed();");
+$opt=array('class'=>'form-select form-select-sm select2','id'=>'tmp_spek','multiple'=>'multiple','onchange'=>"specs_changed();");
 echo form_dropdown('tmp_spek', $specs, $selected_specs,$opt);
 echo form_hidden('specs',$session['specs']);
 							?>
@@ -199,7 +199,7 @@ echo form_hidden('specs',$session['specs']);
 					<div class="col-sm-6 col-md-4 mb-2 hidden">
 						<div class="form-group">
 							<label class="form-label"><?php echo $this->lang->line('lang_language'); ?></label>
-							<select class="form-control form-control-sm" onchange="javascript:window.location.href='<?php echo site_url('Profile/switchLang/'); ?>'+this.value;">
+							<select class="form-select form-control-sm" onchange="javascript:window.location.href='<?php echo site_url('Profile/switchLang/'); ?>'+this.value;">
 								<option value="english" <?php if($this->session->userdata('site_lang') == 'english') echo 'selected="selected"'; ?>>English</option>
 								<option value="indo" <?php if($this->session->userdata('site_lang') == 'indo') echo 'selected="selected"'; ?>>Indonesia</option>
 							</select>

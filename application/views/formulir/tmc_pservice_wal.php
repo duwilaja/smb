@@ -13,7 +13,7 @@ $cols.="saluran,sumber,nama,telp,email,jenis,kegiatan";
 	<div class="col-sm-6 col-md-3">
 		<div class="form-group">
 			<label class="form-label">Saluran Informasi</label>
-			<select name="saluran" class="form-control" placeholder="">
+			<select name="saluran" class="form-select" placeholder="">
 				<option value="Call Center">Call Center</option>
 				<option value="Email">Email</option>
 				<option value="Medsos">Medsos</option>
@@ -24,7 +24,7 @@ $cols.="saluran,sumber,nama,telp,email,jenis,kegiatan";
 	<div class="col-sm-6 col-md-3">
 		<div class="form-group">
 			<label class="form-label">Sumber Informasi</label>
-			<select name="sumber" class="form-control" placeholder="">
+			<select name="sumber" class="form-select" placeholder="">
 				<option value="Individu">Individu</option>
 				<option value="Kelompok Masyarakat">Kelompok Masyarakat</option>
 				<option value="Instansi Pemerintah">Instansi Pemerintah</option>
@@ -58,7 +58,7 @@ $cols.="saluran,sumber,nama,telp,email,jenis,kegiatan";
 	<div class="col-sm-6 col-md-4">
 		<div class="form-group">
 			<label class="form-label">Jenis</label>
-			<select name="jenis" class="form-control" placeholder="">
+			<select name="jenis" class="form-select" placeholder="">
 				<option value="Pribadi">Pribadi</option>
 				<option value="Bisnis">Bisnis</option>
 				<option value="Sosial">Sosial</option>

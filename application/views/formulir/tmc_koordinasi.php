@@ -11,7 +11,7 @@ $cols.="giat,jenis,lat,lng";
 	<div class="col-sm-6 col-md-4">
 		<div class="form-group">
 			<label class="form-label">Jenis</label>
-			<select name="jenis" class="form-control" placeholder="">
+			<select name="jenis" class="form-select" placeholder="">
 				<option value="Perijinan">Perijinan</option>
 				<option value="Pemberitahuan">Pemberitahuan</option>
 				<option value="Info Kegiatan">Info Kegiatan</option>
@@ -22,7 +22,7 @@ $cols.="giat,jenis,lat,lng";
 	<div class="col-sm-6 col-md-3">
 		<div class="form-group">
 			<label class="form-label">Giat</label>
-			<select name="giat" class="form-control" placeholder="">
+			<select name="giat" class="form-select" placeholder="">
 				<option value="Unras">Unras</option>
 				<option value="Konser">Konser</option>
 				<option value="Pameran">Pameran</option>

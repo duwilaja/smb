@@ -34,7 +34,7 @@
                     <i class="fa fa-list"></i>
                     </div>
                 </div>
-                <select name="status" id="status" class="form-control">
+                <select name="status" id="status" class="form-select">
                     <option value="">All</option>
                     <option value="0">Pengajuan</option>
                     <option value="1">Disetujui</option>
@@ -93,7 +93,7 @@
                     <div class="form-group">
                         <label class="control-label text-dark">Petugas Pengawal</label>
                         <div>
-                             <select class="form-control" id="petugas" name="petugas[]" multiple='multiple' style="width: 100%;">
+                             <select class="form-select" id="petugas" name="petugas[]" multiple='multiple' style="width: 100%;">
 								<option value=""></option>
                                 <?php foreach($this->db->get('persons')->result() as $row):?>
                                 <option value="<?php echo $row->rowid;?>"><?php echo $row->nama."(".$row->nrp.")";?></option>
@@ -138,7 +138,7 @@
                     <div class="form-group">
                         <label class="control-label text-dark">Status</label>
                         <div>
-                             <select class="form-control" id="status_berjalan" name="status_berjalan"style="width: 100%;">
+                             <select class="form-select" id="status_berjalan" name="status_berjalan"style="width: 100%;">
 								<option value="1" selected>Disetujui</option>
                                 <option value="3">Berjalan</option>
 							</select>
@@ -175,7 +175,7 @@
                     <div class="form-group">
                         <label class="control-label text-dark">Status</label>
                         <div>
-                             <select class="form-control" id="status_selesai" name="status_selesai"style="width: 100%;">
+                             <select class="form-select" id="status_selesai" name="status_selesai"style="width: 100%;">
                                 <option value="3" selected>Berjalan</option>
                                 <option value="4">Selesai</option>
 							</select>

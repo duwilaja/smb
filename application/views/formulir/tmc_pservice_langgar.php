@@ -12,7 +12,7 @@ $cols.="saluran,sumber,jam,jalan,lat,lng,jenis,uploadedfile,pelapor,telp,langgar
 	<div class="col-sm-6 col-md-3">
 		<div class="form-group">
 			<label class="form-label">Saluran Informasi</label>
-			<select name="saluran" class="form-control" placeholder="">
+			<select name="saluran" class="form-select" placeholder="">
 				<option value="Call Center">Call Center</option>
 				<option value="Email">Email</option>
 				<option value="Medsos">Medsos</option>
@@ -23,7 +23,7 @@ $cols.="saluran,sumber,jam,jalan,lat,lng,jenis,uploadedfile,pelapor,telp,langgar
 	<div class="col-sm-6 col-md-3">
 		<div class="form-group">
 			<label class="form-label">Sumber Informasi</label>
-			<select name="sumber" class="form-control" placeholder="">
+			<select name="sumber" class="form-select" placeholder="">
 				<option value="Individu">Individu</option>
 				<option value="Kelompok Masyarakat">Kelompok Masyarakat</option>
 				<option value="Instansi Pemerintah">Instansi Pemerintah</option>
@@ -82,7 +82,7 @@ $cols.="saluran,sumber,jam,jalan,lat,lng,jenis,uploadedfile,pelapor,telp,langgar
 	<div class="col-sm-6 col-md-3">
 		<div class="form-group">
 			<label class="form-label">Melanggar</label>
-			<select id="langgar" name="langgar" class="form-control" placeholder="" onchange="getSubQ('laporan/get_subq',this.value,'#jenis','','','lov','val as v,txt as t','grp');">
+			<select id="langgar" name="langgar" class="form-select" placeholder="" onchange="getSubQ('laporan/get_subq',this.value,'#jenis','','','lov','val as v,txt as t','grp');">
 				<option value="lalin">Lalu Lintas</option>
 				<option value="perda">Perda</option>
 			</select>
@@ -91,7 +91,7 @@ $cols.="saluran,sumber,jam,jalan,lat,lng,jenis,uploadedfile,pelapor,telp,langgar
 	<div class="col-sm-6 col-md-3">
 		<div class="form-group">
 			<label class="form-label">Jenis</label>
-			<select id="jenis" name="jenis" class="form-control" placeholder="">
+			<select id="jenis" name="jenis" class="form-select" placeholder="">
 			</select>
 		</div>
 	</div>

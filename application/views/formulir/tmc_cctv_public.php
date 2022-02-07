@@ -26,7 +26,7 @@ $cols.="objek,kejadian,ket,pengunjung,kendaraan_in,kendaraan_out";
 	<div class="col-sm-6 col-md-3">
 		<div class="form-group">
 			<label class="form-label">Objek</label>
-			<select name="objek" class="form-control" placeholder="">
+			<select name="objek" class="form-select" placeholder="">
 				<option value="Terminal">Terminal</option>
 				<option value="Stasiun">Stasiun</option>
 				<option value="Bandara">Bandara</option>
@@ -59,7 +59,7 @@ $cols.="objek,kejadian,ket,pengunjung,kendaraan_in,kendaraan_out";
 	<div class="col-sm-6 col-md-4">
 		<div class="form-group">
 			<label class="form-label">Kejadian Terpantau</label>
-			<select name="kejadian" class="form-control" placeholder="">
+			<select name="kejadian" class="form-select" placeholder="">
 				<option value="Tidak Ada">Tidak Ada</option>
 				<option value="Ada">Ada</option>
 			</select>

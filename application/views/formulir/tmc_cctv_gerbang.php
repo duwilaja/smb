@@ -113,7 +113,7 @@ $cols.="in_a,out_a,in_b,out_b,in_c,out_c,in_d,out_d,klasifikasi";
 	<div class="col-sm-6 col-md-4">
 		<div class="form-group">
 			<label class="form-label">Klasifikasi Kendaraan</label>
-			<select name="klasifikasi" class="form-control" placeholder="">
+			<select name="klasifikasi" class="form-select" placeholder="">
 				<option value="Truk">Truk</option>
 				<option value="Bus">Bus</option>
 				<option value="Pribadi">Pribadi</option>

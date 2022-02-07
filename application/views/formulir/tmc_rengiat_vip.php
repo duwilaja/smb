@@ -26,7 +26,7 @@ $cols.="obyek,obyeklain,pejabat,tanggal,jam,dari,darinama,ke,kenama,wasdal,anggo
 	<div class="col-sm-6 col-md-2">
 		<div class="form-group">
 			<label class="form-label">Obyek Pengawalan</label>
-			<select name="obyek" class="form-control" placeholder="" onclick="lainnya(this.value)">
+			<select name="obyek" class="form-select" placeholder="" onclick="lainnya(this.value)">
 				<option value="Kunjungan Kerja">Kunjungan Kerja</option>
 				<option value="Acara Kenegaraan">Acara Kenegaraan</option>
 				<option value="Lainnya">Lainnya</option>
@@ -62,7 +62,7 @@ $cols.="obyek,obyeklain,pejabat,tanggal,jam,dari,darinama,ke,kenama,wasdal,anggo
 	<div class="col-sm-6 col-md-3">
 		<div class="form-group">
 			<label class="form-label">Dari</label>
-			<select name="dari" class="form-control" placeholder="">
+			<select name="dari" class="form-select" placeholder="">
 				<option value="Bandara">Bandara</option>
 				<option value="Hotel">Hotel</option>
 				<option value="Gedung Pemerintah">Gedung Pemerintah</option>
@@ -79,7 +79,7 @@ $cols.="obyek,obyeklain,pejabat,tanggal,jam,dari,darinama,ke,kenama,wasdal,anggo
 	<div class="col-sm-6 col-md-3">
 		<div class="form-group">
 			<label class="form-label">Ke</label>
-			<select name="ke" class="form-control" placeholder="">
+			<select name="ke" class="form-select" placeholder="">
 				<option value="Bandara">Bandara</option>
 				<option value="Hotel">Hotel</option>
 				<option value="Gedung Pemerintah">Gedung Pemerintah</option>
@@ -151,7 +151,7 @@ $cols.="obyek,obyeklain,pejabat,tanggal,jam,dari,darinama,ke,kenama,wasdal,anggo
 						<td>
 						<?php
 						//$selected_specs=explode(";",$session['specs']);
-$opt=array('class'=>'form-control select2','multiple'=>'multiple','onchange'=>"",'style'=>"width:100%;");
+$opt=array('class'=>'form-select select2','multiple'=>'multiple','onchange'=>"",'style'=>"width:100%;");
 echo form_dropdown('ganggu', $gangguan, array(),$opt);
 echo form_hidden('gangguan[]','');
 						?>
