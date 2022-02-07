@@ -222,11 +222,11 @@ class Laporan extends CI_Controller {
 	
 	public function save()
 	{
-		$data = [
+		/*$data = [
 			'petugas' => '',
 			'instansi' => '',
 			'nopol' => ''
-		];
+		];*/
 
 		$user=$this->session->userdata('user_data');
 		if(isset($user)){
@@ -249,17 +249,17 @@ class Laporan extends CI_Controller {
 				$data['uploadedfile'] =  $this->uplots('uploadedfile',$path);
 			}
 			
-			if (is_array($data['petugas'])) {
-				$data['petugas'] = implode(';',$data['petugas']);
+			if (isset($data['petugas'])) {
+				if(is_array($data['petugas'])) $data['petugas'] = implode(';',$data['petugas']);
 			}
 
 
-			if (is_array($data['instansi'])) {
-				$data['instansi'] = implode(';',$data['instansi']);
+			if (isset($data['instansi'])) {
+				if(is_array($data['instansi'])) $data['instansi'] = implode(';',$data['instansi']);
 			}
 
-			if (is_array($data['nopol'])) {
-				$data['nopol'] = implode(';',$data['nopol']);
+			if (isset($data['nopol'])) {
+				if(is_array($data['nopol'])) $data['nopol'] = implode(';',$data['nopol']);
 			}
 
 			if($rowid==""||$rowid=="0"){
