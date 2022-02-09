@@ -72,7 +72,7 @@ $tname="v_pservice";
 var  mytblhome;
 var mytimer=null;
 function load_table(){
-	mytblhome = $("#mytbl").DataTable({
+	mytblhome = $("#mytblhome").DataTable({
 		serverSide: true,
 		processing: true,
 		searching: false,
