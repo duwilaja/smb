@@ -44,7 +44,7 @@
 	</div>
 	<div class="card-body">
 		<div class="table-responsive">
-			<table id="mytbl" class="table table-striped table-bordered w-100">
+			<table id="mytblhome" class="table table-striped table-bordered w-100">
 				<thead>
 					<tr>
 						<th>Tanggal</th>
@@ -69,10 +69,10 @@ $cols = "tgl,jam,j,jalan,pelapor,sumber,saluran,stts";
 $tname="v_pservice";
 ?>
 <script>
-var  mytbl;
+var  mytblhome;
 var mytimer=null;
 function load_table(){
-	mytbl = $("#mytbl").DataTable({
+	mytblhome = $("#mytbl").DataTable({
 		serverSide: true,
 		processing: true,
 		searching: false,
@@ -117,7 +117,7 @@ function auto_reload(){
 }
 
 function reload_table(){
-	mytbl.ajax.reload();
+	mytblhome.ajax.reload();
 }
 
 function mapview(lat,lng){
