@@ -235,6 +235,8 @@ $(document).ready(function(){
 		processing: true,
 		searching: true,
 		buttons: ['copy', 'csv'],
+		stateSave: true,
+		bDestroy: true,
 		ajax: {
 			type: 'POST',
 			url: base_url+'laporan/dttbl',
