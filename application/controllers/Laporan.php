@@ -8,6 +8,8 @@ class Laporan extends CI_Controller {
         parent::__construct();
         $this->load->model('MLaporan','ml');
 		// Your own constructor code
+		$this->load->model('MApi','mapi');
+		
 	}
 	public function tes(){
 			$retval=array('code'=>"403",'ttl'=>"Horee",'msgs'=>json_encode($this->input->post("gangguan")));
@@ -144,6 +146,32 @@ class Laporan extends CI_Controller {
 				$data['gerbang'] = ($this->db->select('val,txt')->where('grp','gerbang')->get('lov')->result_array());
 				$data['kendaraan'] = ($this->db->select('val,txt')->where('grp','kendaraan')->get('lov')->result_array());
 			}
+			
+			if($id=='tmc_data_jalan'){  //
+				$d=$this->mapi->get('jalan/jenis');
+				$data['jenisjalan'] = $d[0]?$d[0]:$d[1];
+				$d=$this->mapi->get('jalan/status');
+				$data['statusjalan'] = $d[0]?$d[0]:$d[1];
+				$d=$this->mapi->get('kelurahan');
+				$data['kelurahan'] = $d[0]?$d[0]:$d[1];
+				$d=$this->mapi->get('kecamatan');
+				$data['kecamatan'] = $d[0]?$d[0]:$d[1];
+				$d=$this->mapi->get('kota');
+				$data['kota'] = $d[0]?$d[0]:$d[1];
+				$d=$this->mapi->get('provinsi');
+				$data['provinsi'] = $d[0]?$d[0]:$d[1];
+			}
+			if($id=='tmc_data_darurat'){  //
+				$d=$this->mapi->get('jalan');
+				$data['jalan'] = $d[0]?$d[0]:$d[1];
+			}
+			if($id=='tmc_data_statusjalan'){  //
+				$d=$this->mapi->get('jalan');
+				$data['jalan'] = $d[0]?$d[0]:$d[1];
+				$d=$this->mapi->get('jalan/jenis');
+				$data['jenisjalan'] = $d[0]?$d[0]:$d[1];
+			}
+			
 			if($id=='tmc_data_rawan'){  //
 				$data['rawan'] = ($this->db->select('val,txt')->where('grp','rawan')->get('lov')->result_array());
 			}

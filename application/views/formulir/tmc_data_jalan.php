@@ -1,10 +1,17 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed'); 
-$cols="nrp,unit,polda,polres,dinas,subdinas,tgl,";
-$cols.="panjang,jenis";
+$jj=json_decode($jenisjalan);
+$jj=isset($jj->data)?$jj->data:[];
+$sj=json_decode($statusjalan);
+$sj=isset($sj->data)?$sj->data:[];
+$kec=json_decode($kecamatan);
+$kec=isset($kec->data)?$kec->data:[];
+$kot=json_decode($kota);
+$kot=isset($kot->data)?$kot->data:[];
+$kel=json_decode($kelurahan);
+$kel=isset($kel->data)?$kel->data:[];
+$prov=json_decode($provinsi);
+$prov=isset($prov->data)?$prov->data:[];
 ?>
-
-<input type="hidden" name="tablename" value="tmc_data_jalan">
-<input type="hidden" name="fieldnames" value="<?php echo $cols?>">
 
 <style>
 	#map {
@@ -20,8 +27,9 @@ $cols.="panjang,jenis";
 			<table id="mytbl" class="table table-striped table-bordered w-100">
 				<thead>
 					<tr>
-						<th>Jenis</th>
-						<th>Panjang(km)</th>
+						<th>Nama</th>
+						<th>Lat</th>
+						<th>Lng</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -33,9 +41,9 @@ $cols.="panjang,jenis";
 
 <!-- Modal-->
 <div id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" class="modal fade text-left modal_form">
-  <div role="document" class="modal-dialog">
+  <div role="document" class="modal-dialog modal-lg">
 	<div class="modal-content">
-	  <div class="modal-header"><strong id="exampleModalLabel" class="modal-title">Panjang Jalan</strong>
+	  <div class="modal-header"><strong id="exampleModalLabel" class="modal-title">Jalan</strong>
 		<button type="button" data-bs-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">x</span></button>
 	  </div>
 	  <div class="modal-body">
@@ -43,31 +51,83 @@ $cols.="panjang,jenis";
 		<!--form id="myf" class="form-horizontal"-->		
 		  <div class="row">
 			<div class="form-group col-md-12">
+				<label>Nama Jalan</label>
+				<input type="text" id="nama_jalan" name="nama_jalan" placeholder="..." class="form-control">
+			</div>
+		  </div>
+		  <div class="row">
+			<div class="form-group col-md-6">
 				<label>Jenis Jalan</label>
-				<select id="jenis" name="jenis" class="form-control" placeholder="">
-					<option value="Nasional">Nasional</option>
-					<option value="Propinsi">Propinsi</option>
-					<option value="Kabupaten">Kabupaten</option>
-					<option value="Desa">Desa</option>
-					<option value="Tol">Tol</option>
-					<option value="Arteri">Arteri</option>
-					<option value="Kolektor">Kolektor</option>
-					<option value="Lingkungan">Lingkungan</option>
+				<select id="mstr_jalan_jenis_id" name="mstr_jalan_jenis_id" class="form-control select2" placeholder="">
+				<?php foreach($jj as $j){?>
+					<option value="<?php echo $j->id?>"><?php echo $j->jenis_jalan?></option>
+				<?php }?>
+				</select>
+			</div>
+			<div class="form-group col-md-6">
+				<label>Status Jalan</label>
+				<select id="mstr_jalan_status_id" name="mstr_jalan_status_id" class="form-control select2" placeholder="">
+				<?php foreach($sj as $j){?>
+					<option value="<?php echo $j->id?>"><?php echo $j->status_jalan?></option>
+				<?php }?>
 				</select>
 			</div>
 		  </div>
 		  <div class="row">
-			<div class="form-group col-md-12">
-				<label>Panjang Jalan (km)</label>
-				<input type="text" id="panjang" name="panjang" placeholder="..." class="form-control">
+			<div class="form-group col-md-6">
+				<label>Provinsi</label>
+				<select id="prov_id" name="prov_id" class="form-control select2" placeholder="">
+				<?php foreach($prov as $j){?>
+					<option value="<?php echo $j->prov_id?>"><?php echo $j->provinsi?></option>
+				<?php }?>
+				</select>
+			</div>
+			<div class="form-group col-md-6">
+				<label>Kota</label>
+				<select id="kota_id" name="kota_id" class="form-control select2" placeholder="">
+				<?php foreach($kot as $j){?>
+					<option value="<?php echo $j->kota_id?>"><?php echo $j->kota?></option>
+				<?php }?>
+				</select>
+			</div>
+		  </div>
+		  <div class="row">
+			<div class="form-group col-md-6">
+				<label>Kecamatan</label>
+				<select id="kec_id" name="kec_id" class="form-control select2" placeholder="">
+				<?php foreach($kec as $j){?>
+					<option value="<?php echo $j->kec_id?>"><?php echo $j->kecamatan?></option>
+				<?php }?>
+				</select>
+			</div>
+			<div class="form-group col-md-6">
+				<label>Kelurahan</label>
+				<select id="kel_id" name="kel_id" class="form-control select2" placeholder="">
+				<?php foreach($kel as $j){?>
+					<option value="<?php echo $j->kel_id?>"><?php echo $j->kelurahan?></option>
+				<?php }?>
+				</select>
+			</div>
+		  </div>
+		  <div class="row">
+			<div class="form-group col-md-6">
+				<label>Lat</label>
+				<input type="text" id="lat" name="lat" placeholder="..." class="form-control">
+			</div>
+			<div class="form-group col-md-6">
+				<label>Lng</label>
+				<input type="text" id="lng" name="lng" placeholder="..." class="form-control">
 			</div>
 		  </div>
 		  
 		<!--/form-->
 	  </div>
 	  <div class="modal-footer">
-	    <button type="button" class="btn btn-danger" id="bdel"  onclick="sendData('#myf','laporan/dele');">Delete</button>
-		<button type="button" class="btn btn-success" id="btnsv" onclick="simpanlah();">Save</button>
+	  <input type="hidden" id="id" name="id" value="0">
+	  <input type="hidden" name="apilnk" value="jalan">
+	  <input type="hidden" name="fieldnames" value="nama_jalan,prov_id,kota_id,kec_id,kel_id,lat,lng,mstr_jalan_status_id,mstr_jalan_jenis_id">
+	    <button type="button" class="btn btn-danger" id="bdel"  onclick="dele('#myf','myapi/dele');">Delete</button>
+		<button type="button" class="btn btn-success" id="btnsv" onclick="sendfrm('#myf','myapi/save');">Save</button>
 		<button type="button" data-bs-dismiss="modal" class="btn btn-default">Close</button>
 		
 	  </div>
@@ -79,24 +139,26 @@ $cols.="panjang,jenis";
 var map,mytbl,markers;
 
 function showModal(id){
+	$("#myf")[0].reset();
 	if(id==0){
-		$("#panjang").val("");
-		$("#rowid").val(0);
+		$("#id").val(0);
 		$("#bdel").hide();
 		$("#myModal").modal("show");
+		$(".select2").trigger("change");
 	}else{
 		$.ajax({
 			type: 'POST',
-			url: base_url+'laporan/datas',
-			data: {q:'jalan',id:id},
+			url: base_url+'myapi/show',
+			data: {lnk:'jalan',id:id},
 			success: function(data){
 				$("#bdel").show();
 				var json = JSON.parse(data);
 				console.log(json);
-				$.each(json[0],function (key,val){
+				$.each(json,function (key,val){
 					$('#'+key).val(val);
 				})
 				$("#myModal").modal("show");
+				$(".select2").trigger("change");
 			},
 			error: function(xhr){
 				log('Please check your connection'+xhr);
@@ -104,7 +166,46 @@ function showModal(id){
 			}
 		});
 	}
-	
+}
+function dele(f,l){
+	swal({
+	  title: "Are you sure?",
+	  text: "Data will be deleted permanently",
+	  icon: "warning",
+	  buttons: true,
+	  dangerMode: true,
+	})
+	.then((willDelete) => {
+	  if (willDelete) {
+		sendfrm(f,l);
+	  }
+	});
+}
+function sendfrm(f,ln){
+	if($(f).valid()){
+		var frmdata=new FormData($(f)[0]);
+		$.ajax({
+			type: 'POST',
+			url: base_url+ln,
+			data: frmdata,
+			processData: false, //formdata
+			contentType: false, //formdata
+			success: function(data){
+				var json = JSON.parse(data);
+				//log(data);
+				//log(json);
+				var typ=json['status']?'success':'error';
+				alrt(json['msg'],typ,'');
+				mytbl.ajax.reload();
+			},
+			error: function(xhr,status){
+				log(status);
+				alrt('Connection error','error','Err');
+			}
+		});
+	}else{
+		alrt('Please enter all mandatory fields','warning','');
+	}
 }
 
 function senddatacallback(f){
@@ -113,7 +214,7 @@ function senddatacallback(f){
 
 $(document).ready(function(){
 	mytbl = $("#mytbl").DataTable({
-		serverSide: true,
+		serverSide: false,
 		processing: true,
 		searching: true,
 		buttons: ['copy', 'csv'],
@@ -121,9 +222,9 @@ $(document).ready(function(){
 		bDestroy: true,
 		ajax: {
 			type: 'POST',
-			url: base_url+'laporan/dttbl',
+			url: base_url+'myapi/dttbl',
 			data: function (d) {
-				d.q= '<?php echo base64_encode("select concat('<a href=# onclick=showModal(',rowid,');>',jenis,'</a>') as jns,panjang from tmc_data_jalan"); ?>';
+				d.lnk='<?php echo base64_encode('jalan')?>';
 			}
 		},
 		initComplete: function(){
@@ -131,12 +232,17 @@ $(document).ready(function(){
 		}
 	});
 	
+	//*
+	$(".select2").select2({
+        dropdownParent: $('#myModal')
+    });//*/
+	
 	$(".<?php echo $frid?>").attr("disabled",true);
 });
 
 jvalidate = $("#myf").validate({
     rules :{
-        "jalan" : {
+        "nama_jalan" : {
 			required : true
 		}
     }});
