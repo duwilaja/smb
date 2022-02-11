@@ -11,7 +11,7 @@ $cols.="giat,tempat,tanggal,audien,sasaran,media,lnk";
 	<div class="col-sm-6 col-md-6">
 		<div class="form-group">
 			<label class="form-label">Giat</label>
-			<select name="giat" class="form-control" placeholder="">
+			<select name="giat" class="form-select" placeholder="">
 				<option value="LITERASI ROAD SAFETY">LITERASI ROAD SAFETY</option>
 				<option value="PEMBINAAN KOMUNITAS">PEMBINAAN KOMUNITAS</option>
 				<option value="PEMBANGUN SDC BERSAMA STANDAR N JEMEN OPS REK">PEMBANGUN SDC BERSAMA STANDAR N JEMEN OPS REK</option>
@@ -53,7 +53,7 @@ $cols.="giat,tempat,tanggal,audien,sasaran,media,lnk";
 	<div class="col-sm-6 col-md-3">
 		<div class="form-group">
 			<label class="form-label">Sasaran</label>
-			<select name="sasaran" class="form-control" placeholder="">
+			<select name="sasaran" class="form-select" placeholder="">
 				<option value="Anggota">Anggota</option>
 				<option value="Pengemudi">Pengemudi</option>
 				<option value="Pelajar">Pelajar</option>
@@ -67,7 +67,7 @@ $cols.="giat,tempat,tanggal,audien,sasaran,media,lnk";
 	<div class="col-sm-6 col-md-3">
 		<div class="form-group">
 			<label class="form-label">Media</label>
-			<select name="media" class="form-control" placeholder="">
+			<select name="media" class="form-select" placeholder="">
 				<option value="Offline">Offline</option>
 				<option value="Online">Online</option>
 				<option value="Onair Elektronik">Onair Elektronik</option>

@@ -27,7 +27,7 @@ $cols.="situasi,kejadian,jalan,status,mulai,sampai,sebab,petugas,callsign,lat,ln
 	<div class="col-sm-6 col-md-2">
 		<div class="form-group">
 			<label class="form-label">Situasi Lalin</label>
-			<select name="situasi" class="form-control" placeholder="" onchange="">
+			<select name="situasi" class="form-select" placeholder="" onchange="">
 				<option value="Lancar">Lancar</option>
 				<option value="Padat">Padat</option>
 				<option value="Macet">Macet</option>
@@ -37,7 +37,7 @@ $cols.="situasi,kejadian,jalan,status,mulai,sampai,sebab,petugas,callsign,lat,ln
 	<div class="col-sm-6 col-md-2">
 		<div class="form-group">
 			<label class="form-label">Kejadian Terpantau</label>
-			<select id="kejadian" name="kejadian" class="form-control" placeholder="">
+			<select id="kejadian" name="kejadian" class="form-select" placeholder="">
 				<option value="Nihil">Nihil</option>
 				<option value="Kemacetan">Kemacetan</option>
 				<option value="Demo">Demo</option>
@@ -76,7 +76,7 @@ $cols.="situasi,kejadian,jalan,status,mulai,sampai,sebab,petugas,callsign,lat,ln
 	<div class="col-sm-6 col-md-4">
 		<div class="form-group">
 			<label class="form-label">Status Penggal Jalan</label>
-			<select name="status" id="penggal" class="form-control" placeholder="">
+			<select name="status" id="penggal" class="form-select" placeholder="">
 				<option value="None">None</option>
 				<option value="Rawan Bencana">Rawan Bencana</option>
 				<option value="Black Spot">Black Spot</option>
@@ -103,7 +103,7 @@ $cols.="situasi,kejadian,jalan,status,mulai,sampai,sebab,petugas,callsign,lat,ln
 			<label class="form-label">Penyebab</label>
 	<?php
 $penyebab['']='';
-$opt=array('class'=>'form-control','id'=>'sebab');
+$opt=array('class'=>'form-select','id'=>'sebab');
 echo form_dropdown('sebab', array_reverse($penyebab,true), '',$opt);
 ?>
 		</div>

@@ -53,7 +53,7 @@ $cols.="namajalan,lat,lng,jammulai,jamsampai,penyebab,penyebabd,lainnya,statuspe
 			<label class="form-label">Penyebab</label>
 	<?php
 $penyebab['']='';
-$opt=array('class'=>'form-control','id'=>'penyebab','onchange'=>"getSubQ('laporan/get_subq',this.value,'#penyebabd','','','penyebab_macet_d','detil as v,detil as t','sebab');");
+$opt=array('class'=>'form-select','id'=>'penyebab','onchange'=>"getSubQ('laporan/get_subq',this.value,'#penyebabd','','','penyebab_macet_d','detil as v,detil as t','sebab');");
 echo form_dropdown('penyebab', array_reverse($penyebab,true), '',$opt);
 ?>
 		</div>
@@ -61,7 +61,7 @@ echo form_dropdown('penyebab', array_reverse($penyebab,true), '',$opt);
 	<div class="col-sm-6 col-md-4">
 		<div class="form-group">
 			<label class="form-label">Detil</label>
-			<select name="penyebabd" id="penyebabd" class="form-control" placeholder="" onchange="lainnyabukan(this.value);">
+			<select name="penyebabd" id="penyebabd" class="form-select" placeholder="" onchange="lainnyabukan(this.value);">
 			<option value=""></option>
 			</select>
 		</div>
@@ -82,7 +82,7 @@ echo form_dropdown('penyebab', array_reverse($penyebab,true), '',$opt);
 	<div class="col-sm-6 col-md-4">
 		<div class="form-group">
 			<label class="form-label">Status Penggal Jalan</label>
-			<select name="statuspenggaljalan" class="form-control" placeholder="">
+			<select name="statuspenggaljalan" class="form-select" placeholder="">
 				<option value="None">None</option>
 				<option value="Black Spot">Black Spot</option>
 				<option value="Trouble Spot">Trouble Spot</option>
@@ -92,7 +92,7 @@ echo form_dropdown('penyebab', array_reverse($penyebab,true), '',$opt);
 	<div class="col-sm-6 col-md-4">
 		<div class="form-group">
 			<label class="form-label">Cara Bertindak</label>
-			<select name="tindakan" class="form-control" placeholder="">
+			<select name="tindakan" class="form-select" placeholder="">
 				<option value="Pre Ventif">Pre Ventif</option>
 				<option value="Pre Entif">Pre Entif</option>
 				<option value="Represif">Represif</option>

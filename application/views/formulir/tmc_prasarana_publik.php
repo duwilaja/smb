@@ -11,7 +11,7 @@ $cols.="prasarana,nama,k_datang,k_berangkat,p_datang,p_berangkat,parkir,k_diangk
 	<div class="col-sm-6 col-md-4">
 		<div class="form-group">
 			<label class="form-label">Prasarana</label>
-			<select name="prasarana" class="form-control" placeholder="" onchange="prasaranachanged(this.value)">
+			<select name="prasarana" class="form-select" placeholder="" onchange="prasaranachanged(this.value)">
 				<option value=""></option>
 				<option value="Terminal">Terminal</option>
 				<option value="Pelabuhan">Pelabuhan</option>

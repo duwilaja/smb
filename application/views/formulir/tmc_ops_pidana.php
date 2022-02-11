@@ -44,7 +44,7 @@ $cols.="instansi1,petugas1,instansi2,petugas2,instansi3,petugas3,instansi4,petug
 	<div class="col-sm-6 col-md-4">
 		<div class="form-group">
 			<label class="form-label">Tindak Pidana</label>
-			<select name="jenis" class="form-control" placeholder="">
+			<select name="jenis" class="form-select" placeholder="">
 <?php for($i=0;$i<count($pidana);$i++){?>
 <option value="<?php echo $pidana[$i]['val']?>"><?php echo $pidana[$i]['txt']?></option>
 <?php }?>
@@ -57,7 +57,7 @@ $cols.="instansi1,petugas1,instansi2,petugas2,instansi3,petugas3,instansi4,petug
 	<div class="col-sm-6 col-md-4">
 		<div class="form-group">
 			<label class="form-label">Korban</label>
-			<select name="korban" class="form-control" placeholder="">
+			<select name="korban" class="form-select" placeholder="">
 				<option value="Pengemudi R2">Pengemudi R2</option>
 				<option value="Pengemudi R4 Pribadi">Pengemudi R4 Pribadi</option>
 				<option value="Pengemudi Angkutan Barang">Pengemudi Angkutan Barang</option>
@@ -70,7 +70,7 @@ $cols.="instansi1,petugas1,instansi2,petugas2,instansi3,petugas3,instansi4,petug
 	<div class="col-sm-6 col-md-4">
 		<div class="form-group">
 			<label class="form-label">Cara Bertindak</label>
-			<select name="tindakan" class="form-control" placeholder="">
+			<select name="tindakan" class="form-select" placeholder="">
 				<option value="Pre Ventif">Pre Ventif</option>
 				<option value="Pre Entif">Pre Entif</option>
 				<option value="Represif">Represif</option>
@@ -82,7 +82,7 @@ $cols.="instansi1,petugas1,instansi2,petugas2,instansi3,petugas3,instansi4,petug
 	<div class="col-sm-6 col-md-4">
 		<div class="form-group">
 			<label class="form-label">Kategori Penindakan</label>
-			<select name="penindakan" class="form-control" placeholder="">
+			<select name="penindakan" class="form-select" placeholder="">
 				<option value="Turjagwali">Turjagwali</option>
 				<option value="Monitoring">Monitoring</option>
 				<option value="Sosialisasi">Sosialisasi</option>
@@ -105,7 +105,7 @@ $cols.="instansi1,petugas1,instansi2,petugas2,instansi3,petugas3,instansi4,petug
 	<div class="col-sm-6 col-md-3">
 		<div class="form-group">
 			<label class="form-label">Instansi 1</label>
-			<select name="instansi1" class="form-control" placeholder="">
+			<select name="instansi1" class="form-select" placeholder="">
 				<option value=""></option>
 				<option value="Lantas">Lantas</option>
 				<option value="PSC">PSC</option>
@@ -126,7 +126,7 @@ $cols.="instansi1,petugas1,instansi2,petugas2,instansi3,petugas3,instansi4,petug
 	<div class="col-sm-6 col-md-3">
 		<div class="form-group">
 			<label class="form-label">Instansi 2</label>
-			<select name="instansi2" class="form-control" placeholder="">
+			<select name="instansi2" class="form-select" placeholder="">
 				<option value=""></option>
 				<option value="Lantas">Lantas</option>
 				<option value="PSC">PSC</option>
@@ -147,7 +147,7 @@ $cols.="instansi1,petugas1,instansi2,petugas2,instansi3,petugas3,instansi4,petug
 	<div class="col-sm-6 col-md-3">
 		<div class="form-group">
 			<label class="form-label">Instansi 3</label>
-			<select name="instansi3" class="form-control" placeholder="">
+			<select name="instansi3" class="form-select" placeholder="">
 				<option value=""></option>
 				<option value="Lantas">Lantas</option>
 				<option value="PSC">PSC</option>
@@ -168,7 +168,7 @@ $cols.="instansi1,petugas1,instansi2,petugas2,instansi3,petugas3,instansi4,petug
 	<div class="col-sm-6 col-md-3">
 		<div class="form-group">
 			<label class="form-label">Instansi 4</label>
-			<select name="instansi4" class="form-control" placeholder="">
+			<select name="instansi4" class="form-select" placeholder="">
 				<option value=""></option>
 				<option value="Lantas">Lantas</option>
 				<option value="PSC">PSC</option>

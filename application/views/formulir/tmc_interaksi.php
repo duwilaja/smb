@@ -11,7 +11,7 @@ $cols.="media,jenis,jenisd,ket,lat,lng";
 	<div class="col-sm-6 col-md-2">
 		<div class="form-group">
 			<label class="form-label">Media</label>
-			<select name="media" class="form-control" placeholder="">
+			<select name="media" class="form-select" placeholder="">
 				<option value="Facebook">Facebook</option>
 				<option value="Tweeter">Tweeter</option>
 				<option value="Youtube">Youtube</option>
@@ -25,7 +25,7 @@ $cols.="media,jenis,jenisd,ket,lat,lng";
 	<div class="col-sm-6 col-md-3">
 		<div class="form-group">
 			<label class="form-label">Jenis</label>
-			<select name="jenis" class="form-control" placeholder="" onchange="jenischanged(this.value)">
+			<select name="jenis" class="form-select" placeholder="" onchange="jenischanged(this.value)">
 				<option value="Komplain">Komplain</option>
 				<option value="Konsultasi">Konsultasi</option>
 				<option value="Apresiasi">Apresiasi</option>
@@ -37,7 +37,7 @@ $cols.="media,jenis,jenisd,ket,lat,lng";
 	<div class="col-sm-6 col-md-3 aduan hidden">
 		<div class="form-group">
 			<label class="form-label">Aduan...</label>
-			<select name="jenisd" id="jenisd" class="form-control" placeholder="">
+			<select name="jenisd" id="jenisd" class="form-select" placeholder="">
 				<option value=""></option>
 				<option value="Kemacetan">Kemacetan</option>
 				<option value="Kecelakaan">Kecelakaan</option>

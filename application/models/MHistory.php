@@ -32,11 +32,15 @@ class MHistory extends CI_Model{
 
           // Fetch member's records
           $dataTabel = $this->dt->getRows(@$_POST, $condition);
-          $k = array_search('tmc_pservice_soldes', $dataTabel);
-          \array_splice($dataTabel, $k, 1);
+          $dtarr =[];
+          foreach ($dataTabel as $v => $k) {
+              if ($k->view_laporan != 'tmc_pservice_soldes') {
+                  array_push($dtarr, $k);
+              }
+          }
   
           $i = @$this->input->post('start');
-          foreach ($dataTabel as $dt) {
+          foreach ($dtarr as $dt) {
               $i++;
               // untuk menampilkan data di datatable, harus berurut dengan data tablenya
               $data[] = array(

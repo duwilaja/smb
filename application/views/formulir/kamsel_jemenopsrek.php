@@ -11,7 +11,7 @@ $cols.="giat,tempat,tanggal,peserta,lnk,pemateri1,pemateri2,pemateri3,pemateri4"
 	<div class="col-sm-6 col-md-4">
 		<div class="form-group">
 			<label class="form-label">Giat</label>
-			<select name="giat" class="form-control" placeholder="">
+			<select name="giat" class="form-select" placeholder="">
 				<option value="KAJIAN PARIWISATA">KAJIAN PARIWISATA</option>
 				<option value="KAJIAN TOL">KAJIAN TOL</option>
 				<option value="KAJIAN KAWASAN INDUSTRI">KAJIAN KAWASAN INDUSTRI</option>

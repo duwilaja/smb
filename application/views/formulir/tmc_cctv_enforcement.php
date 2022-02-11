@@ -12,7 +12,7 @@ $cols.="jam,jalan,lat,lng,jenis,pelanggaran,nopol,uploadedfile";
 	<div class="col-sm-6 col-md-3">
 		<div class="form-group">
 			<label class="form-label">Kategori Pelanggaran</label>
-			<select name="pelanggaran" class="form-control" placeholder="" onchange="katechange(this.value);">
+			<select name="pelanggaran" class="form-select" placeholder="" onchange="katechange(this.value);">
 				<option value="Lalu Lintas">Lalu Lintas</option>
 				<option value="Perda">Perda</option>
 			</select>
@@ -21,7 +21,7 @@ $cols.="jam,jalan,lat,lng,jenis,pelanggaran,nopol,uploadedfile";
 	<div class="col-sm-6 col-md-5">
 		<div class="form-group">
 			<label class="form-label">Jenis Pelanggaran</label>
-			<select name="jenis" id="jenis" class="form-control" placeholder="">
+			<select name="jenis" id="jenis" class="form-select" placeholder="">
 			</select>
 		</div>
 	</div>

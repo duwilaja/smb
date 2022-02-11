@@ -26,7 +26,7 @@ $cols.="jenis,tgldari,tglsampai,jamdari,jamsampai,lokasi,sasaran,rincian,kuatper
 	<div class="col-sm-6 col-md-4">
 		<div class="form-group">
 			<label class="form-label">Jenis</label>
-			<select name="jenis" class="form-control" placeholder="">
+			<select name="jenis" class="form-select" placeholder="">
 				<option value="PAM Road Savety">PAM Road Savety</option>
 				<option value="Road Savety Campaign">Road Savety Campaign</option>
 				<option value="Sosialisasi">Sosialisasi</option>

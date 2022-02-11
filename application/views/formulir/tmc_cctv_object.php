@@ -27,7 +27,7 @@ $cols.="objek,terdeteksi,nopol,posisik,waktuk,nama,jk,posisio,waktuo,uploadedfil
 	<div class="col-sm-6 col-md-4">
 		<div class="form-group">
 			<label class="form-label">Objek</label>
-			<select id="objek" name="objek" class="form-control" placeholder="" onchange="macetgak();">
+			<select id="objek" name="objek" class="form-select" placeholder="" onchange="macetgak();">
 				<option value="Kendaraan">Kendaraan</option>
 				<option value="Orang">Orang</option>
 			</select>
@@ -36,7 +36,7 @@ $cols.="objek,terdeteksi,nopol,posisik,waktuk,nama,jk,posisio,waktuo,uploadedfil
 	<div class="col-sm-6 col-md-3">
 		<div class="form-group">
 			<label class="form-label">Terdeteksi</label>
-			<select id="terdeteksi" name="terdeteksi" class="form-control" placeholder="" onchange="macetgak();">
+			<select id="terdeteksi" name="terdeteksi" class="form-select" placeholder="" onchange="macetgak();">
 				<option value="Tidak Ada">Tidak Ada</option>
 				<option value="Ada">Ada</option>
 			</select>
@@ -83,7 +83,7 @@ $cols.="objek,terdeteksi,nopol,posisik,waktuk,nama,jk,posisio,waktuo,uploadedfil
 	<div class="col-sm-6 col-md-2">
 		<div class="form-group">
 			<label class="form-label">JK</label>
-			<select id="jk" name="jk" class="form-control" placeholder="">
+			<select id="jk" name="jk" class="form-select" placeholder="">
 				<option value=""></option>
 				<option value="Pria">Pria</option>
 				<option value="Wanita">Wanita</option>

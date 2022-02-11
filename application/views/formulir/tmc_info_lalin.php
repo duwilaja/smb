@@ -37,7 +37,7 @@ $cols.="namajalan,lat,lng,status,jammulai,jamsampai,penyebab,penyebabd,lainnya,s
 	<div class="col-sm-6 col-md-4">
 		<div class="form-group">
 			<label class="form-label">Status</label>
-			<select name="status" class="form-control" placeholder="" onchange="macetgak(this.value);">
+			<select name="status" class="form-select" placeholder="" onchange="macetgak(this.value);">
 				<option value="Lancar">Lancar</option>
 				<option value="Padat">Padat</option>
 				<option value="Macet">Macet</option>
@@ -63,7 +63,7 @@ $cols.="namajalan,lat,lng,status,jammulai,jamsampai,penyebab,penyebabd,lainnya,s
 			<label class="form-label">Penyebab</label>
 	<?php
 $penyebab['']='';
-$opt=array('class'=>'form-control','id'=>'penyebab','onchange'=>"getSubQ('laporan/get_subq',this.value,'#penyebabd','','','penyebab_macet_d','detil as v,detil as t','sebab');");
+$opt=array('class'=>'form-select','id'=>'penyebab','onchange'=>"getSubQ('laporan/get_subq',this.value,'#penyebabd','','','penyebab_macet_d','detil as v,detil as t','sebab');");
 echo form_dropdown('penyebab', array_reverse($penyebab,true), '',$opt);
 ?>
 		</div>
@@ -71,7 +71,7 @@ echo form_dropdown('penyebab', array_reverse($penyebab,true), '',$opt);
 	<div class="col-sm-6 col-md-4 macet">
 		<div class="form-group">
 			<label class="form-label">Detil</label>
-			<select name="penyebabd" id="penyebabd" class="form-control" placeholder="" onchange="lainnyabukan(this.value);">
+			<select name="penyebabd" id="penyebabd" class="form-select" placeholder="" onchange="lainnyabukan(this.value);">
 			<option value=""></option>
 			</select>
 		</div>
@@ -92,7 +92,7 @@ echo form_dropdown('penyebab', array_reverse($penyebab,true), '',$opt);
 	<div class="col-sm-6 col-md-4">
 		<div class="form-group">
 			<label class="form-label">Status Penggal Jalan</label>
-			<select name="statuspenggaljalan" class="form-control" placeholder="">
+			<select name="statuspenggaljalan" class="form-select" placeholder="">
 				<option value="None">None</option>
 				<option value="Black Spot">Black Spot</option>
 				<option value="Trouble Spot">Trouble Spot</option>
@@ -102,7 +102,7 @@ echo form_dropdown('penyebab', array_reverse($penyebab,true), '',$opt);
 	<div class="col-sm-6 col-md-4">
 		<div class="form-group">
 			<label class="form-label">Sumber Info</label>
-			<select name="sumber" class="form-control" placeholder="">
+			<select name="sumber" class="form-select" placeholder="">
 				<option value="Lap. Masyarakat">Lap. Masyarakat</option>
 				<option value="Patroli CCTV">Patroli CCTV</option>
 				<option value="Turjagwali">Turjagwali</option>

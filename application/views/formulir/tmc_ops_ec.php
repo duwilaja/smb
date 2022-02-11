@@ -17,7 +17,7 @@ $cols.="kejadian,lokasi,lat,lng,jam,dampak,radius,kebutuhan,ket,md,lb,pengungsi"
 	<div class="col-sm-6 col-md-2">
 		<div class="form-group">
 			<label class="form-label">Kejadian</label>
-			<select name="kejadian" class="form-control" placeholder="">
+			<select name="kejadian" class="form-select" placeholder="">
 				<option value="Kebakaran">Kebakaran</option>
 				<option value="Bencana Alam">Bencana Alam</option>
 				<option value="Kerusuhan">Kerusuhan</option>
@@ -54,7 +54,7 @@ $cols.="kejadian,lokasi,lat,lng,jam,dampak,radius,kebutuhan,ket,md,lb,pengungsi"
 	<div class="col-sm-6 col-md-2">
 		<div class="form-group">
 			<label class="form-label">Dampak</label>
-			<select name="dampak[]" class="form-control select2" placeholder="" multiple style="width:100%;">
+			<select name="dampak[]" class="form-select select2" placeholder="" multiple style="width:100%;">
 				<option value="Kemacetan">Kemacetan</option>
 				<option value="Arus Pengungsi">Arus Pengungsi</option>
 			</select>
@@ -63,7 +63,7 @@ $cols.="kejadian,lokasi,lat,lng,jam,dampak,radius,kebutuhan,ket,md,lb,pengungsi"
 	<div class="col-sm-6 col-md-3">
 		<div class="form-group">
 			<label class="form-label">Radius Terdampak</label>
-			<select name="radius" class="form-control" placeholder="">
+			<select name="radius" class="form-select" placeholder="">
 				<option value="100-500m">100-500m</option>
 				<option value="600-1000m">600-1000m</option>
 				<option value="1-5km">1-5km</option>
@@ -74,7 +74,7 @@ $cols.="kejadian,lokasi,lat,lng,jam,dampak,radius,kebutuhan,ket,md,lb,pengungsi"
 	<div class="col-sm-6 col-md-4">
 		<div class="form-group">
 			<label class="form-label">Kebutuhan</label>
-			<select name="kebutuhan[]" class="form-control select2" placeholder="" multiple style="width:100%;">
+			<select name="kebutuhan[]" class="form-select select2" placeholder="" multiple style="width:100%;">
 				<option value="Tindakan Penyelamatan">Tindakan Penyelamatan</option>
 				<option value="Alat Komunikasi">Alat Komunikasi</option>
 				<option value="Makanan">Makanan</option>
@@ -138,7 +138,7 @@ $cols.="kejadian,lokasi,lat,lng,jam,dampak,radius,kebutuhan,ket,md,lb,pengungsi"
 				<tbody>
 					<tr class="route">
 						<td>
-							<select name="jenis[]" class="form-control" placeholder="">
+							<select name="jenis[]" class="form-select" placeholder="">
 								<option value="Rumah Sakit">Rumah Sakit</option>
 								<option value="Titik Penampungan">Titik Penampungan</option>
 								<option value="Posko Koordinasi">Posko Koordinasi</option>
