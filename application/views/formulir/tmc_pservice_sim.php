@@ -13,7 +13,7 @@ $cols.="saluran,sumber,nama,telp,email,jenis,status";
 	<div class="col-sm-6 col-md-3">
 		<div class="form-group">
 			<label class="form-label">Saluran Informasi</label>
-			<select name="saluran" class="form-control" placeholder="">
+			<select name="saluran" class="form-select" placeholder="">
 				<option value="Call Center">Call Center</option>
 				<option value="Email">Email</option>
 				<option value="Medsos">Medsos</option>
@@ -24,7 +24,7 @@ $cols.="saluran,sumber,nama,telp,email,jenis,status";
 	<div class="col-sm-6 col-md-3">
 		<div class="form-group">
 			<label class="form-label">Sumber Informasi</label>
-			<select name="sumber" class="form-control" placeholder="">
+			<select name="sumber" class="form-select" placeholder="">
 				<option value="Individu">Individu</option>
 				<option value="Kelompok Masyarakat">Kelompok Masyarakat</option>
 				<option value="Instansi Pemerintah">Instansi Pemerintah</option>
@@ -58,7 +58,7 @@ $cols.="saluran,sumber,nama,telp,email,jenis,status";
 	<div class="col-sm-6 col-md-4">
 		<div class="form-group">
 			<label class="form-label">Kategori Permohonan</label>
-			<select name="jenis" class="form-control" placeholder="" onclick="lainnyabukan(this.value);">
+			<select name="jenis" class="form-select" placeholder="" onclick="lainnyabukan(this.value);">
 				<option value="Reguler">Reguler</option>
 				<option value="Kelompok">Kelompok</option>
 			</select>
@@ -67,7 +67,7 @@ $cols.="saluran,sumber,nama,telp,email,jenis,status";
 	<div class="col-sm-6 col-md-4">
 		<div class="form-group">
 			<label class="form-label">Status</label>
-			<select name="status" class="form-control" placeholder="" onclick="lainnyabukan(this.value);">
+			<select name="status" class="form-select" placeholder="" onclick="lainnyabukan(this.value);">
 				<option value="Baru">Baru</option>
 				<option value="Peningkatan">Peningkatan</option>
 				<option value="DPS">DPS</option>

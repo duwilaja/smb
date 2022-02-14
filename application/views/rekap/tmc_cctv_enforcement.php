@@ -22,7 +22,7 @@ telp,masyarakat_id as pelapor_id,jenis as keterangan,'infrastruktur' as judul,'1
 						<th>NoPol</th>
 						<th>Lat</th>
 						<th>Lng</th>
-						<th>FileUpload</th>
+						<th>Lokasi</th>
 						<th></th>
 					</tr>
 				</thead>

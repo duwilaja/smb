@@ -29,7 +29,7 @@ $jj=isset($jj->data)?$jj->data:[];
 	<div class="col-sm-6 col-md-3">
 		<div class="form-group">
 			<label class="form-label">Giat</label>
-			<select name="giat" class="form-control" placeholder="">
+			<select name="giat" class="form-select" placeholder="">
 				<option value="SIMLing">SIMLing</option>
 				<option value="SAMLing">SAMLing</option>
 				<option value="Unras">Unras</option>

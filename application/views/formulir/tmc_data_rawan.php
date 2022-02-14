@@ -68,7 +68,7 @@ $jj=isset($jj->data)?$jj->data:[];
 		  <div class="row">
 			<div class="form-group col-md-12">
 				<label>Jenis Jalan</label>
-				<select id="jenis" name="jenis" class="form-control" placeholder="">
+				<select id="jenis" name="jenis" class="form-select" placeholder="">
 					<option value="Nasional">Nasional</option>
 					<option value="Propinsi">Propinsi</option>
 					<option value="Kabupaten">Kabupaten</option>
@@ -83,7 +83,7 @@ $jj=isset($jj->data)?$jj->data:[];
 		  <div class="row">
 			<div class="form-group col-md-12">
 				<label>Status</label>
-				<select id="status" name="status" class="form-control" placeholder="" onchange="getSubQ('laporan/get_subq',this.value,'#detil','','','lov','val as v,txt as t','grp');">
+				<select id="status" name="status" class="form-select" placeholder="" onchange="getSubQ('laporan/get_subq',this.value,'#detil','','','lov','val as v,txt as t','grp');">
 <?php for($i=0;$i<count($rawan);$i++){?>
 <option value="<?php echo $rawan[$i]['val']?>"><?php echo $rawan[$i]['txt']?></option>
 <?php }?>
@@ -99,7 +99,7 @@ $jj=isset($jj->data)?$jj->data:[];
 		  <div class="row">
 			<div class="form-group col-md-12">
 				<label>Detil</label>
-				<select id="detil" name="detil" class="form-control" placeholder="">
+				<select id="detil" name="detil" class="form-select" placeholder="">
 				</select>
 			</div>
 		  </div>

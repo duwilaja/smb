@@ -44,7 +44,7 @@ $cols.="instansi1,petugas1,instansi2,petugas2,instansi3,petugas3,instansi4,petug
 	<div class="col-sm-6 col-md-4">
 		<div class="form-group">
 			<label class="form-label">Kategori Pelanggaran</label>
-			<select name="kategori" class="form-control" placeholder="">
+			<select name="kategori" class="form-select" placeholder="">
 				<option value="Berat">Berat</option>
 				<option value="Sedang">Sedang</option>
 				<option value="Ringan">Ringan</option>
@@ -55,7 +55,7 @@ $cols.="instansi1,petugas1,instansi2,petugas2,instansi3,petugas3,instansi4,petug
 	<div class="col-sm-6 col-md-4">
 		<div class="form-group">
 			<label class="form-label">Dominasi Pelanggar</label>
-			<select name="dominasi" class="form-control" placeholder="">
+			<select name="dominasi" class="form-select" placeholder="">
 				<option value="R2">R2</option>
 				<option value="R4">R4</option>
 				<option value="Campuran">Campuran</option>
@@ -67,7 +67,7 @@ $cols.="instansi1,petugas1,instansi2,petugas2,instansi3,petugas3,instansi4,petug
 	<div class="col-sm-6 col-md-4">
 		<div class="form-group">
 			<label class="form-label">Pelanggaran Lalin</label>
-			<select name="langgarlalin" class="form-control" placeholder="">
+			<select name="langgarlalin" class="form-select" placeholder="">
 				<option value="APLL">APLL</option>
 				<option value="Balap Liar">Balap Liar</option>
 				<option value="Putar Arah">Putar Arah</option>
@@ -93,7 +93,7 @@ $cols.="instansi1,petugas1,instansi2,petugas2,instansi3,petugas3,instansi4,petug
 	<div class="col-sm-6 col-md-4">
 		<div class="form-group">
 			<label class="form-label">Cara Bertindak</label>
-			<select name="tindakan" class="form-control" placeholder="">
+			<select name="tindakan" class="form-select" placeholder="">
 				<option value="Pre Ventif">Pre Ventif</option>
 				<option value="Pre Entif">Pre Entif</option>
 				<option value="Represif">Represif</option>
@@ -105,7 +105,7 @@ $cols.="instansi1,petugas1,instansi2,petugas2,instansi3,petugas3,instansi4,petug
 	<div class="col-sm-6 col-md-4">
 		<div class="form-group">
 			<label class="form-label">Kategori Penindakan</label>
-			<select name="penindakan" class="form-control" placeholder="">
+			<select name="penindakan" class="form-select" placeholder="">
 				<option value="Turjagwali">Turjagwali</option>
 				<option value="Monitoring">Monitoring</option>
 				<option value="Sosialisasi">Sosialisasi</option>
@@ -128,7 +128,7 @@ $cols.="instansi1,petugas1,instansi2,petugas2,instansi3,petugas3,instansi4,petug
 	<div class="col-sm-6 col-md-3">
 		<div class="form-group">
 			<label class="form-label">Instansi 1</label>
-			<select name="instansi1" class="form-control" placeholder="">
+			<select name="instansi1" class="form-select" placeholder="">
 				<option value=""></option>
 				<option value="Lantas">Lantas</option>
 				<option value="PSC">PSC</option>
@@ -149,7 +149,7 @@ $cols.="instansi1,petugas1,instansi2,petugas2,instansi3,petugas3,instansi4,petug
 	<div class="col-sm-6 col-md-3">
 		<div class="form-group">
 			<label class="form-label">Instansi 2</label>
-			<select name="instansi2" class="form-control" placeholder="">
+			<select name="instansi2" class="form-select" placeholder="">
 				<option value=""></option>
 				<option value="Lantas">Lantas</option>
 				<option value="PSC">PSC</option>
@@ -170,7 +170,7 @@ $cols.="instansi1,petugas1,instansi2,petugas2,instansi3,petugas3,instansi4,petug
 	<div class="col-sm-6 col-md-3">
 		<div class="form-group">
 			<label class="form-label">Instansi 3</label>
-			<select name="instansi3" class="form-control" placeholder="">
+			<select name="instansi3" class="form-select" placeholder="">
 				<option value=""></option>
 				<option value="Lantas">Lantas</option>
 				<option value="PSC">PSC</option>
@@ -191,7 +191,7 @@ $cols.="instansi1,petugas1,instansi2,petugas2,instansi3,petugas3,instansi4,petug
 	<div class="col-sm-6 col-md-3">
 		<div class="form-group">
 			<label class="form-label">Instansi 4</label>
-			<select name="instansi4" class="form-control" placeholder="">
+			<select name="instansi4" class="form-select" placeholder="">
 				<option value=""></option>
 				<option value="Lantas">Lantas</option>
 				<option value="PSC">PSC</option>

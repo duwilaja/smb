@@ -45,7 +45,7 @@ $cols.="jumlah,jenis";
 		  <div class="row">
 			<div class="form-group col-md-12">
 				<label>Jenis Lisensi</label>
-				<select id="jenis" name="jenis" class="form-control" placeholder="">
+				<select id="jenis" name="jenis" class="form-select" placeholder="">
 					<option value="A">A</option>
 					<option value="B1">B1</option>
 					<option value="B2">B2</option>

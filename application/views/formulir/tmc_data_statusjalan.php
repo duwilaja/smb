@@ -68,7 +68,7 @@ $jj=isset($jj->data)?$jj->data:[];
 		  <div class="row">
 			<div class="form-group col-md-12">
 				<label>Jenis Jalan</label>
-				<select id="jenis" name="jenis" class="form-control" placeholder="">
+				<select id="jenis" name="jenis" class="form-select" placeholder="">
 					<option value="Nasional">Nasional</option>
 					<option value="Propinsi">Propinsi</option>
 					<option value="Kabupaten">Kabupaten</option>
@@ -83,7 +83,7 @@ $jj=isset($jj->data)?$jj->data:[];
 		  <div class="row">
 			<div class="form-group col-md-12">
 				<label>Status Jalan</label>
-				<select id="status" name="status" class="form-control" placeholder="">
+				<select id="status" name="status" class="form-select" placeholder="">
 					<option value="Trouble Spot">Trouble Spot</option>
 					<option value="Black Spot">Black Spot</option>
 				</select>

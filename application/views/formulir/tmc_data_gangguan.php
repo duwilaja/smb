@@ -67,7 +67,7 @@ $jj=isset($jj->data)?$jj->data:[];
 		  <div class="row">
 			<div class="form-group col-md-12">
 				<label>Jenis Jalan</label>
-				<select id="jenis" name="jenis" class="form-control" placeholder="">
+				<select id="jenis" name="jenis" class="form-select" placeholder="">
 					<option value="Nasional">Nasional</option>
 					<option value="Propinsi">Propinsi</option>
 					<option value="Kabupaten">Kabupaten</option>
@@ -82,7 +82,7 @@ $jj=isset($jj->data)?$jj->data:[];
 		  <div class="row">
 			<div class="form-group col-md-12">
 				<label>Status</label>
-				<select id="status" name="status" class="form-control" placeholder="">
+				<select id="status" name="status" class="form-select" placeholder="">
 					<option value="Potensi Gangguan">Potensi Gangguan</option>
 					<option value="Ambang Gangguan">Ambang Gangguan</option>
 					<option value="Gangguan Nyata">Gangguan Nyata</option>
@@ -92,7 +92,7 @@ $jj=isset($jj->data)?$jj->data:[];
 		  <div class="row">
 			<div class="form-group col-md-12">
 				<label>Penyebab</label>
-				<select id="penyebab" name="penyebab" class="form-control" placeholder="" onchange="getSubQ('laporan/get_subq',this.value,'#penyebabd','','','penyebab_macet_d','detil as v,detil as t','sebab');">
+				<select id="penyebab" name="penyebab" class="form-select" placeholder="" onchange="getSubQ('laporan/get_subq',this.value,'#penyebabd','','','penyebab_macet_d','detil as v,detil as t','sebab');">
 					
 				</select>
 			</div>
@@ -100,7 +100,7 @@ $jj=isset($jj->data)?$jj->data:[];
 		  <div class="row">
 			<div class="form-group col-md-12">
 				<label>Detil</label>
-				<select id="penyebabd" name="penyebabd" class="form-control" placeholder="">
+				<select id="penyebabd" name="penyebabd" class="form-select" placeholder="">
 					
 				</select>
 			</div>

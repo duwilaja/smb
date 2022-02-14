@@ -42,7 +42,7 @@ telp,masyarakat_id as input_peng,concat(petugas,' petugas') as keterangan,'kemac
   <div role="document" class="modal-dialog">
 	<div class="modal-content">
 	  <div class="modal-header"><strong id="exampleModalLabel" class="modal-title">Verifikasi</strong>
-		<button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">x</span></button>
+	  	<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 	  </div>
 	  <div class="modal-body">
 		<form id="myfx">
@@ -57,8 +57,8 @@ telp,masyarakat_id as input_peng,concat(petugas,' petugas') as keterangan,'kemac
 		</form>
 	  </div>
 	  <div class="modal-footer">
+		  <button type="button" data-bs-dismiss="modal" class="btn btn-danger">Tutup</button>
 		<button type="button" class="btn btn-success" onclick="simpanlah();">Simpan</button>
-		<button type="button" data-dismiss="modal" class="btn btn-default">Tutup</button>
 	  </div>
 	</div>
   </div>

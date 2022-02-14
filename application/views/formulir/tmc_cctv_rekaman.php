@@ -46,7 +46,7 @@ $cols.="organisasi,tanggal,lokasi,keperluan,lainnya";
 	<div class="col-sm-6 col-md-4">
 		<div class="form-group">
 			<label class="form-label">Keperluan</label>
-			<select name="keperluan" class="form-control" placeholder="" onchange="lainnyabukan(this.value);">
+			<select name="keperluan" class="form-select" placeholder="" onchange="lainnyabukan(this.value);">
 				<option value="Penyidikan">Penyidikan</option>
 				<option value="Pelacakan">Pelacakan</option>
 				<option value="Pembuatan Konten">Pembuatan Konten</option>

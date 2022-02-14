@@ -25,7 +25,7 @@ $cols.="kategori,obyek,obyeklain,namaob,tanggal,jam,dari,darilat,darilng,ke,kela
 	<div class="col-sm-6 col-md-3">
 		<div class="form-group">
 			<label class="form-label">Kategori</label>
-			<select name="kategori" class="form-control" placeholder="" onclick="katechange(this.value)">
+			<select name="kategori" class="form-select" placeholder="" onclick="katechange(this.value)">
 				<option value="Pengawalan VIP">Pengawalan VIP</option>
 				<option value="Pengawalan Giat Masyarakat">Pengawalan Giat Masyarakat</option>
 				<option value="Pengawalan Khusus">Pengawalan Khusus</option>
@@ -35,7 +35,7 @@ $cols.="kategori,obyek,obyeklain,namaob,tanggal,jam,dari,darilat,darilng,ke,kela
 	<div class="col-sm-6 col-md-3">
 		<div class="form-group">
 			<label class="form-label">Obyek Pengawalan</label>
-			<select id="obyek" name="obyek" class="form-control" placeholder="" onclick="lainnya(this.value)">
+			<select id="obyek" name="obyek" class="form-select" placeholder="" onclick="lainnya(this.value)">
 			</select>
 		</div>
 	</div>
@@ -108,7 +108,7 @@ $cols.="kategori,obyek,obyeklain,namaob,tanggal,jam,dari,darilat,darilng,ke,kela
 	<div class="col-sm-6 col-md-2">
 		<div class="form-group">
 			<label class="form-label">Identifikasi Ambang Gangguan</label>
-			<select name="identifikasiag" class="form-control" placeholder="">
+			<select name="identifikasiag" class="form-select" placeholder="">
 				<option value="Tidak Ada">Tidak Ada</option>
 				<option value="Ada">Ada</option>
 			</select>
@@ -123,7 +123,7 @@ $cols.="kategori,obyek,obyeklain,namaob,tanggal,jam,dari,darilat,darilng,ke,kela
 	<div class="col-sm-6 col-md-2">
 		<div class="form-group">
 			<label class="form-label">Identifikasi Giat Masyarakat</label>
-			<select name="identifikasigm" class="form-control" placeholder="">
+			<select name="identifikasigm" class="form-select" placeholder="">
 				<option value="Tidak Ada">Tidak Ada</option>
 				<option value="Ada">Ada</option>
 			</select>
@@ -140,7 +140,7 @@ $cols.="kategori,obyek,obyeklain,namaob,tanggal,jam,dari,darilat,darilng,ke,kela
 	<div class="col-sm-6 col-md-2">
 		<div class="form-group">
 			<label class="form-label">Status Perjalanan</label>
-			<select name="status" class="form-control" placeholder="">
+			<select name="status" class="form-select" placeholder="">
 				<option value="TKA">TKA</option>
 				<option value="Macet">Macet</option>
 				<option value="Padat">Padat</option>

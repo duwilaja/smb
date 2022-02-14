@@ -11,7 +11,7 @@ $cols.="media,jenis,isi,link";
 	<div class="col-sm-6 col-md-4">
 		<div class="form-group">
 			<label class="form-label">Media</label>
-			<select name="media" class="form-control" placeholder="">
+			<select name="media" class="form-select" placeholder="">
 				<option value="Facebook">Facebook</option>
 				<option value="Tweeter">Tweeter</option>
 				<option value="Website">Website</option>
@@ -22,7 +22,7 @@ $cols.="media,jenis,isi,link";
 	<div class="col-sm-6 col-md-4">
 		<div class="form-group">
 			<label class="form-label">Jenis</label>
-			<select name="jenis" class="form-control" placeholder="">
+			<select name="jenis" class="form-select" placeholder="">
 				<option value="SIMLing">SIMLing</option>
 				<option value="SAMLing">SAMLing</option>
 				<option value="TAEW">TAEW</option>

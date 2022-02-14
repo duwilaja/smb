@@ -67,7 +67,7 @@ $jj=isset($jj->data)?$jj->data:[];
 		  <div class="row">
 			<div class="form-group col-md-12">
 				<label>Jenis Layanan</label>
-				<select id="jenis" name="jenis" class="form-control" placeholder="">
+				<select id="jenis" name="jenis" class="form-select" placeholder="">
 					<option value="Pos Tetap">Pos Tetap</option>
 					<option value="Pos Sementara">Pos Sementara</option>
 					<option value="Faskes">Faskes</option>
