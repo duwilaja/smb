@@ -1,26 +1,14 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed'); 
 
 $cols="nrp,unit,polda,polres,dinas,subdinas,tgl,";
-$cols.="jenis,tgldari,tglsampai,jamdari,jamsampai,lokasi,sasaran,rincian,kuatpers,pic,target,lat,lng";
+$cols.="jenis,tgldari,tglsampai,jamdari,jamsampai,lokasi,sasaran,rincian,kuatpers,pic,target,lat,lng,jalan_id";
+
+$jj=json_decode($jalan);
+$jj=isset($jj->data)?$jj->data:[];
 ?>
 
 <input type="hidden" name="tablename" value="tmc_rengiat">
 <input type="hidden" name="fieldnames" value="<?php echo $cols?>">
-
-<!--div class="row">
-<div class="col-lg-12">
-	<div class="btn-list">
-		<?php 
-		$keys=array_keys($subm);
-		$values=array_values($subm);
-		for($i=0;$i<count($keys);$i++){
-		?>
-		<button type="button" class="btn btn-warning btn-pill <?php echo $keys[$i]?>" onclick="ambil_isi('<?php echo $keys[$i]?>');"><i class="fa fa-list-alt"></i> <?php echo $values[$i]?></button>
-		<?php } ?>
-	</div>
-</div>
-</div>
-<hr /-->
 
 <div class="row">
 	<div class="col-sm-6 col-md-4">
@@ -80,7 +68,12 @@ $cols.="jenis,tgldari,tglsampai,jamdari,jamsampai,lokasi,sasaran,rincian,kuatper
 	<div class="col-sm-6 col-md-4">
 		<div class="form-group">
 			<label class="form-label">Lokasi</label>
-			<input type="text" id="lokasi" name="lokasi" class="form-control" placeholder="" >
+			<input type="hidden" id="lokasi" name="lokasi" class="form-control" placeholder="" >
+			<select id="jalan_id" name="jalan_id" class="form-control select2" placeholder="" onchange="$('#lokasi').val(this.options[this.selectedIndex].text);">
+			<?php foreach($jj as $j){?>
+				<option value="<?php echo $j->id?>"><?php echo $j->nama_jalan?></option>
+			<?php }?>
+			</select>
 		</div>
 	</div>
 	<div class="col-sm-6 col-md-2">
@@ -157,6 +150,8 @@ jvalidate = $("#myf").validate({
 $("#btn_save").show();
 $(".dasar").show();
 $(".nomor").show();
+
+$(".select2").select2();
 
 datepicker(true);
 timepicker();

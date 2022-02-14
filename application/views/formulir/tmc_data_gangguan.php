@@ -1,6 +1,9 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed'); 
 $cols="nrp,unit,polda,polres,dinas,subdinas,tgl,";
-$cols.="jalan,lat,lng,jenis,status,penyebab,penyebabd";
+$cols.="jalan,lat,lng,jenis,status,penyebab,penyebabd,jalan_id";
+
+$jj=json_decode($jalan);
+$jj=isset($jj->data)?$jj->data:[];
 ?>
 
 <input type="hidden" name="tablename" value="tmc_data_gangguan">
@@ -18,21 +21,6 @@ $cols.="jalan,lat,lng,jenis,status,penyebab,penyebabd";
 
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin=""/>
 <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
-
-<!--div class="row">
-<div class="col-lg-12">
-	<div class="btn-list">
-		<?php 
-		$keys=array_keys($subm);
-		$values=array_values($subm);
-		for($i=0;$i<count($keys);$i++){
-		?>
-		<button type="button" class="btn btn-warning btn-pill <?php echo $keys[$i]?>" onclick="ambil_isi('<?php echo $keys[$i]?>');"><i class="fa fa-list-alt"></i> <?php echo $values[$i]?></button>
-		<?php } ?>
-	</div>
-</div>
-</div>
-<hr /-->
 
 <div class="row">
 	<div class="col-md-7">
@@ -68,7 +56,12 @@ $cols.="jalan,lat,lng,jenis,status,penyebab,penyebabd";
 		  <div class="row">
 			<div class="form-group col-md-12">
 				<label>Nama Jalan</label>
-				<input type="text" id="jalan" name="jalan" placeholder="..." class="form-control">
+				<input type="hidden" id="jalan" name="jalan" placeholder="..." class="form-control">
+				<select id="jalan_id" name="jalan_id" class="form-control select2" placeholder="" onchange="$('#jalan').val(this.options[this.selectedIndex].text);">
+				<?php foreach($jj as $j){?>
+					<option value="<?php echo $j->id?>"><?php echo $j->nama_jalan?></option>
+				<?php }?>
+				</select>
 			</div>
 		  </div>
 		  <div class="row">
@@ -133,6 +126,7 @@ function showModal(id){
 		$("#rowid").val(0);
 		$("#bdel").hide();
 		$("#myModal").modal("show");
+		$(".select2").val(null).trigger("change");
 	}else{
 		$.ajax({
 			type: 'POST',
@@ -149,6 +143,7 @@ function showModal(id){
 				});
 				$("#myModal").modal("show");
 				getSubQ('laporan/get_subq',$('#penyebab').val(),'#penyebabd',dv,'','penyebab_macet_d','detil as v,detil as t','sebab');
+				$(".select2").trigger("change");
 			},
 			error: function(xhr){
 				log('Please check your connection'+xhr);
@@ -250,6 +245,10 @@ $(document).ready(function(){
 	});
 	
 	getSubQ('laporan/get_subq','','#penyebab',"","","penyebab_macet","sebab as v,sebab as t","");
+	
+	$(".select2").select2({
+        dropdownParent: $('#myModal')
+    });
 	
 	$(".<?php echo $frid?>").attr("disabled",true);
 });

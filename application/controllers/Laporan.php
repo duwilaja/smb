@@ -19,6 +19,20 @@ class Laporan extends CI_Controller {
 	{
 		$user=$this->session->userdata('user_data');
 		if(isset($user)){
+			$d=$this->mapi->get('polda?prov_id=13');
+			$dt = $d[0]?$d[0]:$d[1];
+			if(isset($dt->data)){
+				if(count($dt->data)>0){
+					$user['polda']=$dt->data[0]->polda_id;
+				}
+			}
+			$d=$this->mapi->get('polres?kota_id=208');
+			$dt = $d[0]?$d[0]:$d[1];
+			if(isset($dt->data)){
+				if(count($dt->data)>0){
+					$user['polres']=$dt->data[0]->polres_id;
+				}
+			}
 			$data['session'] = $user;
 			//$data['jumlah'] = comboopts($this->db->select('id as v, status as t')->where("status",0)->get('patwal_permohonan')->result());
 			$data['dasargiat'] = comboopts($this->db->select('dg_id as v,dg_nam as t')->get('dasargiat')->result());
@@ -152,34 +166,35 @@ class Laporan extends CI_Controller {
 				$data['jenisjalan'] = $d[0]?$d[0]:$d[1];
 				$d=$this->mapi->get('jalan/status');
 				$data['statusjalan'] = $d[0]?$d[0]:$d[1];
-				$d=$this->mapi->get('kelurahan');
-				$data['kelurahan'] = $d[0]?$d[0]:$d[1];
-				$d=$this->mapi->get('kecamatan');
-				$data['kecamatan'] = $d[0]?$d[0]:$d[1];
-				$d=$this->mapi->get('kota');
-				$data['kota'] = $d[0]?$d[0]:$d[1];
 				$d=$this->mapi->get('provinsi');
 				$data['provinsi'] = $d[0]?$d[0]:$d[1];
 			}
 			if($id=='tmc_data_darurat'){  //
-				$d=$this->mapi->get('jalan');
+				$d=$this->mapi->get('jalan?kota_id=208&prov_id=13');
 				$data['jalan'] = $d[0]?$d[0]:$d[1];
 			}
 			if($id=='tmc_data_statusjalan'){  //
-				$d=$this->mapi->get('jalan');
+				$d=$this->mapi->get('jalan?kota_id=208&prov_id=13');
 				$data['jalan'] = $d[0]?$d[0]:$d[1];
-				$d=$this->mapi->get('jalan/jenis');
-				$data['jenisjalan'] = $d[0]?$d[0]:$d[1];
 			}
-			
+			if($id=='tmc_data_gangguan'){  //
+				$d=$this->mapi->get('jalan?kota_id=208&prov_id=13');
+				$data['jalan'] = $d[0]?$d[0]:$d[1];
+			}
 			if($id=='tmc_data_rawan'){  //
 				$data['rawan'] = ($this->db->select('val,txt')->where('grp','rawan')->get('lov')->result_array());
+				$d=$this->mapi->get('jalan?kota_id=208&prov_id=13');
+				$data['jalan'] = $d[0]?$d[0]:$d[1];
 			}
 			if($id=='tmc_data_giatpublik'){  //
 				$data['giatpublik'] = ($this->db->select('val,txt')->where('grp','giatpublik')->get('lov')->result_array());
+				$d=$this->mapi->get('jalan?kota_id=208&prov_id=13');
+				$data['jalan'] = $d[0]?$d[0]:$d[1];
 			}
 			if($id=='tmc_rengiat'){  //
 				$data['giatpol'] = ($this->db->select('val,txt')->where('grp','giatpol')->get('lov')->result_array());
+				$d=$this->mapi->get('jalan?kota_id=208&prov_id=13');
+				$data['jalan'] = $d[0]?$d[0]:$d[1];
 			}
 			if($id=='tmc_ops_pidana'||$id=='tmc_pservice_pidana'){  //
 				$data['pidana'] = ($this->db->select('val,txt')->where('grp','pidana')->get('lov')->result_array());

@@ -31,6 +31,18 @@ class Myapi extends CI_Controller {
 		//$this->load->view('welcome_message');
 		//$this->load->view('login');
 	}
+	private function tbl($di,$l){
+		$r=array();
+		switch($l){
+			case 'jalan':
+					$ln='<a href="JavaScript:showModal('.$di->id.');">'.$di->nama_jalan.'&nbsp;&nbsp;</a>';
+					$r=array($ln,$di->lat,$di->lng);
+				break;
+		}
+		return $r;
+	}
+	
+	
 	public function dttbl(){
 		$lnk=base64_decode($this->input->post('lnk'));
 		$d=$this->mapi->get($lnk);
@@ -39,8 +51,7 @@ class Myapi extends CI_Controller {
 			$x=json_decode($d[1]);
 			$d = isset($x->data)?$x->data:$data;
 			for($i=0;$i<count($d);$i++){
-				$ln='<a href="JavaScript:showModal('.$d[$i]->id.');">'.$d[$i]->nama_jalan.'&nbsp;&nbsp;</a>';
-				$data[]=array($ln,$d[$i]->lat,$d[$i]->lng);
+				$data[]=$this->tbl($d[$i],$lnk);
 			}
 			$s=$i>0?"OK":$x;
 		}else{
@@ -60,13 +71,12 @@ class Myapi extends CI_Controller {
 		echo json_encode($output);
 	}
 	public function show(){
-		$data=array("status"=>false,"msg"=>"Session closed. Please login","data"=>[]);
+		$data=array();
 		$user=$this->session->userdata('user_data');
 		if(isset($user)){
 			$id=$this->input->post('id');
 			$lnk=$this->input->post('lnk').'/'.$id;
 			$d=$this->mapi->get($lnk);
-			$data=array();
 			if(!$d[0]){
 				$x=json_decode($d[1]);
 				$data = isset($x->data)?$x->data:$data;
@@ -107,6 +117,19 @@ class Myapi extends CI_Controller {
 			if(!$d[0]){
 				$x=json_decode($d[1]);
 				$data = array("status"=>$x->status,"msg"=>$x->msg,"data"=>$x->data);
+			}
+		}
+		echo json_encode($data);
+	}
+	public function get(){
+		$data=array();
+		$user=$this->session->userdata('user_data');
+		if(isset($user)){
+			$lnk=$this->input->post('lnk');
+			$d=$this->mapi->get($lnk);
+			if(!$d[0]){
+				$x=json_decode($d[1]);
+				$data = isset($x->data)?$x->data:$data;
 			}
 		}
 		echo json_encode($data);
