@@ -1,7 +1,10 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed'); 
 
 $cols="nrp,unit,polda,polres,dinas,subdinas,tgl,";
-$cols.="giat,tgldari,tglsampai,jamdari,jamsampai,jalan,lat,lng";
+$cols.="giat,tgldari,tglsampai,jamdari,jamsampai,jalan,lat,lng,jalan_id";
+
+$jj=json_decode($jalan);
+$jj=isset($jj->data)?$jj->data:[];
 ?>
 
 <input type="hidden" name="tablename" value="tmc_data_giatpublik">
@@ -67,7 +70,12 @@ $cols.="giat,tgldari,tglsampai,jamdari,jamsampai,jalan,lat,lng";
 	<div class="col-sm-6 col-md-3">
 		<div class="form-group">
 			<label class="form-label">Jalan</label>
-			<input type="text" id="jalan" name="jalan" class="form-control" placeholder="" >
+			<input type="hidden" id="jalan" name="jalan" class="form-control" placeholder="" >
+			<select id="jalan_id" name="jalan_id" class="form-control select2" placeholder="" onchange="$('#jalan').val(this.options[this.selectedIndex].text);">
+			<?php foreach($jj as $j){?>
+				<option value="<?php echo $j->id?>"><?php echo $j->nama_jalan?></option>
+			<?php }?>
+			</select>
 		</div>
 	</div>
 	<div class="col-sm-6 col-md-2">
@@ -125,6 +133,8 @@ jvalidate = $("#myf").validate({
 $("#btn_save").show();
 $(".dasar").show();
 $(".nomor").show();
+
+$(".select2").select2();
 
 datepicker(true);
 timepicker();

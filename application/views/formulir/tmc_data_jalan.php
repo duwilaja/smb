@@ -3,12 +3,12 @@ $jj=json_decode($jenisjalan);
 $jj=isset($jj->data)?$jj->data:[];
 $sj=json_decode($statusjalan);
 $sj=isset($sj->data)?$sj->data:[];
-$kec=json_decode($kecamatan);
+/*$kec=json_decode($kecamatan);
 $kec=isset($kec->data)?$kec->data:[];
 $kot=json_decode($kota);
 $kot=isset($kot->data)?$kot->data:[];
 $kel=json_decode($kelurahan);
-$kel=isset($kel->data)?$kel->data:[];
+$kel=isset($kel->data)?$kel->data:[];*/
 $prov=json_decode($provinsi);
 $prov=isset($prov->data)?$prov->data:[];
 ?>
@@ -76,7 +76,8 @@ $prov=isset($prov->data)?$prov->data:[];
 		  <div class="row">
 			<div class="form-group col-md-6">
 				<label>Provinsi</label>
-				<select id="prov_id" name="prov_id" class="form-control select2" placeholder="">
+				<select id="prov_id" name="prov_id" class="form-control select2" placeholder="" onchange="combochanged(this.value,'#kota_id');">
+					<option  value=""></option>
 				<?php foreach($prov as $j){?>
 					<option value="<?php echo $j->prov_id?>"><?php echo $j->provinsi?></option>
 				<?php }?>
@@ -84,28 +85,22 @@ $prov=isset($prov->data)?$prov->data:[];
 			</div>
 			<div class="form-group col-md-6">
 				<label>Kota</label>
-				<select id="kota_id" name="kota_id" class="form-control select2" placeholder="">
-				<?php foreach($kot as $j){?>
-					<option value="<?php echo $j->kota_id?>"><?php echo $j->kota?></option>
-				<?php }?>
+				<select id="kota_id" name="kota_id" class="form-control select2" placeholder="" onchange="combochanged(this.value,'#kec_id');">
+					<option  value=""></option>
 				</select>
 			</div>
 		  </div>
 		  <div class="row">
 			<div class="form-group col-md-6">
 				<label>Kecamatan</label>
-				<select id="kec_id" name="kec_id" class="form-control select2" placeholder="">
-				<?php foreach($kec as $j){?>
-					<option value="<?php echo $j->kec_id?>"><?php echo $j->kecamatan?></option>
-				<?php }?>
+				<select id="kec_id" name="kec_id" class="form-control select2" placeholder="" onchange="combochanged(this.value,'#kel_id');">
+					<option  value=""></option>
 				</select>
 			</div>
 			<div class="form-group col-md-6">
 				<label>Kelurahan</label>
 				<select id="kel_id" name="kel_id" class="form-control select2" placeholder="">
-				<?php foreach($kel as $j){?>
-					<option value="<?php echo $j->kel_id?>"><?php echo $j->kelurahan?></option>
-				<?php }?>
+					<option  value=""></option>
 				</select>
 			</div>
 		  </div>
@@ -136,7 +131,7 @@ $prov=isset($prov->data)?$prov->data:[];
 </div>
 
 <script>
-var map,mytbl,markers;
+var map,mytbl,markers,currentdata;
 
 function showModal(id){
 	$("#myf")[0].reset();
@@ -144,7 +139,8 @@ function showModal(id){
 		$("#id").val(0);
 		$("#bdel").hide();
 		$("#myModal").modal("show");
-		$(".select2").trigger("change");
+		//$(".select2").trigger("change");
+		currentdata={kota_id:"",kec_id:"",kel_id:""};
 	}else{
 		$.ajax({
 			type: 'POST',
@@ -153,24 +149,25 @@ function showModal(id){
 			success: function(data){
 				$("#bdel").show();
 				var json = JSON.parse(data);
+				currentdata=json;
 				console.log(json);
 				$.each(json,function (key,val){
 					$('#'+key).val(val);
 				})
 				$("#myModal").modal("show");
-				$(".select2").trigger("change");
+				$("#prov_id").trigger("change");
 			},
 			error: function(xhr){
 				log('Please check your connection'+xhr);
-				alrt("Failed retrieving data","error");
+				alrt("Gagal mengambil data","error");
 			}
 		});
 	}
 }
 function dele(f,l){
 	swal({
-	  title: "Are you sure?",
-	  text: "Data will be deleted permanently",
+	  title: "Hapus Data?",
+	  text: "Data akan dihapus secara permanen",
 	  icon: "warning",
 	  buttons: true,
 	  dangerMode: true,
@@ -207,9 +204,60 @@ function sendfrm(f,ln){
 		alrt('Please enter all mandatory fields','warning','');
 	}
 }
-
-function senddatacallback(f){
-	mytbl.ajax.reload();
+function combochanged(tv,tgt){
+	var lnk="";
+	switch(tgt){
+		case "#kota_id": lnk="kota/?prov_id="+tv; comboclear("#kel_id"); comboclear("#kec_id"); comboclear("#kota_id"); break;
+		case "#kec_id": lnk="kecamatan/?kota_id="+tv; comboclear("#kel_id"); comboclear("#kec_id"); break;
+		case "#kel_id": lnk="kelurahan/?kec_id="+tv; break;
+	}
+	if(lnk!=""&&tv!=''){
+		getCombo(lnk,tgt);
+	}
+}
+function extract_data(data,tgt){
+	var s="";
+	var selected="";
+	switch(tgt){
+		case "#kota_id": selected=data['kota_id']==currentdata['kota_id']?"selected":"";
+				s='<option '+selected+' value="'+data['kota_id']+'">'+data['kota']+'</option>'; break;
+		case "#kec_id": selected=data['kec_id']==currentdata['kec_id']?"selected":"";
+				s='<option '+selected+' value="'+data['kec_id']+'">'+data['kecamatan']+'</option>'; break;
+		case "#kel_id": selected=data['kel_id']==currentdata['kel_id']?"selected":"";
+				s='<option '+selected+' value="'+data['kel_id']+'">'+data['kelurahan']+'</option>'; break;
+	}
+	return s;
+}
+function comboclear(tgt){
+	$(tgt).find('option').remove();
+	var s='<option value=""></option>';
+	$(tgt).append(s).trigger("change");
+}
+function getCombo(lnk,tgt,dv="",blnk=""){
+	var url=base_url+'myapi/get';
+	var mtd='POST';
+	var frmdata={lnk:lnk};
+	
+	//alert(frmdata);
+	
+	$.ajax({
+		type: mtd,
+		url: url,
+		data: frmdata,
+		success: function(data){
+			var json=JSON.parse(data);
+			console.log(json);
+			$(tgt).find('option').remove();
+			var s='<option value="">'+blnk+'</option>';
+			for(var i=0;i<json.length;i++){
+				s+=extract_data(json[i],tgt);
+			}
+			$(tgt).append(s).trigger("change");
+		},
+		error: function(xhr){
+			console.log("Error:"+xhr);
+		}
+	});
 }
 
 $(document).ready(function(){
