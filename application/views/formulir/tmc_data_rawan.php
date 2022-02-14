@@ -9,9 +9,6 @@ $jj=isset($jj->data)?$jj->data:[];
 <input type="hidden" name="tablename" value="tmc_data_rawan">
 <input type="hidden" name="fieldnames" value="<?php echo $cols?>">
 
-<input type="hidden" name="lat" id="lat" value="">
-<input type="hidden" name="lng" id="lng" value="">
-
 <style>
 	#map {
 		width: 100%;
@@ -19,22 +16,17 @@ $jj=isset($jj->data)?$jj->data:[];
 	}
 </style>
 
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin=""/>
-<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
-
+<button type="button" class="btn btn-primary pull-right" onclick="showModal(0);"><i class="fa fa-plus"></i></button>
 <div class="row">
-	<div class="col-md-7">
-		<div id='map'></div>
-	</div>
-	<div class="col-md-5">
+	<div class="col-md-12">
 		<div class="table-responsive">
 			<table id="mytbl" class="table table-striped table-bordered w-100">
 				<thead>
 					<tr>
-						<th>Jalan</th>
-						<th>Jenis</th>
+						<th>Nama</th>
 						<th>Status</th>
-						<th>Jumlah</th>
+						<th>Lat</th>
+						<th>Lng</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -68,7 +60,7 @@ $jj=isset($jj->data)?$jj->data:[];
 		  <div class="row">
 			<div class="form-group col-md-12">
 				<label>Jenis Jalan</label>
-				<select id="jenis" name="jenis" class="form-select" placeholder="">
+				<select id="jenis" name="jenis" class="form-control" placeholder="">
 					<option value="Nasional">Nasional</option>
 					<option value="Propinsi">Propinsi</option>
 					<option value="Kabupaten">Kabupaten</option>
@@ -83,7 +75,7 @@ $jj=isset($jj->data)?$jj->data:[];
 		  <div class="row">
 			<div class="form-group col-md-12">
 				<label>Status</label>
-				<select id="status" name="status" class="form-select" placeholder="" onchange="getSubQ('laporan/get_subq',this.value,'#detil','','','lov','val as v,txt as t','grp');">
+				<select id="status" name="status" class="form-control" placeholder="" onchange="getSubQ('laporan/get_subq',this.value,'#detil','','','lov','val as v,txt as t','grp');">
 <?php for($i=0;$i<count($rawan);$i++){?>
 <option value="<?php echo $rawan[$i]['val']?>"><?php echo $rawan[$i]['txt']?></option>
 <?php }?>
@@ -99,8 +91,22 @@ $jj=isset($jj->data)?$jj->data:[];
 		  <div class="row">
 			<div class="form-group col-md-12">
 				<label>Detil</label>
-				<select id="detil" name="detil" class="form-select" placeholder="">
+				<select id="detil" name="detil" class="form-control" placeholder="">
 				</select>
+			</div>
+		  </div>
+		  <div class="row">
+			<div class="form-group col-md-5">
+				<label>Lat</label>
+				<input type="text" id="lat" name="lat" placeholder="..." class="form-control">
+			</div>
+			<div class="form-group col-md-5">
+				<label>Lng</label>
+				<input type="text" id="lng" name="lng" placeholder="..." class="form-control">
+			</div>
+			<div class="form-group col-md-2">
+				<label>&nbsp;</label>
+				<a href="#" onclick="mappicker('#lat','#lng');" class="btn btn-danger"  data-bs-original-title="" title=""><i class="fa fa-map-marker"></i></a>
 			</div>
 		  </div>
 		  
@@ -119,9 +125,14 @@ $jj=isset($jj->data)?$jj->data:[];
 <script>
 var map,mytbl,markers,marker;
 
+function mappicker(lat,lng){
+	window.open(base_url+"map?lat="+$(lat).val()+"&lng="+$(lng).val(),"MapWindow","width=830,height=500,location=no").focus();
+}
+
+
 function showModal(id){
 	if(id==0){
-		$("#jalan").val("");
+		$("#jalan").val(""); $("#lat").val(""); $("#lng").val("");
 		$("#rowid").val(0);
 		$("#bdel").hide();
 		$("#myModal").modal("show");
@@ -179,8 +190,8 @@ function markerClickFunction(id) {
 }}
 function senddatacallback(f){
 	mytbl.ajax.reload();
-	map.removeLayer(markers);
-	loadMarker();
+//	map.removeLayer(markers);
+//	loadMarker();
 }
 function loadMarker(){
 	markers=L.layerGroup();
@@ -208,7 +219,7 @@ function loadMarker(){
 
 
 $(document).ready(function(){
-	map = L.map('map', {
+/*	map = L.map('map', {
 		center: [-7.566139228199951,110.82310438156128],
 		zoom: 13,
 		//layers: [grayscale, cities]
@@ -221,7 +232,7 @@ $(document).ready(function(){
 	map.on('click', onMapClick);
 	
 	loadMarker();
-	
+	*/
 	mytbl = $("#mytbl").DataTable({
 		serverSide: true,
 		processing: true,
@@ -233,7 +244,7 @@ $(document).ready(function(){
 			type: 'POST',
 			url: base_url+'laporan/dttbl',
 			data: function (d) {
-				d.q= '<?php echo base64_encode("select jalan,jenis,status,count(status) as jumlah from tmc_data_rawan group by jalan,jenis,status"); ?>';
+				d.q= '<?php echo base64_encode("select concat('<a href=# onclick=showModal(',rowid,');>',jalan,'</a>') as jln,status,lat,lng from tmc_data_rawan"); ?>';
 			}
 		},
 		initComplete: function(){
