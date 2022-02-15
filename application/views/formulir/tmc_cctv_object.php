@@ -1,27 +1,12 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed'); 
 
 $cols="nrp,unit,polda,polres,dinas,subdinas,tgl,";
-$cols.="objek,terdeteksi,nopol,posisik,waktuk,nama,jk,posisio,waktuo,uploadedfile";
+$cols.="objek,terdeteksi,nopol,posisik,waktuk,nama,jk,posisio,waktuo,uploadedfile,lat,lng";
 ?>
 
 <input type="hidden" name="tablename" value="tmc_cctv_object">
 <input type="hidden" name="fieldnames" value="<?php echo $cols?>">
 <input type="hidden" name="path" value="cctv/obj/">
-
-<!--div class="row">
-<div class="col-lg-12">
-	<div class="btn-list">
-		<?php 
-		$keys=array_keys($subm);
-		$values=array_values($subm);
-		for($i=0;$i<count($keys);$i++){
-		?>
-		<button type="button" class="btn btn-warning btn-pill <?php echo $keys[$i]?>" onclick="ambil_isi('<?php echo $keys[$i]?>');"><i class="fa fa-list-alt"></i> <?php echo $values[$i]?></button>
-		<?php } ?>
-	</div>
-</div>
-</div>
-<hr /-->
 
 <div class="row">
 	<div class="col-sm-6 col-md-4">
@@ -51,6 +36,26 @@ $cols.="objek,terdeteksi,nopol,posisik,waktuk,nama,jk,posisio,waktuo,uploadedfil
 	<div class="col-sm-6 col-md-1 ada">
 		<label class="form-label">&nbsp;</label>
 		<button type="button" class="btn btn-icon btn-facebook" onclick="$('.files').append($('.file').clone().removeClass('file'));"><i class="fa fa-copy"></i></button>
+	</div>
+</div>
+<div class="row ada">
+	<div class="col-sm-6 col-md-4">
+		<div class="form-group">
+			<label class="form-label">Latitude</label>
+			<input type="text" id="lat" name="lat" class="form-control" placeholder="" >
+		</div>
+	</div>
+	<div class="col-sm-6 col-md-4">
+		<div class="form-group">
+			<label class="form-label">Longitude</label>
+			<input type="text" id="lng" name="lng" class="form-control" placeholder="" >
+		</div>
+	</div>
+	<div class="col-sm-6 col-md-1">
+		<div class="form-group">
+			<label class="form-label">&nbsp;</label>
+			<button type="button" class="btn btn-danger" onclick="mappicker('#lat','#lng');"><i class="fa fa-map-marker"></i></button>
+		</div>
 	</div>
 </div>
 <div class="row kendaraan">
@@ -141,6 +146,8 @@ function macetgak(){
 		$("#jk").val("");
 		$("#posisio").val("");
 		$("#waktuo").val("");
+		$("#lat").val("");
+		$("#lng").val("");
 		$(".kendaraan").hide();
 		$(".orang").hide();
 		$(".ada").hide();
