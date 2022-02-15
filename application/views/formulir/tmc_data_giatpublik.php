@@ -10,26 +10,11 @@ $jj=isset($jj->data)?$jj->data:[];
 <input type="hidden" name="tablename" value="tmc_data_giatpublik">
 <input type="hidden" name="fieldnames" value="<?php echo $cols?>">
 
-<!--div class="row">
-<div class="col-lg-12">
-	<div class="btn-list">
-		<?php 
-		$keys=array_keys($subm);
-		$values=array_values($subm);
-		for($i=0;$i<count($keys);$i++){
-		?>
-		<button type="button" class="btn btn-warning btn-pill <?php echo $keys[$i]?>" onclick="ambil_isi('<?php echo $keys[$i]?>');"><i class="fa fa-list-alt"></i> <?php echo $values[$i]?></button>
-		<?php } ?>
-	</div>
-</div>
-</div>
-<hr /-->
-
 <div class="row">
 	<div class="col-sm-6 col-md-3">
 		<div class="form-group">
 			<label class="form-label">Giat</label>
-			<select name="giat" class="form-select" placeholder="">
+			<select name="giat" class="form-control" placeholder="">
 				<option value="SIMLing">SIMLing</option>
 				<option value="SAMLing">SAMLing</option>
 				<option value="Unras">Unras</option>

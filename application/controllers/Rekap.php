@@ -124,8 +124,8 @@ class Rekap extends CI_Controller {
 				if($ismap){
 					$lnk.='<button type="button" class="btn btn-icon btn-info" onclick="mapview('.$v['lat'].','.$v['lng'].
 					');"><i class="fa fa-map-marker"></i></button>';
-					$nm=isset($data_assoc[$i]['tit'])?$data_assoc[$i]['tit']:'';
-					$src='https://satupeta.elingsolo.com/satupeta?lokasi='.$data_assoc[$i]['lat'].','.$data_assoc[$i]['lng'].'&nama='.$nm;
+					$nm=isset($v['tit'])?$v['tit']:'';
+					$src='https://satupeta.elingsolo.com/satupeta?lokasi='.$v['lat'].','.$v['lng'].'&nama='.$nm;
 					$lnk='<a type="button" class="btn btn-icon btn-info" href="JavaScript:;" data-fancybox="" data-type="iframe" data-src="'.$src.'"><i class="fa fa-map-marker"></i></a><br />';
 				}
 				if($isverify){
