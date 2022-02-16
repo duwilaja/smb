@@ -78,8 +78,9 @@ $prov=isset($prov->data)?$prov->data:[];
 				<label>Provinsi</label>
 				<select id="prov_id" name="prov_id" class="form-control select2" placeholder="" onchange="combochanged(this.value,'#kota_id');">
 					<option  value=""></option>
+					<option  value="13">Jawa Tengah</option>
 				<?php foreach($prov as $j){?>
-					<option value="<?php echo $j->prov_id?>"><?php echo $j->provinsi?></option>
+					<!--option value="<?php echo $j->prov_id?>"><?php echo $j->provinsi?></option-->
 				<?php }?>
 				</select>
 			</div>
@@ -87,6 +88,7 @@ $prov=isset($prov->data)?$prov->data:[];
 				<label>Kota</label>
 				<select id="kota_id" name="kota_id" class="form-control select2" placeholder="" onchange="combochanged(this.value,'#kec_id');">
 					<option  value=""></option>
+					<option  value="208">Surakarta</option>
 				</select>
 			</div>
 		  </div>
@@ -207,7 +209,7 @@ function sendfrm(f,ln){
 function combochanged(tv,tgt){
 	var lnk="";
 	switch(tgt){
-		case "#kota_id": lnk="kota/?prov_id="+tv; comboclear("#kel_id"); comboclear("#kec_id"); comboclear("#kota_id"); break;
+		//case "#kota_id": lnk="kota/?kota_id=208&prov_id="+tv; comboclear("#kel_id"); comboclear("#kec_id"); comboclear("#kota_id"); break;
 		case "#kec_id": lnk="kecamatan/?kota_id="+tv; comboclear("#kel_id"); comboclear("#kec_id"); break;
 		case "#kel_id": lnk="kelurahan/?kec_id="+tv; break;
 	}
@@ -272,7 +274,7 @@ $(document).ready(function(){
 			type: 'POST',
 			url: base_url+'myapi/dttbl',
 			data: function (d) {
-				d.lnk='<?php echo base64_encode('jalan')?>';
+				d.lnk='<?php echo base64_encode('jalan?prov_id=13&kota_id=208')?>';
 			}
 		},
 		initComplete: function(){
