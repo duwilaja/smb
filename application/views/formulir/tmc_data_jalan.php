@@ -141,8 +141,8 @@ function showModal(id){
 		$("#id").val(0);
 		$("#bdel").hide();
 		$("#myModal").modal("show");
-		//$(".select2").trigger("change");
 		currentdata={kota_id:"",kec_id:"",kel_id:""};
+		$("#prov_id").val("").trigger("change");
 	}else{
 		$.ajax({
 			type: 'POST',
