@@ -209,7 +209,7 @@ function sendfrm(f,ln){
 function combochanged(tv,tgt){
 	var lnk="";
 	switch(tgt){
-		//case "#kota_id": lnk="kota/?kota_id=208&prov_id="+tv; comboclear("#kel_id"); comboclear("#kec_id"); comboclear("#kota_id"); break;
+		case "#kota_id": lnk="kota/?kota_id=208&prov_id="+tv; lnk=""; comboclear("#kel_id"); comboclear("#kec_id"); $("#kota_id").trigger("change"); break;//comboclear("#kota_id"); break;
 		case "#kec_id": lnk="kecamatan/?kota_id="+tv; comboclear("#kel_id"); comboclear("#kec_id"); break;
 		case "#kel_id": lnk="kelurahan/?kec_id="+tv; break;
 	}
