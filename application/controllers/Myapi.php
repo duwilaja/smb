@@ -34,7 +34,7 @@ class Myapi extends CI_Controller {
 	private function tbl($di,$l){
 		$r=array();
 		switch($l){
-			case 'jalan':
+			case 'jalan?prov_id=13&kota_id=208':
 					$ln='<a href="JavaScript:showModal('.$di->id.');">'.$di->nama_jalan.'&nbsp;&nbsp;</a>';
 					$r=array($ln,$di->lat,$di->lng);
 				break;
