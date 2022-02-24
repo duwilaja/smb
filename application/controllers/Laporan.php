@@ -204,6 +204,7 @@ class Laporan extends CI_Controller {
 			}
 			if($id=='tmc_interaksi'||$id=='tmc_publikasi'){  //
 				$data['media'] = ($this->db->select('val,txt')->where('grp','media')->get('lov')->result_array());
+				$data['jenisinfo'] = ($this->db->select('val,txt')->where('grp','jenisinfo')->get('lov')->result_array());
 			}
 			
 			if($id=='tmc_info_lalin' || $id=='ais_laka' || $id=='tmc_ops_macet' || $id=='tmc_ops_pol'){  //tmc info lalin
