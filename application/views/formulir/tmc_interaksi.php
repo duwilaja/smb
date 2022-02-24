@@ -29,11 +29,14 @@ $cols.="media,jenis,jenisd,ket,lat,lng";
 		<div class="form-group">
 			<label class="form-label">Jenis</label>
 			<select name="jenis" class="form-select" placeholder="" onchange="jenischanged(this.value)">
-				<option value="Komplain">Komplain</option>
+<?php for($i=0;$i<count($jenisinteraksi);$i++){?>
+<option value="<?php echo $jenisinteraksi[$i]['val']?>"><?php echo $jenisinteraksi[$i]['txt']?></option>
+<?php }?>
+				<!--option value="Komplain">Komplain</option>
 				<option value="Konsultasi">Konsultasi</option>
 				<option value="Apresiasi">Apresiasi</option>
 				<option value="Saran">Saran</option>
-				<option value="Yan Aduan">Yan Aduan</option>
+				<option value="Yan Aduan">Yan Aduan</option-->
 			</select>
 		</div>
 	</div>
@@ -42,12 +45,12 @@ $cols.="media,jenis,jenisd,ket,lat,lng";
 			<label class="form-label">Aduan...</label>
 			<select name="jenisd" id="jenisd" class="form-select" placeholder="">
 				<option value=""></option>
-				<option value="Kemacetan">Kemacetan</option>
+				<!--option value="Kemacetan">Kemacetan</option>
 				<option value="Kecelakaan">Kecelakaan</option>
 				<option value="Tindak Pidana">Tindak Pidana</option>
 				<option value="Kebakaran">Kebakaran</option>
 				<option value="Bencana Alam">Bencana Alam</option>
-				<option value="Gangguan APLL">Gangguan APLL</option>
+				<option value="Gangguan APLL">Gangguan APLL</option-->
 			</select>
 		</div>
 	</div>
@@ -85,6 +88,7 @@ function mappicker(lat,lng){
 function jenischanged(tv){
 	if(tv=='Yan Aduan'){
 		$(".aduan").show();
+		getSubQ('laporan/get_subq',tv,'#jenisd','','','lov','val as v,txt as t','grp');
 	}else{
 		$("#jenisd").val("");
 		$("#lat").val("");
