@@ -26,10 +26,13 @@ $cols.="media,jenis,isi,link";
 		<div class="form-group">
 			<label class="form-label">Jenis</label>
 			<select name="jenis" class="form-select" placeholder="">
-				<option value="SIMLing">SIMLing</option>
+<?php for($i=0;$i<count($jenisinfo);$i++){?>
+<option value="<?php echo $jenisinfo[$i]['val']?>"><?php echo $jenisinfo[$i]['txt']?></option>
+<?php }?>
+				<!--option value="SIMLing">SIMLing</option>
 				<option value="SAMLing">SAMLing</option>
 				<option value="TAEW">TAEW</option>
-				<option value="Himbauan Kamseltibcar">Himbauan Kamseltibcar</option>
+				<option value="Himbauan Kamseltibcar">Himbauan Kamseltibcar</option-->
 			</select>
 		</div>
 	</div>
