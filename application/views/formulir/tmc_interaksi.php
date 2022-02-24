@@ -12,13 +12,16 @@ $cols.="media,jenis,jenisd,ket,lat,lng";
 		<div class="form-group">
 			<label class="form-label">Media</label>
 			<select name="media" class="form-select" placeholder="">
-				<option value="Facebook">Facebook</option>
+<?php for($i=0;$i<count($media);$i++){?>
+<option value="<?php echo $media[$i]['val']?>"><?php echo $media[$i]['txt']?></option>
+<?php }?>
+				<!--option value="Facebook">Facebook</option>
 				<option value="Tweeter">Tweeter</option>
 				<option value="Youtube">Youtube</option>
 				<option value="Instagram">Instagram</option>
 				<option value="Tiktok">Tiktok</option>
 				<option value="Website">Website</option>
-				<option value="Center">Center</option>
+				<option value="Center">Center</option-->
 			</select>
 		</div>
 	</div>
