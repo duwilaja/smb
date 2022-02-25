@@ -96,6 +96,7 @@ function load_table(){
 				d.ismap=true,
 				d.isverify=true,
 				d.isfile=true,
+				d.isedit=true,
 				d.filefields="uploadedfile",
 				d.tgl= $('#tgl').val();
 			}
