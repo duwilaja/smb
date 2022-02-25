@@ -189,6 +189,8 @@ class Rekap extends CI_Controller {
 			$tname=base64_decode($this->input->post('tname')); //tablename
 			$cols=base64_decode($this->input->post('cols')); //column
 			
+			$isedit=base64_decode($this->input->post('isedit')); //is editable?
+			
 			$ismap=base64_decode($this->input->post('ismap')); //is map button active?
 			$isverify=base64_decode($this->input->post('isverify')); //is verify button active?
 			$isfile=base64_decode($this->input->post('isfile')); //is files active?
@@ -275,6 +277,10 @@ class Rekap extends CI_Controller {
 						$lnkx=' <button type="button" class="btn btn-icon btn-warning" onclick="openmodal('.$data_assoc[$i]['rowid'].',\''.$data_assoc[$i]['langgar'].'\');"><i class="fa fa-check"></i></button>';
 					}
 					$lnk.=$lnkx;
+				}
+				if($isedit){
+					$lnkx=base_url().'edit?i='.$data_assoc[$i]['rowid'].'&t='.$tname;
+					$data_assoc[$i]['tgl']='<a class="btn btn-icon btn-info" href="JavaScript:;" data-fancybox="" data-type="iframe" data-src="'.$lnkx.'">'.$data_assoc[$i]['tgl'].'<br />';
 				}
 				if($isfile){
 					$myfiles=explode(",",$this->input->post('filefields'));

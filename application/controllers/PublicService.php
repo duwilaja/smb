@@ -66,6 +66,7 @@ class PublicService extends CI_Controller {
 		$auth=$this->input->get_request_header('X-token', TRUE);
 		if(isset($user)||$auth==$this->token){
 			$msgs="No data has been saved";
+			$rowid=$this->input->post("rowid");
 			$kategori=$this->input->post('kategori');
 			$tname=$this->input->post('tablename');
 			$fname=$this->input->post('fieldnames');
@@ -82,7 +83,12 @@ class PublicService extends CI_Controller {
 			
 			$data['uploadedfile'] =  $this->uplots('uploadedfile',$path);
 			
-			$this->db->insert($tname,$data);
+			if($rowid==""||$rowid=="0"){
+				$this->db->insert($tname,$data);
+			}else{
+				$this->db->update($tname,$data,"rowid=$rowid");
+			}
+			
 			$ret=$this->db->affected_rows();
 			if($ret>0){
 				$msgs="$ret record(s) saved";

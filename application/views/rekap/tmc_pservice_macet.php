@@ -82,6 +82,7 @@ function load_table(){
 				d.ismap=true,
 				d.isverify=true,
 				d.isfile=true,
+				d.isedit=true,
 				d.filefields="uploadedfile",
 				d.orders = '<?php echo base64_encode($orders); ?>',
 				d.tgl= $('#tgl').val();
