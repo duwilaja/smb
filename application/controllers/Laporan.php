@@ -156,9 +156,17 @@ class Laporan extends CI_Controller {
 					$data['gangguan'] = comboopts($this->db->select("concat(status,'-',penyebab,'-',penyebabd) as v, concat(jalan,'-',penyebab,'-',penyebabd,'-',status) as t")->order_by('jalan','ASC')->get('tmc_data_gangguan')->result());
 				}
 			}
+			
+			
 			if($id=='tmc_cctv_gerbang'){  //
 				$data['gerbang'] = ($this->db->select('val,txt')->where('grp','gerbang')->get('lov')->result_array());
 				$data['kendaraan'] = ($this->db->select('val,txt')->where('grp','kendaraan')->get('lov')->result_array());
+			}
+			if($id=='tmc_cctv_public'){  //
+				$otherdb = $this->load->database('db_intan', TRUE);
+				$cat=array("Wisata Alam","Pasar Tradisional","Wisata Budaya","Wisata Buatan","Kantor Polisi","Wisata Religi","Rumah Sakit","Wisata Kampung Kota",
+				"Puskesmas","Stasiun","Pasar Modern","SPBU","Terminal","Tempat Ibadah");
+				$data['objek'] = ($otherdb->select('nama_lokasi as val,nama_lokasi as txt')->where_in('kategori_static',$cat)->get('lokasi')->result_array());
 			}
 			
 			if($id=='tmc_data_jalan'){  //
