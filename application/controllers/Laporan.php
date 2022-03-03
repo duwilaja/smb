@@ -163,10 +163,8 @@ class Laporan extends CI_Controller {
 				$data['kendaraan'] = ($this->db->select('val,txt')->where('grp','kendaraan')->get('lov')->result_array());
 			}
 			if($id=='tmc_cctv_public'){  //
-				$otherdb = $this->load->database('db_intan', TRUE);
-				$cat=array("Wisata Alam","Pasar Tradisional","Wisata Budaya","Wisata Buatan","Kantor Polisi","Wisata Religi","Rumah Sakit","Wisata Kampung Kota",
+				$data["kategori"]=array("Wisata Alam","Pasar Tradisional","Wisata Budaya","Wisata Buatan","Kantor Polisi","Wisata Religi","Rumah Sakit","Wisata Kampung Kota",
 				"Puskesmas","Stasiun","Pasar Modern","SPBU","Terminal","Tempat Ibadah");
-				$data['objek'] = ($otherdb->select('nama_lokasi as val,nama_lokasi as txt')->where_in('kategori_static',$cat)->get('lokasi')->result_array());
 			}
 			
 			if($id=='tmc_data_jalan'){  //
@@ -371,6 +369,28 @@ class Laporan extends CI_Controller {
 				$this->db->where(array($where=>$id));
 			}
 			$ret=$this->db->select($cols)->get($tname)->result();
+			$retval=array('code'=>"200",'ttl'=>"OK",'msgs'=>$ret);
+			echo json_encode($retval);
+		}else{
+			$retval=array('code'=>"403",'ttl'=>"Session closed",'msgs'=>array());
+			echo json_encode($retval);
+		}
+	}
+	public function get_subqx()
+	{
+		$user=$this->session->userdata('user_data');
+		if(isset($user)){
+			$id=$this->input->post('id');
+			$cols=$this->input->post('cols');
+			$tname=$this->input->post('tname');
+			$where=$this->input->post('where');
+			$otherdb = $this->load->database('db_intan', TRUE);
+			//$data['objek'] = ($otherdb->select('nama_lokasi as val,nama_lokasi as txt')->where_in('kategori_static',$cat)->get('lokasi')->result_array());
+			
+			if($where!=""){
+				$otherdb->where(array($where=>$id));
+			}
+			$ret=$otherdb->select($cols)->get($tname)->result();
 			$retval=array('code'=>"200",'ttl'=>"OK",'msgs'=>$ret);
 			echo json_encode($retval);
 		}else{

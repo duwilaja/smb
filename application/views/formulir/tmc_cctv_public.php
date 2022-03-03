@@ -1,20 +1,29 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed'); 
 
 $cols="nrp,unit,polda,polres,dinas,subdinas,tgl,";
-$cols.="objek,kejadian,ket,pengunjung,kendaraan_in,kendaraan_out";
+$cols.="objek,kejadian,ket,pengunjung,kendaraan_in,kendaraan_out,kategori";
 ?>
 
 <input type="hidden" name="tablename" value="tmc_cctv_public">
 <input type="hidden" name="fieldnames" value="<?php echo $cols?>">
 
 <div class="row">
+	<div class="col-sm-6 col-md-4">
+		<div class="form-group">
+			<label class="form-label">Kategori</label>
+			<select name="kategori" class="form-select select2" placeholder="" onchange="getSubQ('laporan/get_subqx',this.value,'#objek','','','lokasi','nama_lokasi as v,nama_lokasi as t','kategori_static');">
+			<option value=""></option>
+<?php for($i=0;$i<count($kategori);$i++){?>
+<option value="<?php echo $kategori[$i]?>"><?php echo $kategori[$i]?></option>
+<?php }?>
+			</select>
+		</div>
+	</div>
 	<div class="col-sm-6 col-md-6">
 		<div class="form-group">
 			<label class="form-label">Objek</label>
-			<select name="objek" class="form-select select2" placeholder="">
-<?php for($i=0;$i<count($objek);$i++){?>
-<option value="<?php echo $objek[$i]['val']?>"><?php echo $objek[$i]['txt']?></option>
-<?php }?>
+			<select id="objek" name="objek" class="form-select select2" placeholder="">
+				<option value=""></option>
 				<!--option value="Terminal">Terminal</option>
 				<option value="Stasiun">Stasiun</option>
 				<option value="Bandara">Bandara</option>
