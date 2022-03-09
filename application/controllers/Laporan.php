@@ -182,6 +182,10 @@ class Laporan extends CI_Controller {
 			if($id=='tmc_data_statusjalan'){  //
 				$d=$this->mapi->get('jalan?kota_id=208&prov_id=13');
 				$data['jalan'] = $d[0]?$d[0]:$d[1];
+				
+				$d=$this->mapi->get('penyebab');
+				$data['penyebab'] = $d[0]?$d[0]:$d[1];
+				
 			}
 			if($id=='tmc_data_gangguan'){  //
 				$d=$this->mapi->get('jalan?kota_id=208&prov_id=13');
