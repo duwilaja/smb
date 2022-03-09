@@ -1,9 +1,12 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed'); 
 $cols="nrp,unit,polda,polres,dinas,subdinas,tgl,";
-$cols.="jalan,lat,lng,jenis,status,jalan_id";
+$cols.="jalan,lat,lng,jenis,status,jalan_id,penyebab_id,sub_penyebab_id";
 
 $jj=json_decode($jalan);
 $jj=isset($jj->data)?$jj->data:[];
+
+$p=json_decode($penyebab);
+$p=isset($p->data)?$p->data:[];
 ?>
 
 <input type="hidden" name="tablename" value="tmc_data_statusjalan">
@@ -89,6 +92,25 @@ $jj=isset($jj->data)?$jj->data:[];
 				</select>
 			</div>
 		  </div>
+		  <div class="row">
+			<div class="form-group col-md-12">
+				<label>Penyebab</label>
+				<select id="penyebab_id" name="penyebab_id" class="form-select" placeholder="" onchange="combochanged(this.value,'#sub_penyebab_id')">
+					<option value=""></option>
+				<?php foreach($p as $j){?>
+					<option value="<?php echo $j->id?>"><?php echo $j->penyebab?></option>
+				<?php }?>
+				</select>
+			</div>
+		  </div>
+		  <div class="row">
+			<div class="form-group col-md-12">
+				<label>Sub</label>
+				<select id="sub_penyebab_id" name="sub_penyebab_id" class="form-select" placeholder="">
+				
+				</select>
+			</div>
+		  </div>
 		<!--/form-->
 	  </div>
 	  <div class="modal-footer">
@@ -125,6 +147,7 @@ function showModal(id){
 				})
 				$("#myModal").modal("show");
 				$(".select2").trigger("change");
+				combochanged($("#penyebab_id").val(),"#sub_penyebab_id",json[0]['sub_penyebab_id']);
 			},
 			error: function(xhr){
 				log('Please check your connection'+xhr);
@@ -191,6 +214,38 @@ function loadMarker(){
 	});
 }
 
+function combochanged(tv,tgt,dv=""){
+	getCombo('sub_penyebab/?penyebab_lantas_id='+tv,tgt,dv);
+}
+function getCombo(lnk,tgt,dv="",blnk=""){
+	var url=base_url+'myapi/get';
+	var mtd='POST';
+	var frmdata={lnk:lnk};
+	
+	//alert(frmdata);
+	
+	$.ajax({
+		type: mtd,
+		url: url,
+		data: frmdata,
+		success: function(data){
+			var json=JSON.parse(data);
+			console.log(json);
+			$(tgt).find('option').remove();
+			var s='<option value="">'+blnk+'</option>';
+			for(var i=0;i<json.length;i++){
+				//s+=extract_data(json[i],tgt);
+				var sel='';
+				sel=json[i]['id']==dv?"selected=true":"";
+				s+='<option '+sel+' value="'+json[i]['id']+'">'+json[i]["sub_penyebab_lantas"]+'</option>';
+			}
+			$(tgt).append(s);//.trigger("change");
+		},
+		error: function(xhr){
+			console.log("Error:"+xhr);
+		}
+	});
+}
 
 $(document).ready(function(){
 	map = L.map('map', {
