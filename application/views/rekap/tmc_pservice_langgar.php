@@ -47,7 +47,9 @@ telp,masyarakat_id as input_peng,jenis as keterangan,'pelanggaran' as judul,'0' 
 	  <div class="modal-body">
 		<form id="myfx">
 		<input type="hidden" name="tablename" value="<?php echo $tname?>">
-		<input type="hidden" name="fieldnames" value="verifikasi,nopol,sumber_data">
+		<input type="hidden" name="fieldnames" value="verifikasi,stts,nrp,nopol,sumber_data">
+		<input type="hidden" name="nrp" id="nrp" value="<?php echo $session["nrp"]?>">
+		<input type="hidden" name="stts" id="stts" value="">
 		<input type="hidden" name="rowid" id="rowid" value="">
 		<input type="hidden" name="dispatch" value="no">
 		<input type="hidden" name="dispatched" value="<?php echo base64_encode($dispatched)?>">
@@ -57,7 +59,7 @@ telp,masyarakat_id as input_peng,jenis as keterangan,'pelanggaran' as judul,'0' 
 		</div>
 		<div class="form-group">
 			<label for="verifikasi">Data Valid ?</label>
-			<select name="verifikasi" class="form-control"><option value="Y">Y</option><option value="N">N</option></select>
+			<select id="verifikasi" name="verifikasi" class="form-control"><option value="Y">Y</option><option value="T">T</option></select>
 		</div>
 		<div class="form-group">
 			<label for="sumber">Sumber Data</label>
@@ -71,7 +73,7 @@ telp,masyarakat_id as input_peng,jenis as keterangan,'pelanggaran' as judul,'0' 
 	  </div>
 	  <div class="modal-footer">
 		  <button type="button" data-bs-dismiss="modal" class="btn btn-danger">Tutup</button>
-		<button type="button" class="btn btn-success" onclick="simpanlah();">Simpan</button>
+		<button type="button" class="btn btn-success" onclick="vc();simpanlah();">Simpan</button>
 	  </div>
 	</div>
   </div>
@@ -79,6 +81,16 @@ telp,masyarakat_id as input_peng,jenis as keterangan,'pelanggaran' as judul,'0' 
 
 <script>
 var  mytbl;
+
+function vc(){
+	var tv=$("#verifikasi").val();
+	if(tv=='Y') {
+		$("#stts").val("Telah Diproses");
+	}else{
+		$("#stts").val("Tidak Diproses");
+	}
+}
+
 function load_table(){
 	mytbl = $("#mytbl").DataTable({
 		serverSide: true,

@@ -70,6 +70,7 @@ class Rekap extends CI_Controller {
 			
 			//put all masterdatas needed here
 			$data['dummy']="this is dummy data";
+			$data['session']=$user;
 			
 			$this->load->view("rekap/$id",$data); //load the view
 			
