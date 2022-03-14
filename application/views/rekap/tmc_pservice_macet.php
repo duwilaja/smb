@@ -8,7 +8,8 @@ $dispatched="'1019' as kategori_peng_id,tgl as ctddate,jam as ctdtime,lat,lng,pe
 telp,masyarakat_id as pelapor_id,concat(petugas,' petugas') as keterangan,'kemacetan' as judul,'1' as status";
 
 $dispatched="'1019' as kategori_peng_id,tgl as ctddate,jam as ctdtime,lat,lng,pelapor as nama_pelapor,jalan as alamat,
-telp,masyarakat_id as input_peng,concat(petugas,' petugas') as keterangan,'kemacetan' as judul,'0' as status,rowid as mobile_uniqueid";
+telp,masyarakat_id as input_peng,concat(petugas,' petugas') as keterangan,'kemacetan' as judul,'0' as status,rowid as mobile_uniqueid,
+if(saluran='Mobile Apps','soldest','backoffice') as channel";
 ?>
 
 <?php $this->load->view('rekap/incl/head_rekap');?>
