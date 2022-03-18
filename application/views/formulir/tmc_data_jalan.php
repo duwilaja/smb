@@ -122,6 +122,7 @@ $prov=isset($prov->data)?$prov->data:[];
 	  <div class="modal-footer">
 	  <input type="hidden" id="id" name="id" value="0">
 	  <input type="hidden" name="apilnk" value="jalan">
+	  <input type="hidden" name="tname" value="tbl_jalan">
 	  <input type="hidden" name="fieldnames" value="nama_jalan,prov_id,kota_id,kec_id,kel_id,lat,lng,mstr_jalan_status_id,mstr_jalan_jenis_id">
 	    <button type="button" class="btn btn-danger" id="bdel"  onclick="dele('#myf','myapi/dele');">Delete</button>
 		<button type="button" class="btn btn-success" id="btnsv" onclick="sendfrm('#myf','myapi/save');">Save</button>

@@ -89,6 +89,7 @@ class Myapi extends CI_Controller {
 		$user=$this->session->userdata('user_data');
 		if(isset($user)){
 			$id=$this->input->post('id');
+			$tname=$this->input->post('tname');
 			$lnk=$this->input->post('apilnk');
 			$fn=$this->input->post('fieldnames');
 			$data=$this->input->post(explode(",",$fn));
@@ -101,6 +102,15 @@ class Myapi extends CI_Controller {
 			if(!$d[0]){
 				$x=json_decode($d[1]);
 				$data = array("status"=>$x->status,"msg"=>$x->msg,"data"=>$x->data);
+				if($tname!=''){ //save to local table
+					if($id==0){
+						$dd=$x->data;
+						$data['id']=$dd['id'];
+						$this->db->insert($tname,$data);
+					}else{
+						$this->db->update($tname,$data,"id=$id");
+					}
+				}
 			}
 		}
 		echo json_encode($data);
@@ -110,6 +120,7 @@ class Myapi extends CI_Controller {
 		$user=$this->session->userdata('user_data');
 		if(isset($user)){
 			$id=$this->input->post('id');
+			$tname=$this->input->post('tname');
 			$lnk=$this->input->post('apilnk');
 			$d=$this->mapi->del($lnk.'/'.$id);
 			
@@ -117,6 +128,10 @@ class Myapi extends CI_Controller {
 			if(!$d[0]){
 				$x=json_decode($d[1]);
 				$data = array("status"=>$x->status,"msg"=>$x->msg,"data"=>$x->data);
+				
+				if($tname!=''){ //del from local table
+					$this->db->delete($tname,array('rowid' => $rowid));
+				}
 			}
 		}
 		echo json_encode($data);
