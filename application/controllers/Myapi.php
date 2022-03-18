@@ -98,14 +98,14 @@ class Myapi extends CI_Controller {
 			}else{
 				$d=$this->mapi->put($lnk.'/'.$id,$data);
 			}
-			$data=array("status"=>false,"msg"=>$d[0],"data"=>[]);
+			$datax=array("status"=>false,"msg"=>$d[0],"data"=>[]);
 			if(!$d[0]){
 				$x=json_decode($d[1]);
-				$data = array("status"=>$x->status,"msg"=>$x->msg,"data"=>$x->data);
+				$datax = array("status"=>$x->status,"msg"=>$x->msg,"data"=>$x->data);
 				if($tname!=''){ //save to local table
 					if($id==0){
 						$dd=$x->data;
-						$data['id']=$dd['id'];
+						$data['id']=$dd->id;
 						$this->db->insert($tname,$data);
 					}else{
 						$this->db->update($tname,$data,"id=$id");
@@ -113,7 +113,7 @@ class Myapi extends CI_Controller {
 				}
 			}
 		}
-		echo json_encode($data);
+		echo json_encode($datax);
 	}
 	public function dele(){
 		$data=array("status"=>false,"msg"=>"Session closed. Please login","data"=>[]);
@@ -130,7 +130,7 @@ class Myapi extends CI_Controller {
 				$data = array("status"=>$x->status,"msg"=>$x->msg,"data"=>$x->data);
 				
 				if($tname!=''){ //del from local table
-					$this->db->delete($tname,array('rowid' => $rowid));
+					$this->db->delete($tname,array('id' => $id));
 				}
 			}
 		}
