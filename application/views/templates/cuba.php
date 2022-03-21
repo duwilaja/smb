@@ -229,6 +229,13 @@ if(count($farr)>0&&$session['nrp']!=''){
                                         }?>
                                     </ul>
                                 </li>
+                                <?php if ($session['unit'] == "SMART ENFORCEMENT") {?>
+                                    <li class="sidebar-list">
+                                        <a class="sidebar-link" href="https://backoffice.elingsolo.com/new_etle/min/auth">
+                                            <i data-feather="file-text"></i><span>Etle</span>
+                                        </a>
+                                    </li>
+                                <?php }?>
 								<li class="sidebar-list">
                                     <a class="sidebar-link" href="<?=base_url('History')?>">
                                         <i data-feather="server"></i><span>History</span>

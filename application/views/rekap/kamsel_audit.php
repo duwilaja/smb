@@ -37,6 +37,7 @@ function load_table(){
 		serverSide: false,
 		processing: true,
 		searching: false,
+		order: [[1,"desc"]],
 		buttons: ['copy', {extend : 'excelHtml5', messageTop: $(".judul").text()}],
 		ajax: {
 			type: 'POST',
@@ -44,6 +45,7 @@ function load_table(){
 			data: function (d) {
 				d.cols= '<?php echo base64_encode($cols); ?>',
 				d.tname= '<?php echo base64_encode($tname); ?>',
+				d.orders= '<?php echo base64_encode('tgl desc, rowid desc')?>',
 				d.tgl= $('#tgl').val();
 			}
 		},
