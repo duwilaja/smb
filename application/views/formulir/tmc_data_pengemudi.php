@@ -1,6 +1,6 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed'); 
 $cols="nrp,unit,polda,polres,dinas,subdinas,tgl,";
-$cols.="jumlah,jenis";
+$cols.="tanggal,jumlah,jenis";
 ?>
 
 <input type="hidden" name="tablename" value="tmc_data_pengemudi">
@@ -21,6 +21,7 @@ $cols.="jumlah,jenis";
 			<table id="mytbl" class="table table-striped table-bordered w-100">
 				<thead>
 					<tr>
+						<th>Tanggal</th>
 						<th>Jenis</th>
 						<th>Jumlah</th>
 					</tr>
@@ -42,6 +43,12 @@ $cols.="jumlah,jenis";
 	  <div class="modal-body">
 		<!--p>Lorem ipsum dolor sit amet consectetur.</p-->
 		<!--form id="myf" class="form-horizontal"-->		
+		  <div class="row">
+			<div class="form-group col-md-12">
+				<label class="form-label">Tanggal</label>
+				<input type="text" name="tanggal" id="tanggal" class="form-control datepicker" placeholder="" >
+			</div>
+		  </div>
 		  <div class="row">
 			<div class="form-group col-md-12">
 				<label>Jenis Lisensi</label>
@@ -82,6 +89,7 @@ var map,mytbl,markers;
 
 function showModal(id){
 	if(id==0){
+		$("#tanggal").val("");
 		$("#jumlah").val("");
 		$("#rowid").val(0);
 		$("#bdel").hide();
@@ -121,11 +129,12 @@ $(document).ready(function(){
 		buttons: ['copy', 'csv'],
 		stateSave: true,
 		bDestroy: true,
+		ordering: false,
 		ajax: {
 			type: 'POST',
 			url: base_url+'laporan/dttbl',
 			data: function (d) {
-				d.q= '<?php echo base64_encode("select concat('<a href=# onclick=showModal(',rowid,');>',jenis,'</a>') as jns,jumlah from tmc_data_pengemudi"); ?>';
+				d.q= '<?php echo base64_encode("select tanggal,concat('<a href=# onclick=showModal(',rowid,');>',jenis,'</a>') as jns,jumlah from tmc_data_pengemudi order by rowid desc"); ?>';
 			}
 		},
 		initComplete: function(){
@@ -142,4 +151,6 @@ jvalidate = $("#myf").validate({
 			required : true
 		}
     }});
+	
+	datepicker(true);
 </script>
