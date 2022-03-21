@@ -94,7 +94,7 @@ function load_table(){
 				d.tname= '<?php echo base64_encode($tname); ?>',
 				d.orders= '<?php echo base64_encode('tgl desc, jam desc, rowid desc')?>',
 				d.isverify=true,
-				d.tgl= $('#tglx').val();
+				d.tgl= $('#tgl').val();
 			}
 		},
 		initComplete: function(){

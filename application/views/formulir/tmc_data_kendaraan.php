@@ -120,7 +120,7 @@ $(document).ready(function(){
 			type: 'POST',
 			url: base_url+'laporan/dttbl',
 			data: function (d) {
-				d.q= '<?php echo base64_encode("select concat('<a href=# onclick=showModal(',rowid,');>',jenis,'</a>') as jns,jumlah from tmc_data_kendaraan"); ?>';
+				d.q= '<?php echo base64_encode("select concat('<a href=# onclick=showModal(',rowid,');>',jenis,'</a>') as jns,jumlah from tmc_data_kendaraan order by dtm desc"); ?>';
 			}
 		},
 		initComplete: function(){
