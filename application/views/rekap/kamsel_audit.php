@@ -45,6 +45,7 @@ function load_table(){
 				d.cols= '<?php echo base64_encode($cols); ?>',
 				d.tname= '<?php echo base64_encode($tname); ?>',
 				d.tgl= $('#tgl').val();
+				d.orders = '<?php echo base64_encode('tgl desc'); ?>'
 			}
 		},
 		initComplete: function(){
