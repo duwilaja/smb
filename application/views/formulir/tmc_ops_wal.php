@@ -169,7 +169,7 @@ $cols.="kategori,obyek,obyeklain,namaob,tanggal,jam,dari,darilat,darilng,ke,kela
 	</div>
 	<div class="card-body">
 		<div class="table-responsive">
-			<table id="mytbl" class="table table-striped table-bordered w-100">
+			<table id="mytblxxx" class="table table-striped table-bordered w-100">
 				<thead>
 					<tr>
 						<th>Lokasi/Jalan</th>
@@ -269,7 +269,7 @@ function klon(){
 	$("tbody").append(newrow);
 	$("select.select2").select2();
 }
-var $tbody = $("#mytbl tbody");
+var $tbody = $("#mytblxxx tbody");
 function delet(){
     var $last = $tbody.find('tr:last');
     if($last.is(':first-child')){
