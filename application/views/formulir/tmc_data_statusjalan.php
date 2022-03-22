@@ -284,7 +284,7 @@ $(document).ready(function(){
 			type: 'POST',
 			url: base_url+'laporan/dttbl',
 			data: function (d) {
-				d.q= '<?php echo base64_encode("select concat('<a href=# onclick=showModal(',rowid,');>',jalan,'</a>') as jln,status,lat,lng from tmc_data_statusjalan"); ?>';
+				d.q= '<?php echo base64_encode("select concat('<a href=# onclick=showModal(',rowid,');>',jalan,'</a>') as jln,status,lat,lng from tmc_data_statusjalan order by dtm desc"); ?>';
 			}
 		},
 		initComplete: function(){
