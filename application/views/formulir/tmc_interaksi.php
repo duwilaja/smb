@@ -1,7 +1,7 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed'); 
 
 $cols="nrp,unit,polda,polres,dinas,subdinas,tgl,dasar,nomor,";
-$cols.="media,jenis,jenisd,ket,lat,lng";
+$cols.="media,jenis,jenisd,ket,lat,lng,link";
 ?>
 
 <input type="hidden" name="tablename" value="tmc_interaksi">
@@ -38,6 +38,12 @@ $cols.="media,jenis,jenisd,ket,lat,lng";
 				<option value="Saran">Saran</option>
 				<option value="Yan Aduan">Yan Aduan</option-->
 			</select>
+		</div>
+	</div>
+	<div class="col-sm-6 col-md-12">
+		<div class="form-group">
+			<label class="form-label">Link</label>
+			<input type="text" name="link" class="form-control">
 		</div>
 	</div>
 	<div class="col-sm-6 col-md-3 aduan hidden">
