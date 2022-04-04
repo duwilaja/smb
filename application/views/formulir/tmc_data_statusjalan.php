@@ -90,12 +90,12 @@ $p=isset($p->data)?$p->data:[];
 				<select id="penyebab_id" name="penyebab_id" class="form-select" placeholder="" onchange="combochanged(this.value,'#sub_penyebab_id')">
 					<option value=""></option>
 				<?php foreach($p as $j){?>
-					<option value="<?php echo $j->id?>"><?php echo $j->penyebab?></option>
+					<option value="<?php echo $j->id?>"><?php echo $j->bs_penyebab?></option>
 				<?php }?>
 				</select>
 			</div>
 		  </div>
-		  <div class="row">
+		  <div class="row hidden">
 			<div class="form-group col-md-12">
 				<label>Sub</label>
 				<select id="sub_penyebab_id" name="sub_penyebab_id" class="form-select" placeholder="">
