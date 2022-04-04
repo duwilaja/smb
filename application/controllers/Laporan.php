@@ -183,7 +183,7 @@ class Laporan extends CI_Controller {
 				$d=$this->mapi->get('jalan?kota_id=208&prov_id=13');
 				$data['jalan'] = $d[0]?$d[0]:$d[1];
 				
-				$d=$this->mapi->get('penyebab');
+				$d=$this->mapi->get('bsPenyebab');
 				$data['penyebab'] = $d[0]?$d[0]:$d[1];
 				
 			}
