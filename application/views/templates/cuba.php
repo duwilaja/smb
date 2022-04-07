@@ -183,8 +183,9 @@ if(count($farr)>0&&$session['nrp']!=''){
                     <div class="logo-icon-wrapper"><a href="<?php echo $base_url;?>home"><img class="img-fluid"
                                 src="<?php echo $base_url;?>cuba/assets/images/logo/logo-icon.png" alt=""></a></div>
                     <nav class="sidebar-main">
-                        <div class="left-arrow" id="left-arrow"><i data-feather="arrow-left"></i></div>
-                        <div id="sidebar-menu">
+						<div class="left-arrow" id="left-arrow"><i data-feather="arrow-left"></i></div>
+						<?php if($session['wasdal']=='N'){?>
+                        <div id="sidebar-menu usr">
                             <ul class="sidebar-links" id="simple-bar">
                                 <li class="back-btn"><a href="<?php echo $base_url;?>home"><img class="img-fluid"
                                             src="<?php echo $base_url;?>cuba/assets/images/logo/logo-icon.png" alt=""></a>
@@ -218,6 +219,7 @@ if(count($farr)>0&&$session['nrp']!=''){
                                     <?php
                                         if(isset($rekap)){
                                             foreach ($rekap as $v) {
+												if($v['unit']==$session['unit']){
                                         ?>
                                         <li>
                                             <a class="sidebar-link sidebar-title link-nav"  style="font-size: 12px;" href="#" onclick="ambil_isi('<?php echo $v['v']?>','rekap','<?php echo $v['t']?>');">
@@ -225,7 +227,8 @@ if(count($farr)>0&&$session['nrp']!=''){
                                             </a>
                                         </li>
                                         <?php 
-                                            }
+												}
+											}
                                         }?>
                                     </ul>
                                 </li>
@@ -243,7 +246,56 @@ if(count($farr)>0&&$session['nrp']!=''){
                                 </li>
                             </ul>
                         </div>
-                        <div class="right-arrow" id="right-arrow"><i data-feather="arrow-right"></i></div>
+                        <?php }else{?>
+						<div id="sidebar-menu wasdal">
+                            <ul class="sidebar-links" id="simple-bar">
+                                <li class="back-btn"><a href="<?php echo $base_url;?>home"><img class="img-fluid"
+                                            src="<?php echo $base_url;?>cuba/assets/images/logo/logo-icon.png" alt=""></a>
+                                    <div class="mobile-back text-end"><span>Back</span><i class="fa fa-angle-right ps-2"
+                                            aria-hidden="true"></i></div>
+                                </li>
+                                <li class="sidebar-main-title">
+                                    <div>
+                                        <h6>Divisi</h6>
+                                        <p></p>
+                                    </div>
+                                </li>
+								<?php 
+								if(isset($unit)){
+									foreach($unit as $u){
+								?>
+                                <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="#"><i data-feather="server"></i><span><?php echo $u['unit_nam']?></span><div class="according-menu"><i class="fa fa-angle-right"></i></div></a>
+                                    <ul class="sidebar-submenu" style="display: none;">
+										<?php
+                                        if(isset($rekap)){
+                                            foreach ($rekap as $v) {
+												if($u['unit_id']==$v['unit']){
+                                        ?>
+                                        <li>
+                                            <a class="sidebar-link sidebar-title link-nav"  style="font-size: 12px;" href="#" onclick="ambil_isi('<?php echo $v['v']?>','rekap','<?php echo $v['t']?>');">
+                                                <span><?php echo $v['t']?></span>
+                                            </a>
+                                        </li>
+                                        <?php
+												}
+                                            }
+                                        }?>
+                                    </ul>
+                                </li>
+								<?php 
+									}
+								}
+								?>
+								<li class="sidebar-main-title">
+                                    <div>
+                                        <h6>Rekap Anggota</h6>
+                                        <p></p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <?php }?>
+						<div class="right-arrow" id="right-arrow"><i data-feather="arrow-right"></i></div>
                     </nav>
                 </div>
             </div>

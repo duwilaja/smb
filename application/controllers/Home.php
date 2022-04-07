@@ -15,7 +15,8 @@ class Home extends CI_Controller {
 		if(isset($user)){
 			$data['session'] = $user;
 			$data['formulir'] = $this->db->select('view_laporan as v,nama_laporan as t')->like('tipe','F')->where(array("unit"=>$user['unit'],"isactive"=>"Y"))->order_by("nama_laporan")->get('formulir')->result_array();
-			$data['rekap'] = $this->db->select('view_laporan as v,nama_laporan as t')->like('tipe','R')->where(array("unit"=>$user['unit'],"isactive"=>"Y"))->order_by("nama_laporan")->get('formulir')->result_array();
+			$data['rekap'] = $this->db->select('view_laporan as v,nama_laporan as t,unit')->like('tipe','R')->where(array("isactive"=>"Y"))->order_by("unit,nama_laporan")->get('formulir')->result_array();
+			$data['unit'] = $this->db->select('unit_id,unit_nam')->order_by("unit_nam")->get('unit')->result_array();
 			
 			$this->template->load("home",$data);
 		}else{
