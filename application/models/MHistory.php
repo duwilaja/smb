@@ -24,6 +24,8 @@ class MHistory extends CI_Model{
           $CI->dt->select = '*';
           // Set default order
           $CI->dt->order = ['rowid' => 'desc'];
+		  
+		  array_push($condition,['where','isactive =','Y']);
 
           if (isset($filter['unit'])) {
             $con = ['where','unit =',$filter['unit']];

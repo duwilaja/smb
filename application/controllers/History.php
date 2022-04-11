@@ -18,6 +18,11 @@ class History extends CI_Controller {
 			$data['formulir'] = $this->db->select('view_laporan as v,nama_laporan as t')->like('tipe','F')->where(array("unit"=>$user['unit'],"isactive"=>"Y"))->order_by("nama_laporan")->get('formulir')->result_array();
 			$data['rekap'] = $this->db->select('view_laporan as v,nama_laporan as t')->like('tipe','R')->where(array("unit"=>$user['unit'],"isactive"=>"Y"))->order_by("nama_laporan")->get('formulir')->result_array();
             $data['history'] = $this->db->select('view_laporan as v,nama_laporan as t, view_field as f')->like('tipe','R')->where(array("unit"=>$user['unit'],"isactive"=>"Y"))->order_by("nama_laporan")->get('formulir')->result_array();
+			
+			if($user["wasdal"]=="Y"){
+				$data['unit'] = $this->db->select('unit_id,unit_nam')->order_by("unit_nam")->get('unit')->result_array();
+			}
+			
 			$data['js_local'] = 'history.js';
 			$this->template->load("history",$data);
 		}else{
