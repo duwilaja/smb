@@ -12,6 +12,7 @@
 					<div class="form-group">
 						<label for="">Divisi</label>
 						<select id="unit" class="form-control" onchange="getSubQ('laporan/get_subq',this.value,'#nrp','','','persons','nrp as v,nama as t','unit');">
+							<option value=""></option>
 							<?php foreach($unit as $u){?>
 							<option value="<?php echo $u['unit_id']?>"><?php echo $u['unit_nam']?></option>
 							<?php }?>
@@ -64,7 +65,3 @@
         </div>
 	</div>
 </div>
-
-<script>
-getSubQ('laporan/get_subq',$('#unit').val(),'#nrp','','','persons','nrp as v,nama as t','unit');
-</script>
