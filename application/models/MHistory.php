@@ -50,7 +50,7 @@ class MHistory extends CI_Model{
                   $dt->unit,
                   $dt->nama_laporan,
                   isset($filter['start_date']) || isset($filter['end_date']) ? $this->get_tbl($dt->view_laporan,$filter['nrp'],$filter['start_date'],$filter['end_date']) : $this->get_tbl($dt->view_laporan,$filter['nrp']),
-                  '<a class="btn btn-sm btn-primary" type="button" href="'.base_url ('History/historydetail?tbl='.$dt->view_laporan.'&tbln='.$dt->nama_laporan.'&s='.$filter['start_date'].'&e='.$filter['end_date'].'').'">Detail</a>'
+                  '<a class="btn btn-sm btn-primary" type="button" href="'.base_url ('History/historydetail?nrp='.$filter['nrp'].'&tbl='.$dt->view_laporan.'&tbln='.$dt->nama_laporan.'&s='.$filter['start_date'].'&e='.$filter['end_date'].'').'">Detail</a>'
               );
           }
   
