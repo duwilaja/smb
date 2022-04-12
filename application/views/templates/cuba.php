@@ -219,7 +219,7 @@ if(count($farr)>0&&$session['nrp']!=''){
                                     <?php
                                         if(isset($rekap)){
                                             foreach ($rekap as $v) {
-												if($v['unit']==$session['unit']){
+												//if($v['unit']==$session['unit']){
                                         ?>
                                         <li>
                                             <a class="sidebar-link sidebar-title link-nav"  style="font-size: 12px;" href="#" onclick="ambil_isi('<?php echo $v['v']?>','rekap','<?php echo $v['t']?>');">
@@ -227,7 +227,7 @@ if(count($farr)>0&&$session['nrp']!=''){
                                             </a>
                                         </li>
                                         <?php 
-												}
+												//}
 											}
                                         }?>
                                     </ul>
