@@ -261,8 +261,8 @@ if(count($farr)>0&&$session['nrp']!=''){
                                     </div>
                                 </li>
 								<?php 
-								if(isset($unit)){
-									foreach($unit as $u){
+								if(isset($units)){
+									foreach($units as $u){
 								?>
                                 <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="#"><i data-feather="server"></i><span><?php echo $u['unit_nam']?></span><div class="according-menu"><i class="fa fa-angle-right"></i></div></a>
                                     <ul class="sidebar-submenu" style="display: none;">
