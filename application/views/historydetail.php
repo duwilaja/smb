@@ -32,12 +32,12 @@
 	</div>
 	<div class="card-body">
         <div class="row mb-4">
-            <input type="hidden" id="nrp" value="<?= isset($session)?$session['nrp']:""?>">
+            <input type="hidden" id="nrp" value="<?= $nrp?>">
             <div class="col-3">
-                Nama : <br><?= isset($session)?$session['nama']:""?>
+                Nama : <br><?= $nama?>
             </div>
             <div class="col-3">
-                NRP : <br> <?= isset($session)?$session['nrp']:""?>
+                NRP : <br> <?= $nrp?>
             </div>
             <div class="col-3">
                 Jumlah Input : <br> <span id="jumlah_input"></span>
