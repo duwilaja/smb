@@ -21,6 +21,7 @@ class History extends CI_Controller {
 			
 			if($user["wasdal"]=="Y"){
 				$data['unit'] = $this->db->select('unit_id,unit_nam')->order_by("unit_nam")->get('unit')->result_array();
+				$data['rekap'] = $this->db->select('view_laporan as v,nama_laporan as t,unit')->like('tipe','R')->where(array("isactive"=>"Y"))->order_by("unit,nama_laporan")->get('formulir')->result_array();
 			}
 			
 			$data['js_local'] = 'history.js';
@@ -52,6 +53,8 @@ class History extends CI_Controller {
 			
 			if($user["wasdal"]=="Y"){
 				$data['unit'] = $this->db->select('unit_id,unit_nam')->order_by("unit_nam")->get('unit')->result_array();
+				$data['rekap'] = $this->db->select('view_laporan as v,nama_laporan as t,unit')->like('tipe','R')->where(array("isactive"=>"Y"))->order_by("unit,nama_laporan")->get('formulir')->result_array();
+				$data['history'] = $this->db->select('view_laporan as v,nama_laporan as t, view_field as f')->like('tipe','R')->where(array("unit"=>$user['unit'],"isactive"=>"Y"))->order_by("nama_laporan")->get('formulir')->result_array();
 			}
 			
 			$data["nama"]="";
