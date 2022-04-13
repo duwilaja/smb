@@ -65,6 +65,7 @@ class Home extends CI_Controller {
 			$data_assoc=$this->db->get()->result_array();
 			
 			for($i=0;$i<count($data_assoc);$i++){
+				$data_assoc[$i]['tgl'] = date("d-m-Y", strtotime($data_assoc[$i]['tgl']));
 				$data[]=array_values($data_assoc[$i]);
 			}
 		//}
