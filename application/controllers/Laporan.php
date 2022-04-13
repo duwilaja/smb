@@ -166,6 +166,9 @@ class Laporan extends CI_Controller {
 				$data["kategori"]=array("Wisata Alam","Pasar Tradisional","Wisata Budaya","Wisata Buatan","Kantor Polisi","Wisata Religi","Rumah Sakit","Wisata Kampung Kota",
 				"Puskesmas","Stasiun","Pasar Modern","SPBU","Terminal","Tempat Ibadah");
 			}
+			if($id=='tmc_cctv_lalin'){  //
+				$data["cctvs"]=$this->db->select("nama_cctv,kordinat")->get("cctv")->result_array();
+			}
 			
 			if($id=='tmc_data_jalan'){  //
 				$d=$this->mapi->get('jalan/jenis');

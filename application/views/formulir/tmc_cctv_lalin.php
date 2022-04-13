@@ -8,23 +8,8 @@ $cols.="situasi,kejadian,jalan,status,mulai,sampai,sebab,petugas,callsign,lat,ln
 <input type="hidden" name="fieldnames" value="<?php echo $cols?>">
 <input type="hidden" name="path" value="cctv/lalin/">
 
-<!--div class="row">
-<div class="col-lg-12">
-	<div class="btn-list">
-		<?php 
-		$keys=array_keys($subm);
-		$values=array_values($subm);
-		for($i=0;$i<count($keys);$i++){
-		?>
-		<button type="button" class="btn btn-warning btn-pill <?php echo $keys[$i]?>" onclick="ambil_isi('<?php echo $keys[$i]?>');"><i class="fa fa-list-alt"></i> <?php echo $values[$i]?></button>
-		<?php } ?>
-	</div>
-</div>
-</div>
-<hr /-->
-
 <div class="row">
-	<div class="col-sm-6 col-md-2">
+	<div class="col-sm-6 col-md-3">
 		<div class="form-group">
 			<label class="form-label">Situasi Lalin</label>
 			<select name="situasi" class="form-select" placeholder="" onchange="">
@@ -34,7 +19,7 @@ $cols.="situasi,kejadian,jalan,status,mulai,sampai,sebab,petugas,callsign,lat,ln
 			</select>
 		</div>
 	</div>
-	<div class="col-sm-6 col-md-2">
+	<div class="col-sm-6 col-md-3">
 		<div class="form-group">
 			<label class="form-label">Kejadian Terpantau</label>
 			<select id="kejadian" name="kejadian" class="form-select" placeholder="">
@@ -47,19 +32,27 @@ $cols.="situasi,kejadian,jalan,status,mulai,sampai,sebab,petugas,callsign,lat,ln
 			</select>
 		</div>
 	</div>
-	<div class="col-sm-6 col-md-3">
+</div>
+<div class="row">
+	<div class="col-sm-6 col-md-4">
 		<div class="form-group">
 			<label class="form-label">Lokasi</label>
-			<input type="text" name="jalan" class="form-control" placeholder="" >
+			<!--input type="text" name="jalan" class="form-control" placeholder="" -->
+			<select id="jalan" name="jalan" class="form-select" placeholder="" onchange="jalanberubah();">
+			<option value=""></option>
+		<?php foreach($cctvs  as $cctv){?>
+			<option value="<?php echo $cctv['nama_cctv']?>"><?php echo $cctv['nama_cctv']?></option>
+		<?php }?>
+			</select>
 		</div>
 	</div>
-	<div class="col-sm-6 col-md-2">
+	<div class="col-sm-6 col-md-3">
 		<div class="form-group">
 			<label class="form-label">Latitude</label>
 			<input type="text" id="lat" name="lat" class="form-control" placeholder="" >
 		</div>
 	</div>
-	<div class="col-sm-6 col-md-2">
+	<div class="col-sm-6 col-md-3">
 		<div class="form-group">
 			<label class="form-label">Longitude</label>
 			<input type="text" id="lng" name="lng" class="form-control" placeholder="" >
@@ -142,6 +135,20 @@ echo form_dropdown('sebab', array_reverse($penyebab,true), '',$opt);
 
 
 <script>
+var cctvs=<?php echo json_encode($cctvs)?>;
+
+function jalanberubah(){
+	var idx=$("#jalan").prop('selectedIndex');
+	if(idx>0){
+		var kord=cctvs[idx-1]['kordinat'];
+		var latlng=kord.split(",");
+		$("#lat").val(latlng[0]);
+		$("#lng").val(latlng[1]);
+	}else{
+		$("#lat").val("");
+		$("#lng").val("");
+	}
+}
 function mappicker(lat,lng){
 	window.open(base_url+"map?lat="+$(lat).val()+"&lng="+$(lng).val(),"MapWindow","width=830,height=500,location=no").focus();
 }
