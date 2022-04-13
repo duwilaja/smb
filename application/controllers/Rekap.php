@@ -142,7 +142,7 @@ class Rekap extends CI_Controller {
 					$v['btnset']=$lnk;
 				}
 				if(array_key_exists('link',$v)){
-					$v['link'] = '<a href="'.$v['link'].'"  target="__blank">Link Preview</a>';
+					if($v['link']!='') $v['link'] = '<a href="'.$v['link'].'"  target="__blank">'.$v['link'].'</a>';
 				}
 				$data[]=array_values($v);
 			}
