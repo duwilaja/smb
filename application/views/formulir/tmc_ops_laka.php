@@ -1,7 +1,10 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed'); 
 
 $cols="nrp,unit,polda,polres,dinas,subdinas,tgl,dasar,nomor,";
-$cols.="namajalan,lat,lng,kategori,keterlibatan,penindakan,ket,tindakan,md,lb,lr,nopol,instansi,petugas,rs,rsalm,rslat,rslng,rscc,jam,penggal";
+$cols.="jalan_id,namajalan,lat,lng,kategori,keterlibatan,penindakan,ket,tindakan,md,lb,lr,nopol,instansi,petugas,rs,rsalm,rslat,rslng,rscc,jam,penggal";
+
+$jj=json_decode($jalan);
+$jj=isset($jj->data)?$jj->data:[];
 ?>
 
 <style>
@@ -14,10 +17,15 @@ $cols.="namajalan,lat,lng,kategori,keterlibatan,penindakan,ket,tindakan,md,lb,lr
 <input type="hidden" name="fieldnames" value="<?php echo $cols?>">
 
 <div class="row">
-	<div class="col-sm-6 col-md-3">
+	<div class="col-sm-6 col-md-5">
 		<div class="form-group">
 			<label class="form-label">Nama Jalan</label>
-			<input type="text" name="namajalan" class="form-control" placeholder="" >
+			<input type="hidden" id="namajalan" name="namajalan" placeholder="..." class="form-control">
+			<select id="jalan_id" name="jalan_id" class="form-control select2" placeholder="" onchange="$('#namajalan').val(this.options[this.selectedIndex].text);">
+			<?php foreach($jj as $j){?>
+				<option value="<?php echo $j->id?>"><?php echo $j->nama_jalan?></option>
+			<?php }?>
+			</select>
 		</div>
 	</div>
 	<div class="col-sm-6 col-md-2">
@@ -30,6 +38,8 @@ $cols.="namajalan,lat,lng,kategori,keterlibatan,penindakan,ket,tindakan,md,lb,lr
 			</select>
 		</div> 
 	</div>
+</div>
+<div class="row">
 	<div class="col-sm-6 col-md-2">
 		<div class="form-group">
 			<label class="form-label">Latitude</label>
