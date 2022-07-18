@@ -213,6 +213,8 @@ class Laporan extends CI_Controller {
 				$data['pidana'] = ($this->db->select('val,txt')->where('grp','pidana')->get('lov')->result_array());
 			}
 			if($id=='tmc_ops_laka'){  //
+				$d=$this->mapi->get('jalan?kota_id=208&prov_id=13');
+				$data['jalan'] = $d[0]?$d[0]:$d[1];
 				$data['penggal'] = ($this->db->select('val,txt')->where('grp','penggal')->get('lov')->result_array());
 			}
 			if($id=='tmc_interaksi'||$id=='tmc_publikasi'){  //
