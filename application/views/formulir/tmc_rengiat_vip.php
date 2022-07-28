@@ -6,21 +6,7 @@ $cols.="obyek,obyeklain,pejabat,tanggal,jam,dari,darinama,ke,kenama,wasdal,anggo
 
 <input type="hidden" name="tablename" value="tmc_rengiat_vip">
 <input type="hidden" name="fieldnames" value="<?php echo $cols?>">
-
-<!--div class="row">
-<div class="col-lg-12">
-	<div class="btn-list">
-		<?php 
-		$keys=array_keys($subm);
-		$values=array_values($subm);
-		for($i=0;$i<count($keys);$i++){
-		?>
-		<button type="button" class="btn btn-warning btn-pill <?php echo $keys[$i]?>" onclick="ambil_isi('<?php echo $keys[$i]?>');"><i class="fa fa-list-alt"></i> <?php echo $values[$i]?></button>
-		<?php } ?>
-	</div>
-</div>
-</div>
-<hr /-->
+<input type="hidden" name="rengiatid" id="rengiatid" value="">
 
 <div class="row">
 	<div class="col-sm-6 col-md-2">
@@ -189,7 +175,9 @@ echo form_hidden('gangguan[]','');
 
 <script>
 function mappicker(lat,lng){
-	window.open(base_url+"map?lat=&lng=&latfld="+lat+"&lngfld="+lng,"MapWindow","width=830,height=500,location=no").focus();
+	var latx=$("#"+lat).val();
+	var lngx=$("#"+lng).val();
+	window.open(base_url+"map?lat="+latx+"&lng="+lngx+"&latfld="+lat+"&lngfld="+lng,"MapWindow","width=830,height=500,location=no").focus();
 }
 function lainnya(tv){
 	if(tv=='Lainnya'){

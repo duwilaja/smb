@@ -25,12 +25,14 @@ class Edit extends CI_Controller {
 	public function get(){
 		$user=$this->session->userdata('user_data');
 		$ret=array();
+		$sub=array();
 		if(isset($user)){
 			$id=$this->input->post('id');
 			$t=$this->input->post('q');
 			$ret=$this->db->where("rowid",$id)->get($t)->result_array();
+			$sub=$t=='tmc_rengiat_vip'?$this->db->where("rengiatid",$ret[0]['rengiatid'])->get("tmc_rengiat_vip_route")->result_array():$sub;
 		}
-		$out=array("code"=>"200", "msgs"=>$ret);
+		$out=array("code"=>"200", "msgs"=>$ret, "sub"=>$sub);
 		echo json_encode($out);
 	}
 	
