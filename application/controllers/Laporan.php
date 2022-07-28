@@ -477,15 +477,19 @@ class Laporan extends CI_Controller {
 			$fname=$this->input->post('fieldnames');
 			
 			$data=$this->input->post(explode(",",$fname));
+			
+			$upd=false;
 			if($rowid==""||$rowid=="0"){
 				$rengiatid=time();
 				$data=array_merge($data,array("rengiatid"=>$rengiatid));
 				$this->db->insert($tname,$data);
 			}else{
-				//$this->db->update($tname,$data,"rowid=$rowid");
+				$this->db->update($tname,$data,"rowid=$rowid");
+				$upd=true;
+				$rengiatid=$this->input->post("rengiatid");
 			}
 			$ret=$this->db->affected_rows();
-			if($ret>0){
+			if($ret>0||$upd){
 				$msgs="$ret record(s) saved";
 				//input detail here
 				$nama=$this->input->post('nama'); $gangguan=$this->input->post('gangguan');
@@ -499,6 +503,7 @@ class Laporan extends CI_Controller {
 					}
 				}
 				if(count($dats)>0){
+					$this->db->delete("tmc_rengiat_vip_route",array('rengiatid' => $rengiatid));
 					$this->db->insert_batch("tmc_rengiat_vip_route",$dats);
 					$ret=$this->db->affected_rows();
 					if($ret>0){

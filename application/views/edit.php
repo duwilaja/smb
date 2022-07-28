@@ -264,7 +264,7 @@ function getRec(){
 				$.each(json['msgs'][0],function (key,val){
 					$("[name='"+key+"']").val(val);
 				});
-				subQ(json['msgs'][0]);
+				subQ(json);
 			}else{
 				log(json['msgs']);
 			}
@@ -274,9 +274,31 @@ function getRec(){
 		}
 	});
 }
-function subQ(dat){
+function subQ(dats){
+	var dat=dats['msgs'][0];
 	if(view=='tmc_ops_pol'||view=='tmc_ops_macet'){
 		getSubQ('laporan/get_subq',$("#penyebab").val(),'#penyebabd',dat['penyebabd'],'','penyebab_macet_d','detil as v,detil as t','sebab');
+	}
+	if(view=='tmc_rengiat_vip'){
+		var sub=dats['sub'];
+		log(sub);
+		for(var i=0;i<sub.length;i++){
+			var d=sub[i];
+			var lastchild=$("tbody").children().last();
+			var flds=lastchild.find("input");
+			flds[0].value=d['nama'];
+			flds[1].value=d['gangguan'];
+			flds[2].value=d['gangguan'];
+			flds[3].value=d['ejarak'];
+			flds[4].value=d['ewaktu'];
+			flds[5].value=d['transit'];
+			flds[6].value=d['lat'];
+			flds[7].value=d['lng'];
+			
+			lastchild.find("select.select2").trigger("change");
+			
+			klon();
+		}
 	}
 }
 </script>
