@@ -131,6 +131,7 @@ $base_url=base_url();
 			</form></div>
 			<div class="card-footer text-right">
 				<button type="button" id="btn_save" class="btn btn-primary" onclick="simpanlah();">Simpan Laporan</button>
+				<button type="button" id="btn_dele" class="btn btn-danger hidden" onclick="hapuslah();">Hapus Laporan</button>
 			</div>
 		</div>
 	</div>
@@ -230,6 +231,13 @@ function simpanlah(){
 		sendData('#myf','laporan/save');
 	}
 }
+function hapuslah(){
+	if(typeof(delform)=="function"){
+		delform('#myf'); //sendData to the specific controller/function
+	}else{
+		sendData('#myf','laporan/dele');
+	}
+}
 function thispage_ready(){
 	get_contentx('laporan/get_content',{id:view},'.ldr','#isilaporan');
 }
@@ -299,6 +307,7 @@ function subQ(dats){
 			
 			klon();
 		}
+		$("#btn_dele").show();
 	}
 }
 </script>
