@@ -273,6 +273,7 @@ function getRec(){
 					$("[name='"+key+"']").val(val);
 				});
 				subQ(json);
+				$("#btn_dele").show();
 			}else{
 				log(json['msgs']);
 			}
@@ -307,7 +308,6 @@ function subQ(dats){
 			
 			klon();
 		}
-		$("#btn_dele").show();
 	}
 }
 </script>
