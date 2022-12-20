@@ -1,4 +1,9 @@
 <?php
+
+$company="Matrik, PT";
+$about=array("Smart Management", "Licensed to $company");
+
+
 $page_title = isset($title)?$title:"";
 $base_url = base_url();
 //$avatar=$session['unit']!=''?$session['unit'].'.png':'sm.png';
@@ -161,6 +166,7 @@ if(count($farr)>0&&$session['nrp']!=''){
                             <ul class="profile-dropdown onhover-show-div">
                                 <li><a href="<?php echo $base_url?>profile"><i data-feather="user"></i><span>Account </span></a></li>
                                 <li><a href="<?php echo $base_url?>login/out"><i data-feather="log-in"> </i><span>Log out</span></a></li>
+								<li><a href="#" onclick="$('#aboutModal').modal('show');"><i data-feather="at-sign"> </i><span>About</span></a></li>
                             </ul>
                         </li>
                     </ul>
@@ -348,6 +354,24 @@ if(count($farr)>0&&$session['nrp']!=''){
             </footer> -->
         </div>
     </div>
+	
+<!-- Modal-->
+<div id="aboutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" class="modal fade text-left modal_form">
+  <div role="document" class="modal-dialog">
+	<div class="modal-content">
+	  <div class="modal-header"><strong id="exampleModalLabel" class="modal-title"><?php echo $about[0]?></strong>
+		<button type="button" data-bs-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">x</span></button>
+	  </div>
+	  <div class="modal-body">
+		<?php echo $about[1]?>
+	  </div>
+	  <div class="modal-footer">
+		<!--button type="button" data-bs-dismiss="modal" class="btn btn-default">Close</button-->		
+	  </div>
+	</div>
+  </div>
+</div>
+
     <script>
         localStorage.setItem('page-wrapper', 'compact-wrapper dark-sidebar');
     </script>
